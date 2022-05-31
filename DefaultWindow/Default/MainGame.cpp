@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "MainGame.h"
 #include "Monster.h"
+#include "Player.h"
+
 
 
 CMainGame::CMainGame()

@@ -34,7 +34,7 @@ void CPlayer::Initialize(void)
 	m_fSpeed = 5.f;
 }
 
-void CPlayer::Update(void)
+int CPlayer::Update(void)
 {
 	// 연산을 진행
 	Key_Input();
@@ -61,33 +61,12 @@ void CPlayer::Update(void)
 	D3DXVec3TransformCoord(&m_vGunPoint, &m_vGunPoint, &m_tInfo.matWorld);
 
 
-#pragma region 벡터만 사용
-	/*for (int i = 0; i < 4; ++i)
-	{
-		D3DXVECTOR3		vTemp = m_vOriginPoint[i];
+	return OBJ_NOEVENT;
 
-		vTemp -= { 400.f, 300.f, 0.f };
+}
 
-		// 회전 적용
-		m_vPoint[i].x = vTemp.x * cosf(m_fAngle) - vTemp.y * sinf(m_fAngle);
-		m_vPoint[i].y = vTemp.x * sinf(m_fAngle) + vTemp.y * cosf(m_fAngle);
-
-		// 이동 적용
-		m_vPoint[i] += m_tInfo.vPos;
-	}
-
-	D3DXVECTOR3		vTemp = m_vOriginGunPoint;
-
-	vTemp -= { 400.f, 300.f, 0.f };
-
-	// 회전 적용
-	m_vGunPoint.x = vTemp.x * cosf(m_fGunAngle) - vTemp.y * sinf(m_fGunAngle);
-	m_vGunPoint.y = vTemp.x * sinf(m_fGunAngle) + vTemp.y * cosf(m_fGunAngle);
-
-	// 이동 적용
-	m_vGunPoint += m_tInfo.vPos;*/
-
-#pragma endregion 벡터만 사용
+void CPlayer::Late_Update()
+{
 
 }
 
@@ -103,19 +82,26 @@ void CPlayer::Render(HDC hDC)
 			continue;
 
 		Ellipse(hDC,
-			(int)m_vPoint[i].x - 5.f,
-			(int)m_vPoint[i].y - 5.f,
-			(int)m_vPoint[i].x + 5.f,
-			(int)m_vPoint[i].y + 5.f);
+			(int)m_vPoint[i].x - (int)5.f,
+			(int)m_vPoint[i].y - (int)5.f,
+			(int)m_vPoint[i].x + (int)5.f,
+			(int)m_vPoint[i].y + (int)5.f);
 	}
 
-	LineTo(hDC, m_vPoint[0].x, m_vPoint[0].y);
+	LineTo(hDC, (int)m_vPoint[0].x, (int)m_vPoint[0].y);
 
 	// 포신 그리기
 
 	MoveToEx(hDC, (int)m_tInfo.vPos.x, (int)m_tInfo.vPos.y, nullptr);
 
 	LineTo(hDC, (int)m_vGunPoint.x, (int)m_vGunPoint.y);
+
+
+	MoveToEx(hDC, 100,100 ,nullptr);
+	LineTo(hDC, 150, 100);
+	LineTo(hDC, 150, 150);
+	LineTo(hDC, 100, 150);
+	LineTo(hDC, 100, 100);
 
 }
 
@@ -145,10 +131,10 @@ void CPlayer::Key_Input(void)
 	}
 	
 	if (GetAsyncKeyState('A'))
-		m_fAngle -= D3DXToRadian(3.f);
+		m_fAngle -= D3DXToRadian(1.f);
 
 	if (GetAsyncKeyState('D'))
-		m_fAngle += D3DXToRadian(3.f);
+		m_fAngle += D3DXToRadian(1.f);
 
 	if (GetAsyncKeyState(VK_LEFT))
 	{
@@ -160,4 +146,8 @@ void CPlayer::Key_Input(void)
 		m_fGunAngle += D3DXToRadian(3.f);
 	}
 
+}
+
+void CPlayer::OnCollision(DIRECTION _DIR, CObj * _Other)
+{
 }

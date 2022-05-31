@@ -19,7 +19,7 @@ void CMonster::Initialize(void)
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 }
 
-void CMonster::Update(void)
+int CMonster::Update(void)
 {
 
 #pragma region 복습
@@ -89,7 +89,12 @@ void CMonster::Update(void)
 	m_tInfo.vPos.x += m_fSpeed * cosf(fAngle);
 	m_tInfo.vPos.y -= m_fSpeed * sinf(fAngle);
 
-	
+	return OBJ_NOEVENT;
+}
+
+void CMonster::Late_Update()
+{
+
 }
 
 void CMonster::Render(HDC hDC)
@@ -104,6 +109,10 @@ void CMonster::Render(HDC hDC)
 void CMonster::Release(void)
 {
 	
+}
+
+void CMonster::OnCollision(DIRECTION _DIR, CObj * _Other)
+{
 }
 
 // 단위 벡터 : 크기가 1인 벡터
