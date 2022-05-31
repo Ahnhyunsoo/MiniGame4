@@ -2,12 +2,19 @@
 #include "MainGame.h"
 #include "Monster.h"
 #include "Player.h"
+#include "SceneMgr.h"
+#include "SoundMgr.h"
+#include "ScrollMgr.h"
+#include "ObjMgr.h"
+#include "KeyMgr.h"
 
 
 
 CMainGame::CMainGame()
-	: m_pPlayer(nullptr), m_pMonster(nullptr)
+	:m_dwTime(GetTickCount())
 {
+	ZeroMemory(m_szFPS, sizeof(TCHAR) * 64);
+	m_iFPS = 0;
 }
 
 
@@ -20,44 +27,47 @@ void CMainGame::Initialize(void)
 {
 	m_hDC = GetDC(g_hWnd);
 
-	if (!m_pPlayer)
-	{
-		m_pPlayer = new CPlayer;
-		m_pPlayer->Initialize();
-	}
-
-/*
-// 	if (!m_pMonster)
-// 	{
-// 		m_pMonster = new CMonster;
-// 		m_pMonster->Initialize();
-// 	}
-// 
-// 	dynamic_cast<CMonster*>(m_pMonster)->Set_Player(m_pPlayer);
-*/
+	CSoundMgr::Get_Instance()->Initialize();
+	CSceneMgr::Get_Instance()->Scene_Change(STAGE_SELECT);
 
 }
 
 void CMainGame::Update(void)
 {
-	m_pPlayer->Update();
-	//m_pMonster->Update();
+	CSceneMgr::Get_Instance()->Update();
+}
+
+void CMainGame::Late_Update(void)
+{
+
+	CSceneMgr::Get_Instance()->Late_Update();
 }
 
 void CMainGame::Render(void)
 {
 	Rectangle(m_hDC, 0, 0, WINCX, WINCY);
 
-	m_pPlayer->Render(m_hDC);
-	//m_pMonster->Render(m_hDC);
+	CSceneMgr::Get_Instance()->Render(m_hDC);
+	++m_iFPS;
+
+	if (m_dwTime + 1000 < GetTickCount())
+	{
+		swprintf_s(m_szFPS, L"FPS : %d", m_iFPS);
+		SetWindowText(g_hWnd, m_szFPS);
+
+		m_iFPS = 0;
+		m_dwTime = GetTickCount();
+	}
 }
 
 void CMainGame::Release(void)
 {
-	//Safe_Delete<CObj*>(m_pMonster);
-	Safe_Delete<CObj*>(m_pPlayer);
-
-	ReleaseDC(g_hWnd, m_hDC);	
+	CSoundMgr::Get_Instance()->Destroy_Instance();
+	CSceneMgr::Get_Instance()->Destroy_Instance();
+	CScrollMgr::Get_Instance()->Destroy_Instance();
+	CKeyMgr::Get_Instance()->Destroy_Instance();
+	CObjMgr::Get_Instance()->Destroy_Instance();
+	ReleaseDC(g_hWnd, m_hDC);
 }
 
 // 1. w,a,s,d 키를 눌러 4방향 총알쏘기

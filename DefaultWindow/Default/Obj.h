@@ -1,6 +1,12 @@
 #pragma once
 
 #include "Include.h"
+#include "ScrollMgr.h"
+#include "SceneMgr.h"
+#include "KeyMgr.h"
+
+class CollisionMgr;
+class CObjMgr;
 
 class CObj
 {
@@ -14,10 +20,11 @@ public:
 	void Set_vPos(float fX, float fY) { m_tInfo.vPos.x = fX, m_tInfo.vPos.y = fY; }
 	void Set_vPosX(float fX) { m_tInfo.vPos.x += fX; }
 	void Set_vPosY(float fY) { m_tInfo.vPos.y += fY; }
+	void Set_Dead(void) { m_bDead = true; }
 
 public:
 	virtual		void	Initialize(void)	PURE;
-	virtual		int	Update(void)		PURE;
+	virtual		int		Update(void)		PURE;
 	virtual		void	Late_Update(void)   PURE;
 	virtual		void	Render(HDC hDC)		PURE;
 	virtual		void	Release(void)		PURE;
@@ -25,12 +32,15 @@ public:
 public:
 	virtual		void	OnCollision(DIRECTION _DIR, CObj* _Other) PURE;
 
+public:
+	//void Update_MatWorld(void);
 protected:
 	INFO		m_tInfo;
-	
-	float		m_fAngle = 0.f;
-
+	float		m_fAngle;
 	float		m_fSpeed;
+	bool		m_bDead;
+	
+
 
 };
 

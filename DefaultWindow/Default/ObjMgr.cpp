@@ -56,15 +56,6 @@ void CObjMgr::Late_Update()
 		}
 	}
 
-	switch (m)
-	{
-	default:
-		break;
-	}
-	
-
-
-
 }
 
 void CObjMgr::Render(HDC hDC)

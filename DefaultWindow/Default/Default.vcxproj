@@ -160,6 +160,7 @@
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Functor.h" />
     <ClInclude Include="Include.h" />
+    <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Obj.h" />
@@ -168,7 +169,16 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="ScrollMgr.h" />
+    <ClInclude Include="SelectMonster.h" />
+    <ClInclude Include="SelectPlayer.h" />
+    <ClInclude Include="SoundMgr.h" />
+    <ClInclude Include="StageGH.h" />
+    <ClInclude Include="StageHR.h" />
+    <ClInclude Include="StageHS.h" />
+    <ClInclude Include="StageSelect.h" />
     <ClInclude Include="StageST.h" />
+    <ClInclude Include="StageYM.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="targetver.h" />
@@ -176,6 +186,7 @@
   <ItemGroup>
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Default.cpp" />
+    <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Obj.cpp" />
@@ -183,7 +194,16 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="ScrollMgr.cpp" />
+    <ClCompile Include="SelectMonster.cpp" />
+    <ClCompile Include="SelectPlayer.cpp" />
+    <ClCompile Include="SoundMgr.cpp" />
+    <ClCompile Include="StageGH.cpp" />
+    <ClCompile Include="StageHR.cpp" />
+    <ClCompile Include="StageHS.cpp" />
+    <ClCompile Include="StageSelect.cpp" />
     <ClCompile Include="StageST.cpp" />
+    <ClCompile Include="StageYM.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
