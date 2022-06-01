@@ -35,6 +35,7 @@ void CStageSelect::Initialize(void)
 
 void CStageSelect::Update(void)
 {
+	
 	if (!m_bGoal)
 	{
 		CObjMgr::Get_Instance()->Update();
@@ -54,10 +55,11 @@ void CStageSelect::Late_Update(void)
 
 void CStageSelect::Render(HDC hDC)
 {
+	CObjMgr::Get_Instance()->Render(hDC);
 
 	if (!m_bGoal) // 골인 안했으면 게임화면 출력
 	{
-		CObjMgr::Get_Instance()->Render(hDC);
+		
 
 		int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
 
@@ -143,12 +145,17 @@ void CStageSelect::Release(void)
 int CStageSelect::NowRank(void)
 {
 	int Count = CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER).size()+1;
-	/*for (auto& iter = CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER).begin(); iter != CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER).end();)
+	/*list<CObj*>::iterator iter = CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER).begin();
+	list<CObj*>::iterator iter2 = CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER).end();*/
+
+
+	/*if ((*iter)->Get_Info().vPos.x <= (CObjMgr::Get_Instance()->Get_ObjList(OBJ_PLAYER)).front()->Get_Info().vPos.x)
+	Count -= 1;
+	++iter;*/
+
+	/*for (;iter != iter2;)
 	{
-		터짐 이유가뭘까 조득우가 필요해!!	
-		if ((*iter)->Get_Info().vPos.x <= CObjMgr::Get_Instance()->Get_ObjList(OBJ_PLAYER).front()->Get_Info().vPos.x)
-			Count += 1;
-		++iter;
+		
 	}*/
 	for (auto& iter : CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER))
 	{

@@ -13,8 +13,22 @@ CSelectMonster::~CSelectMonster()
 
 void CSelectMonster::Initialize(void)
 {
-	m_bDead = false;
+	//m_tInfo.vPos = { 0.f,0.f,0.f };
+	m_fAngle = 1.f;
 	m_fSpeed = 2.f;
+	m_fScale = 1.f;
+	m_tInfo.vDir = { 1.f,0.f,0.f };
+	m_bDead = false;
+
+	m_vOriVertex.push_back(D3DXVECTOR3{ -30.f, -20.f, 0.f });
+	m_vOriVertex.push_back(D3DXVECTOR3{ 30.f, -20.f, 0.f });
+	m_vOriVertex.push_back(D3DXVECTOR3{ 30.f, 20.f, 0.f });
+	m_vOriVertex.push_back(D3DXVECTOR3{ -30.f, 20.f, 0.f });
+
+	m_vVertex.push_back(D3DXVECTOR3{ -30.f, -20.f, 0.f });
+	m_vVertex.push_back(D3DXVECTOR3{ 30.f, -20.f, 0.f });
+	m_vVertex.push_back(D3DXVECTOR3{ 30.f, 20.f, 0.f });
+	m_vVertex.push_back(D3DXVECTOR3{ -30.f, 20.f, 0.f });
 }
 
 int CSelectMonster::Update(void)
@@ -22,6 +36,7 @@ int CSelectMonster::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 	m_tInfo.vPos.x += m_fSpeed;
+	Update_MatWorld();
 	return OBJ_NOEVENT;
 }
 
@@ -31,8 +46,7 @@ void CSelectMonster::Late_Update(void)
 
 void CSelectMonster::Render(HDC hDC)
 {
-	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
-	Rectangle(hDC, m_tInfo.vPos.x - 15 + iScrollX, m_tInfo.vPos.y - 10, m_tInfo.vPos.x + 15 + iScrollX, m_tInfo.vPos.y + 10);
+	Render_Vertex(hDC);
 	
 }
 

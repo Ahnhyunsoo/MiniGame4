@@ -33,12 +33,20 @@ public:
 	virtual		void	OnCollision(DIRECTION _DIR, CObj* _Other) PURE;
 
 public:
-	//void Update_MatWorld(void);
+	void Update_MatWorld(void);
+	void Render_Vertex(HDC hDC);
 protected:
 	INFO		m_tInfo;
 	float		m_fAngle;
 	float		m_fSpeed;
+	float		m_fScale;
+
 	bool		m_bDead;
+
+protected:
+	vector<D3DXVECTOR3> m_vVertex;
+	vector<D3DXVECTOR3> m_vOriVertex;
+	//vector<int> m_vInt;
 	
 
 

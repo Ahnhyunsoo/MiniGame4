@@ -9,7 +9,6 @@ public:
 
 public:
 	void Key_Input(void);
-	void Update_Cart(void);
 	void OffSet(void);
 
 	// CObj을(를) 통해 상속됨
@@ -23,7 +22,6 @@ public:
 
 
 private:
-	D3DXVECTOR3 m_vCart[4];
-	D3DXVECTOR3 m_vOriginCart[4];
+
 };
 
