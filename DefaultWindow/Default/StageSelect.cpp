@@ -37,7 +37,7 @@ void CStageSelect::Update(void)
 	if (!m_bGoal)
 	{
 		CObjMgr::Get_Instance()->Update();
-		Check_Goal(); //이함수 레이트업데이트에 넣으면 작동안함 why? 조득우가 필요해
+		
 
 		Timer();
 	}
@@ -47,6 +47,7 @@ void CStageSelect::Late_Update(void)
 {
 
 	CObjMgr::Get_Instance()->Late_Update();
+	Check_Goal(); 
 	
 }
 
