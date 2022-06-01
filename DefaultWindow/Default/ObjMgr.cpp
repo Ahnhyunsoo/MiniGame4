@@ -41,6 +41,7 @@ void CObjMgr::Update()
 				++iter;
 		}
 	}
+
 }
 
 void CObjMgr::Late_Update()
@@ -56,6 +57,7 @@ void CObjMgr::Late_Update()
 		}
 	}
 
+	Late_Update_ColCheck();
 }
 
 void CObjMgr::Render(HDC hDC)
@@ -67,8 +69,6 @@ void CObjMgr::Render(HDC hDC)
 			iter->Render(hDC);
 		}
 	}
-
-
 }
 
 void CObjMgr::Release()
@@ -90,26 +90,51 @@ void CObjMgr::Delete_ID(OBJID eID)
 	m_ObjList[eID].clear();
 }
 
+
+void CObjMgr::Late_Update_ColCheck()
+{
+	switch (CSceneMgr::Get_Instance()->Get_Scene())
+	{
+	case STAGE_SELECT:
+		Late_UpdateSeclect();
+		break;
+	case STAGE_ST:
+		Late_UpdateST();
+		break;
+	case STAGE_GH:
+		Late_UpdateGH();
+		break;
+	case STAGE_YM:
+		Late_UpdateYM();
+		break;
+	case STAGE_HS:
+		Late_UpdateHS();
+		break;
+	case STAGE_HR:
+		Late_UpdateHR();
+		break;
+	}
+}
+
+void CObjMgr::Late_UpdateSeclect()
+{
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER], true);
+}
 void CObjMgr::Late_UpdateST()
 {
 }
-
 void CObjMgr::Late_UpdateGH()
 {
 }
-
 void CObjMgr::Late_UpdateYM()
 {
 }
-
 void CObjMgr::Late_UpdateHS()
 {
 }
-
 void CObjMgr::Late_UpdateHR()
 {
 }
-
 void CObjMgr::Late_UpdateEND()
 {
 }

@@ -135,6 +135,7 @@ void CStageSelect::Render(HDC hDC)
 		SelectObject(hDC, oldFont2);
 		DeleteObject(textFont2);
 	}
+
 }
 
 void CStageSelect::Release(void)

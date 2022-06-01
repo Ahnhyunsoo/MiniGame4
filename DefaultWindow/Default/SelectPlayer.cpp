@@ -14,6 +14,8 @@ CSelectPlayer::~CSelectPlayer()
 
 void CSelectPlayer::Initialize(void)
 {
+	m_tInfo.fCX = 60.f;
+	m_tInfo.fCY = 40.f;
 	m_tInfo.vPos = { 0.f,300.f,0.f };
 	m_fAngle = 1.f;
 	m_fSpeed = 6.f;

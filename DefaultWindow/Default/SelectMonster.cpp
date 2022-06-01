@@ -13,7 +13,8 @@ CSelectMonster::~CSelectMonster()
 
 void CSelectMonster::Initialize(void)
 {
-	//m_tInfo.vPos = { 0.f,0.f,0.f };
+	m_tInfo.fCX = 60.f;
+	m_tInfo.fCY = 40.f;
 	m_fAngle = 1.f;
 	m_fSpeed = 2.f;
 	m_fScale = 1.f;

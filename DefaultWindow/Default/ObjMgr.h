@@ -21,6 +21,9 @@ public: // ¸É¹ö ÇÔ¼ö
 	void Delete_ID(OBJID eID);
 
 private:
+	void Late_Update_ColCheck();
+
+	void Late_UpdateSeclect();
 	void Late_UpdateST();
 	void Late_UpdateGH();
 	void Late_UpdateYM();

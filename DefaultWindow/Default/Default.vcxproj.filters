@@ -121,6 +121,12 @@
     <Filter Include="05.StageHR\HRObj\HRMonster">
       <UniqueIdentifier>{b648a2ad-a0a5-4285-b768-b89dc9d351cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="98.Design\BmpMgr">
+      <UniqueIdentifier>{79268c31-e7ea-4495-8b98-6cd4207fc553}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12.MyBmp">
+      <UniqueIdentifier>{9fa6f0e1-0923-4e3e-8dc0-9808bcab16d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -213,6 +219,12 @@
     <ClInclude Include="SelectMonster.h">
       <Filter>00.StageSelect\SelectObj\SelectMonster</Filter>
     </ClInclude>
+    <ClInclude Include="BmpMgr.h">
+      <Filter>98.Design\BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBmp.h">
+      <Filter>12.MyBmp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -277,6 +289,12 @@
     </ClCompile>
     <ClCompile Include="SelectMonster.cpp">
       <Filter>00.StageSelect\SelectObj\SelectMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpMgr.cpp">
+      <Filter>98.Design\BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBmp.cpp">
+      <Filter>12.MyBmp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
