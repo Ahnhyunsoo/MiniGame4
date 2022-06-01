@@ -106,9 +106,6 @@
     <Filter Include="04.StageHS\HSObj">
       <UniqueIdentifier>{7b392266-8d83-4fe9-b766-7e944b729580}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04.StageHS\HSObj\HSPlayer">
-      <UniqueIdentifier>{113633fb-49be-4af0-90f4-0f37e1c1e45d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04.StageHS\HSObj\HSMonster">
       <UniqueIdentifier>{c176a311-b26a-4566-9a67-fd6ad127c92f}</UniqueIdentifier>
     </Filter>
@@ -126,6 +123,15 @@
     </Filter>
     <Filter Include="12.MyBmp">
       <UniqueIdentifier>{9fa6f0e1-0923-4e3e-8dc0-9808bcab16d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.StageHS\HSUI">
+      <UniqueIdentifier>{2b9f0f58-8c55-4a30-9c49-48cd7de61f68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.StageHS\HSUI\UIMgr">
+      <UniqueIdentifier>{d5ddd0ca-48f5-4119-b726-583ab78c03d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.StageHS\HSObj\HSTower">
+      <UniqueIdentifier>{113633fb-49be-4af0-90f4-0f37e1c1e45d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +231,18 @@
     <ClInclude Include="MyBmp.h">
       <Filter>12.MyBmp</Filter>
     </ClInclude>
+    <ClInclude Include="HSObj.h">
+      <Filter>04.StageHS\HSObj</Filter>
+    </ClInclude>
+    <ClInclude Include="UIMgr.h">
+      <Filter>04.StageHS\HSUI\UIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="HSUI.h">
+      <Filter>04.StageHS\HSUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GunTower.h">
+      <Filter>04.StageHS\HSObj\HSTower</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -295,6 +313,18 @@
     </ClCompile>
     <ClCompile Include="MyBmp.cpp">
       <Filter>12.MyBmp</Filter>
+    </ClCompile>
+    <ClCompile Include="HSObj.cpp">
+      <Filter>04.StageHS\HSObj</Filter>
+    </ClCompile>
+    <ClCompile Include="UIMgr.cpp">
+      <Filter>04.StageHS\HSUI\UIMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="HSUI.cpp">
+      <Filter>04.StageHS\HSUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GunTower.cpp">
+      <Filter>04.StageHS\HSObj\HSTower</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "SceneMgr.h"
 #include "StageST.h"
+#include "StageHS.h"
 #include "StageSelect.h"
 
 
@@ -8,7 +9,7 @@ CSceneMgr*	CSceneMgr::m_pInstance = nullptr;
 
 
 CSceneMgr::CSceneMgr()
-	: m_pScene(nullptr), m_eCurScene(STAGE_SELECT)
+	: m_pScene(nullptr), m_eCurScene(STAGE_HS)
 {
 
 }
@@ -41,6 +42,7 @@ void CSceneMgr::Scene_Change(SCENE eID)
 		case STAGE_YM:
 			break;
 		case STAGE_HS:
+			m_pScene = new CStageHS;
 			break;
 		case STAGE_HR:
 			break;

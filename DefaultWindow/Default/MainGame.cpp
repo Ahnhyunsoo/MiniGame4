@@ -29,7 +29,7 @@ void CMainGame::Initialize(void)
 	m_hDC = GetDC(g_hWnd);
 
 	CSoundMgr::Get_Instance()->Initialize();
-	CSceneMgr::Get_Instance()->Scene_Change(STAGE_SELECT);
+	CSceneMgr::Get_Instance()->Scene_Change(STAGE_HS);
 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back");
 

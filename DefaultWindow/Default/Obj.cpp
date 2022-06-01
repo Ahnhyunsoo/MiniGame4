@@ -27,7 +27,7 @@ void CObj::Update_MatWorld(void)
 
 	m_tInfo.matWorld = matScale * matRotZ * matTrans;
 
-	for (int i = 0; i < m_vVertex.size(); ++i)
+	for (size_t i = 0; i < m_vVertex.size(); ++i)
 	{
 		D3DXVec3TransformCoord(&m_vVertex[i], &m_vOriVertex[i], &m_tInfo.matWorld);
 	}
