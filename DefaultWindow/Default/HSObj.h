@@ -6,5 +6,9 @@ class CHSObj :
 public:
 	CHSObj();
 	virtual ~CHSObj();
+
+public:
+	void Draw_Triangle(HDC hDC);
+	D3DXVECTOR3 Find_Target(float _fX, float _fY);
 };
 

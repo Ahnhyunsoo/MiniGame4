@@ -133,6 +133,9 @@
     <Filter Include="04.StageHS\HSObj\HSTower">
       <UniqueIdentifier>{113633fb-49be-4af0-90f4-0f37e1c1e45d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04.StageHS\HSObj\HSBullet">
+      <UniqueIdentifier>{acfc9c6e-6574-4492-bfb6-76d810a0be7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -243,6 +246,12 @@
     <ClInclude Include="GunTower.h">
       <Filter>04.StageHS\HSObj\HSTower</Filter>
     </ClInclude>
+    <ClInclude Include="HSMonster.h">
+      <Filter>04.StageHS\HSObj\HSMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="HSBullet.h">
+      <Filter>04.StageHS\HSObj\HSBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -325,6 +334,12 @@
     </ClCompile>
     <ClCompile Include="GunTower.cpp">
       <Filter>04.StageHS\HSObj\HSTower</Filter>
+    </ClCompile>
+    <ClCompile Include="HSMonster.cpp">
+      <Filter>04.StageHS\HSObj\HSMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="HSBullet.cpp">
+      <Filter>04.StageHS\HSObj\HSBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

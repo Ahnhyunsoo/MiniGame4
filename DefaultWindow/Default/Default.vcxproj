@@ -161,6 +161,8 @@
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Functor.h" />
     <ClInclude Include="GunTower.h" />
+    <ClInclude Include="HSBullet.h" />
+    <ClInclude Include="HSMonster.h" />
     <ClInclude Include="HSObj.h" />
     <ClInclude Include="HSUI.h" />
     <ClInclude Include="Include.h" />
@@ -194,6 +196,8 @@
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Default.cpp" />
     <ClCompile Include="GunTower.cpp" />
+    <ClCompile Include="HSBullet.cpp" />
+    <ClCompile Include="HSMonster.cpp" />
     <ClCompile Include="HSObj.cpp" />
     <ClCompile Include="HSUI.cpp" />
     <ClCompile Include="KeyMgr.cpp" />

@@ -21,11 +21,19 @@ public:
 		return _Temp;
 	}
 
-	static CObj* CreateSelectMonster(float _fX, float _fY)
+	static CObj* CreateObj(float _fX, float _fY)
 	{
-		CObj* _Temp = new T;
-		_Temp->Set_vPos(_fX, _fY);
+		CObj* _Temp = new T;		
 		_Temp->Initialize();
+		_Temp->Set_vPos(_fX, _fY);
+		return _Temp;
+	}
+
+	static CObj* CreateBullet(D3DXVECTOR3 _Dir, float _fX, float _fY)
+	{
+		CObj* _Temp = new T(_Dir);
+		_Temp->Initialize();
+		_Temp->Set_vPos(_fX, _fY);
 		return _Temp;
 	}
 };

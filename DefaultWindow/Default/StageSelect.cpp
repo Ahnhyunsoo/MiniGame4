@@ -5,6 +5,7 @@
 #include "SelectPlayer.h"
 #include "SelectMonster.h"
 #include "ScrollMgr.h"
+#include "BmpMgr.h"
 
 CStageSelect::CStageSelect()
 	:m_iNowRank(0),m_iTotalRank(0),m_iSecond(0),m_LTimer(GetTickCount()),m_bGoal(false),m_iGoal(5000)
@@ -20,16 +21,16 @@ CStageSelect::~CStageSelect()
 void CStageSelect::Initialize(void)
 {
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CSelectPlayer>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(600.f, 200.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(1600.f, 250.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(900.f, 300.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(1200.f, 350.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(1100.f, 400.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(1900.f, 450.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(1500.f, 500.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(1800.f, 450.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(1400.f, 400.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateSelectMonster(2100.f, 350.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(600.f, 200.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1600.f, 250.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(900.f, 300.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1200.f, 350.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1100.f, 400.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1900.f, 450.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1500.f, 500.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1800.f, 450.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1400.f, 400.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(2100.f, 350.f));
 	
 }
 
@@ -55,7 +56,11 @@ void CStageSelect::Late_Update(void)
 
 void CStageSelect::Render(HDC hDC)
 {
-	CObjMgr::Get_Instance()->Render(hDC);
+
+	HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Back");
+	BitBlt(hDC, 0, 0, 800, 600, hMemDC, 0, 0, SRCCOPY);
+	Rectangle(hMemDC, 0, 0, WINCX, WINCY);
+	CObjMgr::Get_Instance()->Render(hMemDC);
 
 	if (!m_bGoal) // 골인 안했으면 게임화면 출력
 	{
@@ -71,30 +76,30 @@ void CStageSelect::Render(HDC hDC)
 		m_labelFontInfo.lfWidth = 10;
 		HFONT textFont, oldFont;
 		textFont = CreateFontIndirect(&m_labelFontInfo);
-		oldFont = (HFONT)SelectObject(hDC, textFont);
-		SetBkMode(hDC, OPAQUE);
-		SetBkColor(hDC, RGB(0, 0, 0));
-		SetTextColor(hDC, RGB(255, 0, 255));;
+		oldFont = (HFONT)SelectObject(hMemDC, textFont);
+		SetBkMode(hMemDC, OPAQUE);
+		SetBkColor(hMemDC, RGB(0, 0, 0));
+		SetTextColor(hMemDC, RGB(255, 0, 255));;
 		TCHAR cRank[30];
 		wsprintf(cRank, TEXT("현재 등수 : %d / %d"), m_iNowRank, m_iTotalRank);
-		TextOut(hDC, 630, 10, cRank, lstrlen(cRank));
+		TextOut(hMemDC, 630, 10, cRank, lstrlen(cRank));
 
 		TCHAR cTime[30];
 		wsprintf(cTime, TEXT("시간 : %d초"), m_iSecond);
-		TextOut(hDC, 30, 10, cTime, lstrlen(cTime));
+		TextOut(hMemDC, 30, 10, cTime, lstrlen(cTime));
 
 		TCHAR cDistance[30];
 		wsprintf(cDistance, TEXT("거리 : %dM / %dM"), (int)CObjMgr::Get_Instance()->Get_ObjList(OBJ_PLAYER).front()->Get_Info().vPos.x,m_iGoal);
-		TextOut(hDC, 200, 10, cDistance, lstrlen(cDistance));
-		SelectObject(hDC, oldFont);
+		TextOut(hMemDC, 200, 10, cDistance, lstrlen(cDistance));
+		SelectObject(hMemDC, oldFont);
 		DeleteObject(textFont);
 
 
 
-		Ellipse(hDC, 5000 + iScrollX, 90, 5000 + iScrollX + 10, 100);
-		Ellipse(hDC, 5000 + iScrollX, 500, 5000 + iScrollX + 10, 510);
-		MoveToEx(hDC, 5000 + iScrollX, 100, nullptr);
-		LineTo(hDC, 5000 + iScrollX, 500);
+		Ellipse(hMemDC, 5000 + iScrollX, 90, 5000 + iScrollX + 10, 100);
+		Ellipse(hMemDC, 5000 + iScrollX, 500, 5000 + iScrollX + 10, 510);
+		MoveToEx(hMemDC, 5000 + iScrollX, 100, nullptr);
+		LineTo(hMemDC, 5000 + iScrollX, 500);
 	}
 
 	if (m_bGoal) // 골인했으면 클리어 화면 출력
@@ -105,18 +110,18 @@ void CStageSelect::Render(HDC hDC)
 		m_labelFontInfo.lfWidth = 20;
 		HFONT textFont, oldFont;
 		textFont = CreateFontIndirect(&m_labelFontInfo);
-		oldFont = (HFONT)SelectObject(hDC, textFont);
-		SetBkMode(hDC, OPAQUE);
-		SetBkColor(hDC, RGB(0, 0, 255));
-		SetTextColor(hDC, RGB(255, 0, 0));;
+		oldFont = (HFONT)SelectObject(hMemDC, textFont);
+		SetBkMode(hMemDC, OPAQUE);
+		SetBkColor(hMemDC, RGB(0, 0, 255));
+		SetTextColor(hMemDC, RGB(255, 0, 0));;
 		TCHAR cRank[30];
 		wsprintf(cRank, TEXT("최종 등수 : %d등"), m_iNowRank);
-		TextOut(hDC, 420, 40, cRank, lstrlen(cRank));
+		TextOut(hMemDC, 420, 40, cRank, lstrlen(cRank));
 
 		TCHAR cTime[30];
 		wsprintf(cTime, TEXT("걸린 시간 : %d초"), m_iSecond);
-		TextOut(hDC, 70, 40, cTime, lstrlen(cTime));
-		SelectObject(hDC, oldFont);
+		TextOut(hMemDC, 70, 40, cTime, lstrlen(cTime));
+		SelectObject(hMemDC, oldFont);
 		DeleteObject(textFont);
 
 		
@@ -125,14 +130,14 @@ void CStageSelect::Render(HDC hDC)
 		m_labelFontInfo2.lfWidth = 40;
 		HFONT textFont2, oldFont2;
 		textFont2 = CreateFontIndirect(&m_labelFontInfo2);
-		oldFont2 = (HFONT)SelectObject(hDC, textFont2);
-		SetBkMode(hDC, OPAQUE);
-		SetBkColor(hDC, RGB(0, 255, 0));
-		SetTextColor(hDC, RGB(0, 0, 0));;
+		oldFont2 = (HFONT)SelectObject(hMemDC, textFont2);
+		SetBkMode(hMemDC, OPAQUE);
+		SetBkColor(hMemDC, RGB(0, 255, 0));
+		SetTextColor(hMemDC, RGB(0, 0, 0));;
 		TCHAR cClear[30];
 		wsprintf(cClear, TEXT("STAGE1 클리어!"), m_iNowRank);
-		TextOut(hDC, 75, 300, cClear, lstrlen(cClear));
-		SelectObject(hDC, oldFont2);
+		TextOut(hMemDC, 75, 300, cClear, lstrlen(cClear));
+		SelectObject(hMemDC, oldFont2);
 		DeleteObject(textFont2);
 	}
 
