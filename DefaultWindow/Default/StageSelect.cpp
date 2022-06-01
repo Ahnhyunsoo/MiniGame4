@@ -4,6 +4,7 @@
 #include "CAbstractFactory.h"
 #include "SelectPlayer.h"
 #include "SelectMonster.h"
+#include "ScrollMgr.h"
 
 CStageSelect::CStageSelect()
 	:m_iNowRank(0),m_iTotalRank(0),m_iSecond(0),m_LTimer(GetTickCount()),m_bGoal(false),m_iGoal(5000)
@@ -58,6 +59,8 @@ void CStageSelect::Render(HDC hDC)
 	{
 		CObjMgr::Get_Instance()->Render(hDC);
 
+		int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
+
 		m_iNowRank = NowRank();
 		m_iTotalRank = CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER).size() + 1;
 
@@ -83,6 +86,13 @@ void CStageSelect::Render(HDC hDC)
 		TextOut(hDC, 200, 10, cDistance, lstrlen(cDistance));
 		SelectObject(hDC, oldFont);
 		DeleteObject(textFont);
+
+
+
+		Ellipse(hDC, 5000 + iScrollX, 90, 5000 + iScrollX + 10, 100);
+		Ellipse(hDC, 5000 + iScrollX, 500, 5000 + iScrollX + 10, 510);
+		MoveToEx(hDC, 5000 + iScrollX, 100, nullptr);
+		LineTo(hDC, 5000 + iScrollX, 500);
 	}
 
 	if (m_bGoal) // 골인했으면 클리어 화면 출력

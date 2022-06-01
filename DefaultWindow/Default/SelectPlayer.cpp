@@ -143,7 +143,7 @@ void CSelectPlayer::OffSet(void)
 	int		iOffSetX = WINCX >> 1;
 
 	int		iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
-	int		iItvX = 360 - (int)m_vOriginCart[1].x;
+	int		iItvX = (int)m_vOriginCart[1].x;
 
 
 	if (iOffSetX - iItvX > m_tInfo.vPos.x + iScrollX)
