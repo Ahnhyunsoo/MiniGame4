@@ -13,10 +13,10 @@ class CObj
 public:
 	CObj();
 	virtual ~CObj();
-	
+
 public:
 	const INFO&				Get_Info(void) const { return m_tInfo; }
-	
+
 	void Set_vPos(float fX, float fY) { m_tInfo.vPos.x = fX, m_tInfo.vPos.y = fY; }
 	void Set_vPosX(float fX) { m_tInfo.vPos.x += fX; }
 	void Set_vPosY(float fY) { m_tInfo.vPos.y += fY; }
@@ -46,8 +46,8 @@ protected:
 protected:
 	vector<D3DXVECTOR3> m_vVertex;
 	vector<D3DXVECTOR3> m_vOriVertex;
-	//vector<int> m_vInt;
 	
+
 
 
 };

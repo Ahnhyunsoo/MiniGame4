@@ -20,7 +20,7 @@ void CObj::Update_MatWorld(void)
 {
 	m_tInfo.vDir = { 1.f,0.f,0.f };
 	D3DXMATRIX		matScale, matRotZ, matTrans;
-	
+
 	D3DXMatrixScaling(&matScale, m_fScale, m_fScale, 0.f);
 	D3DXMatrixRotationZ(&matRotZ, D3DXToRadian(m_fAngle));
 	D3DXMatrixTranslation(&matTrans, m_tInfo.vPos.x, m_tInfo.vPos.y, 0.f);
@@ -31,7 +31,7 @@ void CObj::Update_MatWorld(void)
 	{
 		D3DXVec3TransformCoord(&m_vVertex[i], &m_vOriVertex[i], &m_tInfo.matWorld);
 	}
-	D3DXVec3TransformNormal(&m_tInfo.vDir, &m_tInfo.vDir,&m_tInfo.matWorld);
+	D3DXVec3TransformNormal(&m_tInfo.vDir, &m_tInfo.vDir, &m_tInfo.matWorld);
 	D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
 }
 

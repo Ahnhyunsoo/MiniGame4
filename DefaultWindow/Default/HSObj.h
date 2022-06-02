@@ -8,7 +8,10 @@ public:
 	virtual ~CHSObj();
 
 public:
-	void Draw_Triangle(HDC hDC);
+	int Get_Damage() { return m_iDamage; }
 	D3DXVECTOR3 Find_Target(float _fX, float _fY);
+
+protected:
+	int m_iDamage;
 };
 

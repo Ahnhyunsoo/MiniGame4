@@ -15,14 +15,16 @@ CHSBullet::~CHSBullet()
 void CHSBullet::Initialize(void)
 {
 	m_bDead = false;
+	m_fSpeed = 8.f;
+	m_iDamage = 1;
 }
 
 int CHSBullet::Update(void)
 {
 	if (m_bDead)
 		return OBJ_DEAD;
-	m_tInfo.vPos.x += m_tInfo.vDir.x * 2;
-	m_tInfo.vPos.y += m_tInfo.vDir.y * 2;
+	m_tInfo.vPos.x += m_tInfo.vDir.x * m_fSpeed;
+	m_tInfo.vPos.y += m_tInfo.vDir.y * m_fSpeed;
 	return OBJ_NOEVENT;
 }
 
@@ -32,7 +34,7 @@ void CHSBullet::Late_Update(void)
 
 void CHSBullet::Render(HDC hDC)
 {
-	Ellipse(hDC, m_tInfo.vPos.x - 5, m_tInfo.vPos.y - 5, m_tInfo.vPos.x + 5, m_tInfo.vPos.y + 5);
+	Ellipse(hDC, (int)m_tInfo.vPos.x - 5, (int)m_tInfo.vPos.y - 5, (int)m_tInfo.vPos.x + 5, (int)m_tInfo.vPos.y + 5);
 }
 
 void CHSBullet::Release(void)
@@ -41,4 +43,5 @@ void CHSBullet::Release(void)
 
 void CHSBullet::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	Set_Dead();
 }
