@@ -154,6 +154,9 @@
     <Filter Include="04.StageHS\LineMgr">
       <UniqueIdentifier>{e6f105ee-d70e-4cd4-8d33-3f798be0a32b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04.StageHS\HSObj\HSUI">
+      <UniqueIdentifier>{8723ae00-89ef-4624-be2c-8c6357d28008}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -315,6 +318,9 @@
     <ClInclude Include="GHFloar.h">
       <Filter>02.StageGH\GHObj\GHFloar</Filter>
     </ClInclude>
+    <ClInclude Include="TowerUI.h">
+      <Filter>04.StageHS\HSObj\HSUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Default.cpp">
@@ -451,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="GHFloar.cpp">
       <Filter>02.StageGH\GHObj\GHFloar</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerUI.cpp">
+      <Filter>04.StageHS\HSObj\HSUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

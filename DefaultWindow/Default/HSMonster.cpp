@@ -19,7 +19,7 @@ void CHSMonster::Initialize(void)
 	m_tInfo.fCX = 30.f;
 	m_tInfo.fCY = 30.f;
 	m_fAngle = 0.f;
-	m_fSpeed = 2.5f;
+	m_fSpeed = 5.f;
 	m_fScale = 1.f;
 	m_tInfo.vDir = { -1.f,0.f,0.f };
 	m_bDead = false;
@@ -173,6 +173,7 @@ void CHSMonster::OnCollision(DIRECTION _DIR, CObj * _Other)
 		Set_Dead();
 		CStageHS::g_iGold += 100;
 		CStageHS::g_iKill += 1;
+		CStageHS::g_iExp += 20;
 	}
 }
 

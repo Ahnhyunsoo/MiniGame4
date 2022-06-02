@@ -23,11 +23,15 @@ public:
 	static int g_iHP;
 	static int g_iGold;
 	static int g_iKill;
+	static int g_iExp;
 private:
 	DWORD m_LSponMonster;
 	int m_iMaxMonster;
 	int m_iNowMonster;
 	int m_iSponSpeed;
+	int m_iMaxExp;
+	int m_iLevel;
+	int m_iRound;
 
 };
 
