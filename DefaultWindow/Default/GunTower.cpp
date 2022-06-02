@@ -83,7 +83,7 @@ void CGunTower::Render(HDC hDC)
 
 	Render_Vertex(hDC);
 	MoveToEx(hDC, (int)m_tInfo.vPos.x, (int)m_tInfo.vPos.y, nullptr);
-	LineTo(hDC, int(m_tInfo.vPos.x + m_tInfo.vDir.x * 30.f), int(m_tInfo.vPos.y + m_tInfo.vDir.y * 30.f));
+	LineTo(hDC, int(m_tInfo.vPos.x + m_tInfo.vDir.x * m_fScale * 30.f), int(m_tInfo.vPos.y + m_tInfo.vDir.y * m_fScale * 30.f));
 	//LineTo(hDC, int(m_tInfo.vPos.x + m_fAngle * 1.f), int(m_tInfo.vPos.y + m_fAngle * 1.f));
 }
 
@@ -99,7 +99,7 @@ void CGunTower::Create_Bullet(void)
 {
 	if (m_LBullet + 300 < GetTickCount())
 	{
-		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CHSBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x, m_tInfo.vPos.y));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CHSBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + m_tInfo.vDir.x * m_fScale * 30.f, m_tInfo.vPos.y + m_tInfo.vDir.y * m_fScale * 30.f));
 		m_LBullet = GetTickCount();
 	}
 }

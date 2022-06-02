@@ -131,6 +131,7 @@ void CObjMgr::Late_UpdateYM()
 }
 void CObjMgr::Late_UpdateHS()
 {
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET], false);
 }
 void CObjMgr::Late_UpdateHR()
 {

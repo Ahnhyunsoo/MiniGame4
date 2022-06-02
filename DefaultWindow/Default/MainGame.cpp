@@ -8,6 +8,7 @@
 #include "ObjMgr.h"
 #include "BmpMgr.h"
 #include "KeyMgr.h"
+#include "LineMgr.h"
 
 
 
@@ -74,6 +75,7 @@ void CMainGame::Release(void)
 	CScrollMgr::Get_Instance()->Destroy_Instance();
 	CKeyMgr::Get_Instance()->Destroy_Instance();
 	CObjMgr::Get_Instance()->Destroy_Instance();
+	CLineMgr::Get_Instance()->Destroy_Instance();
 	ReleaseDC(g_hWnd, m_hDC);
 }
 

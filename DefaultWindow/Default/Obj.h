@@ -21,7 +21,10 @@ public:
 	void Set_vPosX(float fX) { m_tInfo.vPos.x += fX; }
 	void Set_vPosY(float fY) { m_tInfo.vPos.y += fY; }
 	void Set_Dead(void) { m_bDead = true; }
-
+	int Get_Hp() { return m_iHp; }
+	void Set_Hp(int _Damage) { m_iHp -= _Damage; }
+	int Get_Damage() { return m_iDamage; }
+	void Set_Damage(int _Damage) { m_iDamage = _Damage; }
 public:
 	virtual		void	Initialize(void)	PURE;
 	virtual		int		Update(void)		PURE;
@@ -40,7 +43,8 @@ protected:
 	float		m_fAngle;
 	float		m_fSpeed;
 	float		m_fScale;
-
+	int			m_iHp;
+	int			m_iDamage;
 	bool		m_bDead;
 
 protected:

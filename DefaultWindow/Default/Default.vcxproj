@@ -167,6 +167,8 @@
     <ClInclude Include="HSUI.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="LineMgr.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MyBmp.h" />
@@ -180,6 +182,7 @@
     <ClInclude Include="SelectMonster.h" />
     <ClInclude Include="SelectPlayer.h" />
     <ClInclude Include="SoundMgr.h" />
+    <ClInclude Include="StageEdit.h" />
     <ClInclude Include="StageGH.h" />
     <ClInclude Include="StageHR.h" />
     <ClInclude Include="StageHS.h" />
@@ -201,6 +204,8 @@
     <ClCompile Include="HSObj.cpp" />
     <ClCompile Include="HSUI.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="LineMgr.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyBmp.cpp" />
@@ -213,6 +218,7 @@
     <ClCompile Include="SelectMonster.cpp" />
     <ClCompile Include="SelectPlayer.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
+    <ClCompile Include="StageEdit.cpp" />
     <ClCompile Include="StageGH.cpp" />
     <ClCompile Include="StageHR.cpp" />
     <ClCompile Include="StageHS.cpp" />

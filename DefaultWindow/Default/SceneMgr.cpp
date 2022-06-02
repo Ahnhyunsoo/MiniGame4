@@ -3,6 +3,9 @@
 #include "StageST.h"
 #include "StageHS.h"
 #include "StageSelect.h"
+#include "StageGH.h"
+#include "StageYM.h"
+#include "StageEdit.h"
 
 
 CSceneMgr*	CSceneMgr::m_pInstance = nullptr;
@@ -45,6 +48,9 @@ void CSceneMgr::Scene_Change(SCENE eID)
 			m_pScene = new CStageHS;
 			break;
 		case STAGE_HR:
+			break;
+		case STAGE_EDIT:
+			m_pScene = new CStageEdit;
 			break;
 		case STAGE_END:
 			break;

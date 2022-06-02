@@ -10,7 +10,6 @@ public:
 public:
 	void Update_Dir();
 	void Move_Monster();
-
 public:
 	// CHSObj을(를) 통해 상속됨
 	virtual void Initialize(void) override;

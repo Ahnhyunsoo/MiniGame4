@@ -61,7 +61,6 @@ void CHSMonster::Initialize(void)
 	m_vPt[12] = { 125.f,25.f,0.f };
 	m_vPt[13] = { 125.f,425.f,0.f };
 	m_vPt[14] = { 0.f,425.f,0.f };
-
 }
 
 int CHSMonster::Update(void)
@@ -116,7 +115,6 @@ void CHSMonster::Late_Update(void)
 			break;
 		}
 	}
-
 }
 
 void CHSMonster::Render(HDC hDC)
