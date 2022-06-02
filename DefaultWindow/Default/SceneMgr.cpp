@@ -41,8 +41,10 @@ void CSceneMgr::Scene_Change(SCENE eID)
 			m_pScene = new CStageST;
 			break;
 		case STAGE_GH:
+			m_pScene = new CStageGH;
 			break;
 		case STAGE_YM:
+			m_pScene = new CStageYM;
 			break;
 		case STAGE_HS:
 			m_pScene = new CStageHS;

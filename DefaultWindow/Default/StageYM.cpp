@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include "StageYM.h"
+#include "ObjMgr.h"
+#include "CAbstractFactory.h"
+#include "YMPlayer.h"
+#include "YMMonster.h"
 
 
 CStageYM::CStageYM()
@@ -9,6 +13,7 @@ CStageYM::CStageYM()
 
 CStageYM::~CStageYM()
 {
+	Release();
 }
 
 void CStageYM::Initialize(void)
@@ -24,14 +29,17 @@ void CStageYM::Initialize(void)
 
 void CStageYM::Update(void)
 {
+	CObjMgr::Get_Instance()->Update();
 }
 
 void CStageYM::Late_Update(void)
 {
+	CObjMgr::Get_Instance()->Late_Update();
 }
 
 void CStageYM::Render(HDC hDC)
 {
+	CObjMgr::Get_Instance()->Render(hDC);
 }
 
 void CStageYM::Release(void)

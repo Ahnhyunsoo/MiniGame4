@@ -1,23 +1,18 @@
 #pragma once
-#include "Scene.h"
-class CStageGH : public CScene
+#include "ObjYM.h"
+class CYMMonster :
+	public CObjYM
 {
 public:
-	CStageGH();
-	virtual ~CStageGH();
+	CYMMonster();
+	virtual ~CYMMonster();
 
 public:
 	virtual void Initialize(void) override;
-	virtual void Update(void) override;
+	virtual int Update(void) override;
 	virtual void Late_Update(void) override;
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
-	
-private:
-	void	Key_Input();
-private:
-	bool	m_bStart;
-	int		m_iScrollZ;
-
+	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 };
 
