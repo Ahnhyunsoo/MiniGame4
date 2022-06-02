@@ -13,3 +13,13 @@ typedef	struct tagInfo
 
 }INFO;
 
+
+typedef	struct	tagLineInfo
+{
+	D3DXVECTOR3		tLPoint;
+	D3DXVECTOR3		tRPoint;
+
+	tagLineInfo() { ZeroMemory(this, sizeof(tagLineInfo)); }
+	tagLineInfo(D3DXVECTOR3& tLeft, D3DXVECTOR3& tRight) : tLPoint(tLeft), tRPoint(tRight) {	}
+
+}GYULINE;

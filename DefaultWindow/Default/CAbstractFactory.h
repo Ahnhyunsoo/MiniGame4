@@ -37,10 +37,9 @@ public:
 		return _Temp;
 	}
 
-	static CObj* CreateGHFloar(float _fX, float _fY, int _iFloarType)
+	static CObj* CreateGHFloar(int _iFloarType)
 	{
 		CObj* _Temp = new T;
-		_Temp->Set_vPos(_fX, _fY);
 		dynamic_cast<CGHFloar*> (_Temp)->Set_Floar(_iFloarType);
 		_Temp->Initialize();		
 		return _Temp;
