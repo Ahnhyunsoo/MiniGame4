@@ -135,6 +135,9 @@
     </Filter>
     <Filter Include="04.StageHS\HSObj\HSBullet">
       <UniqueIdentifier>{acfc9c6e-6574-4492-bfb6-76d810a0be7e}</UniqueIdentifier>
+      </Filter>
+    <Filter Include="02.StageGH\GHObj\GHFloar">
+      <UniqueIdentifier>{86a25738-5694-4c22-b948-3c3b30074cbf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -251,12 +254,18 @@
     </ClInclude>
     <ClInclude Include="HSBullet.h">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
+       </ClInclude>
+    <ClInclude Include="GHPlayer.h">
+      <Filter>02.StageGH\GHObj\GHPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="GHObj.h">
+      <Filter>02.StageGH\GHObj</Filter>
+    </ClInclude>
+    <ClInclude Include="GHFloar.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Default.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -340,6 +349,19 @@
     </ClCompile>
     <ClCompile Include="HSBullet.cpp">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
+          </ClCompile>
+
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GHPlayer.cpp">
+      <Filter>02.StageGH\GHObj\GHPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="GHObj.cpp">
+      <Filter>02.StageGH\GHObj</Filter>
+    </ClCompile>
+    <ClCompile Include="GHFloar.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

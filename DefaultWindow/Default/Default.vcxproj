@@ -165,6 +165,9 @@
     <ClInclude Include="HSMonster.h" />
     <ClInclude Include="HSObj.h" />
     <ClInclude Include="HSUI.h" />
+    <ClInclude Include="GHFloar.h" />
+    <ClInclude Include="GHObj.h" />
+    <ClInclude Include="GHPlayer.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="MainGame.h" />
@@ -200,6 +203,9 @@
     <ClCompile Include="HSMonster.cpp" />
     <ClCompile Include="HSObj.cpp" />
     <ClCompile Include="HSUI.cpp" />
+    <ClCompile Include="GHFloar.cpp" />
+    <ClCompile Include="GHObj.cpp" />
+    <ClCompile Include="GHPlayer.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Monster.cpp" />
