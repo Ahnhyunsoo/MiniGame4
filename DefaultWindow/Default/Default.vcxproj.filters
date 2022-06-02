@@ -138,6 +138,9 @@
       </Filter>
     <Filter Include="02.StageGH\GHObj\GHFloar">
       <UniqueIdentifier>{86a25738-5694-4c22-b948-3c3b30074cbf}</UniqueIdentifier>
+       </Filter>
+    <Filter Include="03.StageYM\ObjYM">
+      <UniqueIdentifier>{e701ab0a-7d13-403a-a6cc-dc625e607a24}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +266,15 @@
     </ClInclude>
     <ClInclude Include="GHFloar.h">
       <Filter>헤더 파일</Filter>
+      </ClInclude>
+    <ClInclude Include="ObjYM.h">
+      <Filter>03.StageYM\ObjYM</Filter>
+    </ClInclude>
+    <ClInclude Include="YMPlayer.h">
+      <Filter>03.StageYM\YMObj\YMPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="YMMonster.h">
+      <Filter>03.StageYM\YMObj\YMMonster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +374,15 @@
     </ClCompile>
     <ClCompile Include="GHFloar.cpp">
       <Filter>소스 파일</Filter>
+      </ClCompile>
+    <ClCompile Include="ObjYM.cpp">
+      <Filter>03.StageYM\ObjYM</Filter>
+    </ClCompile>
+    <ClCompile Include="YMPlayer.cpp">
+      <Filter>03.StageYM\YMObj\YMPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="YMMonster.cpp">
+      <Filter>03.StageYM\YMObj\YMMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
