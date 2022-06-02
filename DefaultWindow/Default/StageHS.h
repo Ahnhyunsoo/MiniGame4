@@ -19,6 +19,10 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 
+public:
+	static int g_iHP;
+	static int g_iGold;
+	static int g_iKill;
 private:
 	DWORD m_LSponMonster;
 	int m_iMaxMonster;

@@ -7,9 +7,12 @@
 #include "BmpMgr.h"
 #include "LineMgr.h"
 
+int CStageHS::g_iHP = 30;
+int CStageHS::g_iGold = 1000;
+int CStageHS::g_iKill = 0;
 
 CStageHS::CStageHS()
-	:m_iSponSpeed(1000),m_iNowMonster(0),m_iMaxMonster(10),m_LSponMonster(GetTickCount())
+	:m_iSponSpeed(1000),m_iNowMonster(0),m_iMaxMonster(15),m_LSponMonster(GetTickCount())
 {
 }
 
@@ -24,8 +27,6 @@ void CStageHS::Initialize(void)
 	CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CGunTower>::CreateObj(400.f,255.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CGunTower>::CreateObj(400.f,295.f));
 
-	/*CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHSMonster>::CreateObj(510.f, 60.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHSMonster>::CreateObj(600.f, 60.f));*/
 }
 
 void CStageHS::Update(void)
@@ -59,10 +60,33 @@ void CStageHS::Render(HDC hDC)
 	CLineMgr::Get_Instance()->Render(hMemDC);
 	CObjMgr::Get_Instance()->Render(hMemDC);
 
+	LOGFONT m_labelFontInfo{};
+	m_labelFontInfo.lfCharSet = 129;
+	m_labelFontInfo.lfHeight = 12;
+	m_labelFontInfo.lfWidth = 6;
+	m_labelFontInfo.lfWeight = FW_BOLD;
+	HFONT textFont, oldFont;
+	textFont = CreateFontIndirect(&m_labelFontInfo);
+	oldFont = (HFONT)SelectObject(hMemDC, textFont);
+	SetBkMode(hMemDC, TRANSPARENT);
+	SetBkColor(hMemDC, RGB(0, 0, 0));
+	SetTextColor(hMemDC, RGB(0, 0, 0));
 
+	TCHAR mHP[30];
+	wsprintf(mHP, TEXT("Life : %d"), g_iHP);
+	TextOut(hMemDC, 10, 30, mHP, lstrlen(mHP));
 
-	
-	
+	TCHAR mGold[30];
+	wsprintf(mGold, TEXT("Gold : %d"), g_iGold);
+	TextOut(hMemDC, 10, 100, mGold, lstrlen(mGold));
+
+	TCHAR mMonster[30];
+	wsprintf(mMonster, TEXT("%d / %d"), g_iKill,m_iMaxMonster);
+	TextOut(hMemDC, 10, 300, mMonster, lstrlen(mMonster));
+
+	SelectObject(hMemDC, oldFont);
+	DeleteObject(textFont);
+
 }
 
 void CStageHS::Release(void)

@@ -14,9 +14,11 @@ CHSBullet::~CHSBullet()
 
 void CHSBullet::Initialize(void)
 {
+	m_iHp = 1;
+	m_iDamage = 1;
 	m_bDead = false;
 	m_fSpeed = 8.f;
-	m_iDamage = 1;
+	
 }
 
 int CHSBullet::Update(void)

@@ -23,7 +23,7 @@ public:
 	void Set_Dead(void) { m_bDead = true; }
 	int Get_Hp() { return m_iHp; }
 	void Set_Hp(int _Damage) { m_iHp -= _Damage; }
-	int Get_Damage() { return m_iDamage; }
+	const int& Get_Damage() { return m_iDamage; }
 	void Set_Damage(int _Damage) { m_iDamage = _Damage; }
 public:
 	virtual		void	Initialize(void)	PURE;

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "HSMonster.h"
+#include "StageHS.h"
 
 
 CHSMonster::CHSMonster()
@@ -67,7 +68,6 @@ int CHSMonster::Update(void)
 {
 	if (m_bDead)
 		return OBJ_DEAD;
-
 	Update_MatWorld();
 	Move_Monster();
 	return OBJ_NOEVENT;
@@ -90,31 +90,51 @@ void CHSMonster::Late_Update(void)
 			m_fAngle += 90.f;
 			break;
 		case 4:
-			m_fAngle -= 90.f;
+			m_fAngle += 90.f;
 			break;
 		case 5:
+			m_fAngle += 90.f;
 			break;
 		case 6:
+			m_fAngle += 90.f;
 			break;
 		case 7:
+			m_fAngle += 90.f;
 			break;
 		case 8:
+			m_fAngle -= 90.f;
 			break;
 		case 9:
+			m_fAngle -= 90.f;
 			break;
 		case 10:
+			m_fAngle -= 90.f;
 			break;
 		case 11:
+			m_fAngle -= 90.f;
 			break;
 		case 12:
+			m_fAngle -= 90.f;
 			break;
 		case 13:
+			m_fAngle -= 90.f;
+			break;
+		case 14:
+			m_fAngle += 90.f;
 			break;
 
 		default:
 			break;
 		}
 	}
+	else if (m_tInfo.vPos.x <= 5)
+	{
+		Set_Dead();
+		CStageHS::g_iHP -= 1;
+		CStageHS::g_iKill += 1;
+	}
+		
+	
 }
 
 void CHSMonster::Render(HDC hDC)
@@ -124,10 +144,15 @@ void CHSMonster::Render(HDC hDC)
 	GetCursorPos(&pt);
 	ScreenToClient(g_hWnd, &pt);
 
-	TCHAR mName2[30];
 
+
+	TCHAR mName2[30];
 	wsprintf(mName2, TEXT("xÃà : %d, yÃà : %d"), pt.x, pt.y);
 	TextOut(hDC, 500, 30, mName2, lstrlen(mName2));
+
+	TCHAR mName[30];
+	wsprintf(mName, TEXT("Hp : %d"), m_iHp);
+	TextOut(hDC, (int)m_tInfo.vPos.x-20, (int)m_tInfo.vPos.y - 35, mName, lstrlen(mName));
 }
 
 void CHSMonster::Release(void)
@@ -144,7 +169,11 @@ void CHSMonster::OnCollision(DIRECTION _DIR, CObj * _Other)
 	}
 
 	if (m_iHp <= 0)
+	{
 		Set_Dead();
+		CStageHS::g_iGold += 100;
+		CStageHS::g_iKill += 1;
+	}
 }
 
 void CHSMonster::Update_Dir()
