@@ -160,6 +160,9 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Functor.h" />
+    <ClInclude Include="GHFloar.h" />
+    <ClInclude Include="GHObj.h" />
+    <ClInclude Include="GHPlayer.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="MainGame.h" />
@@ -189,6 +192,9 @@
     <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Default.cpp" />
+    <ClCompile Include="GHFloar.cpp" />
+    <ClCompile Include="GHObj.cpp" />
+    <ClCompile Include="GHPlayer.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Monster.cpp" />
