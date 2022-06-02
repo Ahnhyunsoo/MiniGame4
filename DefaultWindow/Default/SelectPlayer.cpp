@@ -52,7 +52,7 @@ void CSelectPlayer::Late_Update(void)
 	if (m_tInfo.vPos.y <= 10 - m_tInfo.vPos.y - 20.f)
 		m_tInfo.vPos.y += m_fSpeed;
 
-	if (m_tInfo.vPos.y >= 590 + m_tInfo.vPos.y + 20.f)
+	if (m_tInfo.vPos.y >= WINCY - m_fScale + m_fScale * 0.5f)
 		m_tInfo.vPos.y -= m_fSpeed;
 }
 

@@ -15,6 +15,8 @@ CGunTower::~CGunTower()
 }
 
 
+
+
 void CGunTower::Initialize(void)
 {
 	m_tInfo.fCX = 20.f;
@@ -64,11 +66,7 @@ int CGunTower::Update(void)
 
 	if (m_bBattle)
 	{
-		if (m_LBullet + 300 < GetTickCount())
-		{
-			CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CHSBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x, m_tInfo.vPos.y));
-			m_LBullet = GetTickCount();
-		}
+		Create_Bullet();
 	}
 
 	return OBJ_NOEVENT;
@@ -95,4 +93,13 @@ void CGunTower::Release(void)
 
 void CGunTower::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+}
+
+void CGunTower::Create_Bullet(void)
+{
+	if (m_LBullet + 300 < GetTickCount())
+	{
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CHSBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x, m_tInfo.vPos.y));
+		m_LBullet = GetTickCount();
+	}
 }

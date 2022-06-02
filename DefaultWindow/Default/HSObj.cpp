@@ -26,7 +26,6 @@ D3DXVECTOR3 CHSObj::Find_Target(float _fX, float _fY)
 	{
 		if (_Target.x == 0 && _Target.y == 0)
 			_Target = iter->Get_Info().vPos;
-		//abs(((_fX - _Target.x) + (_fY - _Target.y))) > abs(((_fX - iter->Get_Info().vPos.x) + (_fY - iter->Get_Info().vPos.y)))
 		else if(abs(_fX - iter->Get_Info().vPos.x + _fY - iter->Get_Info().vPos.y)  < abs(_fX - _Target.x + _fY - _Target.y))
 		{
 			_Target = iter->Get_Info().vPos;
@@ -34,6 +33,3 @@ D3DXVECTOR3 CHSObj::Find_Target(float _fX, float _fY)
 	}
 	return _Target;
 }
-
-
-	//iter->Get_Info().vPos.x <  _Target.x

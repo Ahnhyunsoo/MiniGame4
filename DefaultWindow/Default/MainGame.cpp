@@ -29,7 +29,7 @@ void CMainGame::Initialize(void)
 	m_hDC = GetDC(g_hWnd);
 
 	CSoundMgr::Get_Instance()->Initialize();
-	CSceneMgr::Get_Instance()->Scene_Change(STAGE_HS);
+	CSceneMgr::Get_Instance()->Scene_Change(STAGE_SELECT);
 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back");
 
@@ -51,7 +51,7 @@ void CMainGame::Render(void)
 	//Rectangle(m_hDC, 0, 0, WINCX, WINCY);
 	HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Back");
 	BitBlt(m_hDC, 0, 0, 800, 600, hMemDC, 0, 0, SRCCOPY);
-
+	
 	
 
 	CSceneMgr::Get_Instance()->Render(m_hDC);
