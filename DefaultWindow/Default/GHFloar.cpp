@@ -53,7 +53,7 @@ void CGHFloar::Initialize_Floar()
 void CGHFloar::Initialize(void)
 {
 	Initialize_Floar();
-	m_fSpeed = 3.f;
+	m_fSpeed = 2.f;
 	m_fScale = 25.f;
 	m_fAngle = 0.f;
 	m_ScaleDelayTime = GetTickCount();
@@ -92,20 +92,20 @@ int CGHFloar::Update(void)
 	if (m_iFloarIndex == 0) 
 		m_tInfo.vDir = { -1.f, 0.f, 0.f };
 	else if (m_iFloarIndex == 1) 
-		m_tInfo.vDir = { -0.5f, 0.f, 0.f };
+		m_tInfo.vDir = { -0.6f, 0.f, 0.f };
 	else if (m_iFloarIndex == 2)
-		m_tInfo.vDir = { -0.3f, 0.f, 0.f };
+		m_tInfo.vDir = { -0.2f, 0.f, 0.f };
 	else if (m_iFloarIndex == 3)
-		m_tInfo.vDir = { 0.3f, 0.f, 0.f };
+		m_tInfo.vDir = { 0.2f, 0.f, 0.f };
 	else if (m_iFloarIndex == 4)
-		m_tInfo.vDir = { 0.5f, 0.f, 0.f };
+		m_tInfo.vDir = { 0.6f, 0.f, 0.f };
 	else if (m_iFloarIndex == 5)
 		m_tInfo.vDir = { 1.f, 0.f, 0.f };
 
 	Line_Nail_Down();
 	if (m_bDead)
 		return OBJ_DEAD;
-	m_tInfo.vPos += m_tInfo.vDir ;
+	m_tInfo.vPos += m_tInfo.vDir *m_fSpeed;
 
 
 	Update_MatWorld();

@@ -10,4 +10,9 @@
 #define		OBJ_DEAD 1
 #define		OBJ_NOEVENT 0
 
+#ifdef UNICODE
+#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
+#else
+#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
+#endif
 extern HWND			g_hWnd;

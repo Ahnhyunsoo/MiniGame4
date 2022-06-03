@@ -13,6 +13,8 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 public:
-
+	void	Set_bPress() { m_bPress = true; }
+private:
+	bool	m_bPress;
 };
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GHPlayer.h"
-
+#include "GHButton.h"
 
 CGHPlayer::CGHPlayer()
 {
@@ -21,7 +21,7 @@ void CGHPlayer::Initialize(void)
 	m_fScale = 1.f;
 	m_tInfo.vDir = { 1.f,0.f,0.f };
 	m_bDead = false;
-
+	
 	m_BodyDistanceX = 0;
 	m_BodyDistanceY = 0;
 
@@ -131,6 +131,7 @@ void CGHPlayer::Release(void)
 
 void CGHPlayer::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	dynamic_cast<CGHButton*>(_Other)->Set_bPress();
 }
 void CGHPlayer::Key_Input()
 {

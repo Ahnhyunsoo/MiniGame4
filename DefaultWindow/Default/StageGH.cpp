@@ -5,6 +5,8 @@
 #include "GHFloar.h"
 #include "GHLineMgr.h"
 #include "GHButton.h"
+#include "BmpMgr.h"
+
 CStageGH::CStageGH()
 {
 }
@@ -17,19 +19,21 @@ CStageGH::~CStageGH()
 
 void CStageGH::Initialize(void)
 {
-	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHPlayer>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CGHPlayer>::Create());
+	// 66.5, 199.8, 333.1, 466.4, 599.7, 733.3
 
-	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::CreateObj(66.5, WINCY-100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::CreateObj(199.8f, WINCY - 100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::CreateObj(333.1f, WINCY - 100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::CreateObj(466.4f, WINCY - 100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::CreateObj(599.7f, WINCY - 100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::CreateObj(733.3f, WINCY - 100.f));
 	m_ScrollZ = 0;
 	m_ScrollTime = 0;
 	m_bStart = false;
 	m_bFloarCreate = false;
 	CGHLineMgr::Get_Instance()->Initialize();
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/aa.bmp", L"aa");
 
 	
 }
@@ -103,6 +107,8 @@ void CStageGH::Render(HDC hDC)
 	// 0 ~ 800 6개라인 한개 133.3
 	// 0 - 133 
 	// 
+	HDC		hDC2 = CBmpMgr::Get_Instance()->Find_Image(L"aa");
+	BitBlt(hDC, 0, 0, 800, 600, hDC2, 0, 0, SRCCOPY);
 	MoveToEx(hDC, 250, 0, nullptr);
 	LineTo(hDC, 0, WINCY);
 	MoveToEx(hDC, WINCX - 250, 0, nullptr);
