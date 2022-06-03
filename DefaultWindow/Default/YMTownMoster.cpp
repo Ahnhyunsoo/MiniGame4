@@ -16,6 +16,8 @@ void CYMTownMoster::Initialize(void)
 	m_fAngle = 1.f;
 	m_fSpeed = 2.f;
 	m_fScale = 1.f;
+	m_iHp = 3;
+	m_bDead = false;
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ -20.f, 20.f, 0.f });
@@ -35,7 +37,11 @@ int CYMTownMoster::Update(void)
 	m_tInfo.vPos.y += m_fSpeed;
 	Update_MatWorld();
 
-	return OBJ_NOEVENT;
+
+	if (m_bDead)
+		return OBJ_DEAD;
+	else
+		return OBJ_NOEVENT;
 }
 
 void CYMTownMoster::Late_Update(void)
@@ -53,4 +59,8 @@ void CYMTownMoster::Release(void)
 
 void CYMTownMoster::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	
+	Set_Hp(1);
+	if (m_iHp)
+		m_bDead = true;
 }

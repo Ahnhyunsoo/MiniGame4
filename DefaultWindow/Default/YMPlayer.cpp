@@ -27,6 +27,8 @@ void CYMPlayer::Initialize(void)
 
 	m_LazerGauge = 100;
 
+	m_sTag = "player";
+
 	m_iCountLazer = 0;
 	m_bLazer = false;
 
@@ -78,7 +80,7 @@ int CYMPlayer::Update(void)
 		m_iCountLazer = GetTickCount();
 		m_bLazer = true;
 	}
-	else if (m_iCountLazer + 500 < GetTickCount() && m_bLazer && m_LazerGauge <= 100)
+	else if ((m_iCountLazer + 500 < GetTickCount()) && m_bLazer && m_LazerGauge <= 100)
 	{
 		m_LazerGauge++;
 		m_iCountLazer = 0;

@@ -6,6 +6,7 @@
 #include "YMMonster.h"
 #include "YMTownMoster.h"
 #include "YMShipMonster.h"
+#include "YMMiddleBoss.h"
 
 
 CStageYM::CStageYM()
@@ -21,14 +22,14 @@ CStageYM::~CStageYM()
 void CStageYM::Initialize(void)
 {
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CYMPlayer>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMMonster>::CreateObj(600.f, 200.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMMonster>::CreateObj(200.f, 200.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMMonster>::CreateObj(600.f, -1200.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMMonster>::CreateObj(200.f, -1200.f));
 
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(100.f, 200.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(500.f, 200.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(100.f, -2200.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(500.f, -2200.f));
 
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<YMShipMonster>::CreateObj(300.f, 0.f));
-
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<YMShipMonster>::CreateObj(100.f, -500.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMMiddleBoss>::CreateObj(200.f, 0.f));
 }
 
 void CStageYM::Update(void)
@@ -43,6 +44,7 @@ void CStageYM::Late_Update(void)
 
 void CStageYM::Render(HDC hDC)
 {
+	Rectangle(hDC, 0, 0, WINCX, WINCY);
 	CObjMgr::Get_Instance()->Render(hDC);
 }
 

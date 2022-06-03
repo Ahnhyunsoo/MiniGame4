@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "YMMonster.h"
 #include "ObjMgr.h"
+#include "ObjYM.h"
 
 
 CYMMonster::CYMMonster()
@@ -17,7 +18,12 @@ void CYMMonster::Initialize(void)
 	m_fAngle = 1.f;
 	m_fSpeed = 2.f;
 	m_fScale = 0.5f;
+	m_tInfo.fCX = 100;
+	m_tInfo.fCY = 100;
+	m_iHp = 20;
+
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
+	m_bDead = false;
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ 64.f, 0.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 60.f, -10.f, 0.f });
@@ -113,9 +119,10 @@ int CYMMonster::Update(void)
 	m_tInfo.vPos.y -= m_fSpeed * sinf(fAngle);
 
 
-
-
-	return OBJ_NOEVENT;
+	if (m_bDead)
+		return OBJ_DEAD;
+	else
+		return OBJ_NOEVENT;
 }
 
 void CYMMonster::Late_Update(void)
@@ -133,4 +140,12 @@ void CYMMonster::Release(void)
 
 void CYMMonster::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	CObjYM* temp = (CObjYM*)_Other;
+
+	if(temp->Get_Tag() == "bullet")
+		Set_Hp(1);
+
+	if (m_iHp == 0)
+		m_bDead = true;
+
 }
