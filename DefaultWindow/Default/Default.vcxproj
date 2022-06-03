@@ -201,8 +201,12 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TowerUI.h" />
     <ClInclude Include="UIMgr.h" />
+    <ClInclude Include="YMBullet.h" />
+    <ClInclude Include="YMLazer.h" />
     <ClInclude Include="YMMonster.h" />
     <ClInclude Include="YMPlayer.h" />
+    <ClInclude Include="YMShipMonster.h" />
+    <ClInclude Include="YMTownMoster.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpMgr.cpp" />
@@ -250,8 +254,12 @@
     </ClCompile>
     <ClCompile Include="TowerUI.cpp" />
     <ClCompile Include="UIMgr.cpp" />
+    <ClCompile Include="YMBullet.cpp" />
+    <ClCompile Include="YMLazer.cpp" />
     <ClCompile Include="YMMonster.cpp" />
     <ClCompile Include="YMPlayer.cpp" />
+    <ClCompile Include="YMShipMonster.cpp" />
+    <ClCompile Include="YMTownMoster.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Default.rc" />

@@ -165,6 +165,24 @@
     </Filter>
     <Filter Include="02.StageGH\GHObj\GHButton">
       <UniqueIdentifier>{96b1dcd9-f0a2-4538-8f21-ece81b0ccdb0}</UniqueIdentifier>
+      </Filter>
+    <Filter Include="03.StageYM\YMObj\YMBullet">
+      <UniqueIdentifier>{4142c7f7-5ab9-484a-af5a-60efabbc69d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMMonster\ChasingMonster">
+      <UniqueIdentifier>{09a764f0-8213-4914-a30a-bc5723d558cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMMonster\TownMonster">
+      <UniqueIdentifier>{3b5f5691-53f5-43f1-bdde-5dcfe78452b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMMonster\ShipMonster">
+      <UniqueIdentifier>{afe1f93f-9340-43bd-9864-7e17c02cc0cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMBullet\Bullet">
+      <UniqueIdentifier>{ebef6966-ddcd-4384-b93a-03048c77bfd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMBullet\Lazer">
+      <UniqueIdentifier>{21f311f4-a901-44d3-b4d3-809f62ff711c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -295,7 +313,19 @@
       <Filter>03.StageYM\YMObj\YMPlayer</Filter>
     </ClInclude>
     <ClInclude Include="YMMonster.h">
-      <Filter>03.StageYM\YMObj\YMMonster</Filter>
+      <Filter>03.StageYM\YMObj\YMMonster\ChasingMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="YMTownMoster.h">
+      <Filter>03.StageYM\YMObj\YMMonster\TownMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="YMShipMonster.h">
+      <Filter>03.StageYM\YMObj\YMMonster\ShipMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="YMBullet.h">
+      <Filter>03.StageYM\YMObj\YMBullet\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="YMLazer.h">
+      <Filter>03.StageYM\YMObj\YMBullet\Lazer</Filter>
     </ClInclude>
     <ClInclude Include="GHPlayer.h">
       <Filter>02.StageGH\GHObj\GHPlayer</Filter>
@@ -442,7 +472,19 @@
       <Filter>03.StageYM\YMObj\YMPlayer</Filter>
     </ClCompile>
     <ClCompile Include="YMMonster.cpp">
-      <Filter>03.StageYM\YMObj\YMMonster</Filter>
+      <Filter>03.StageYM\YMObj\YMMonster\ChasingMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="YMTownMoster.cpp">
+      <Filter>03.StageYM\YMObj\YMMonster\TownMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="YMShipMonster.cpp">
+      <Filter>03.StageYM\YMObj\YMMonster\ShipMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="YMBullet.cpp">
+      <Filter>03.StageYM\YMObj\YMBullet\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="YMLazer.cpp">
+      <Filter>03.StageYM\YMObj\YMBullet\Lazer</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
