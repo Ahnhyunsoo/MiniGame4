@@ -66,7 +66,7 @@ void CGHPlayer::Jumping()
 		if (m_iFloarY <m_tInfo.vPos.y)
 		{
 			m_iFootChangeTime = 100;
-			m_bJump = false;
+ 			m_bJump = false;
 			m_fJumpTime = 0.f;
 			m_tInfo.vPos.y = m_iFloarY;
 		}
@@ -158,10 +158,12 @@ void CGHPlayer::Key_Input()
 	{
 		if (CKeyMgr::Get_Instance()->Key_Pressing(VK_UP)) {
 			m_fScale *= 1.5f;
+			m_fSpeed -= 0.5f;
 			m_ScaleTime = GetTickCount();
 		}
 		if (CKeyMgr::Get_Instance()->Key_Pressing(VK_DOWN)) {
 			m_fScale *= 0.5f;
+			m_fSpeed += 0.5f;
 			m_ScaleTime = GetTickCount();
 		}
 	}
