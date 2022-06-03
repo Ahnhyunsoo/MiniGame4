@@ -148,6 +148,9 @@
     <Filter Include="02.StageGH\GHObj\GHLineMgr\GHLine">
       <UniqueIdentifier>{a21c9556-7b0d-4b64-8670-9457366a393d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.StageGH\GHObj\GHButton">
+      <UniqueIdentifier>{96b1dcd9-f0a2-4538-8f21-ece81b0ccdb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -288,6 +291,9 @@
     <ClInclude Include="GHLineMgr.h">
       <Filter>02.StageGH\GHObj\GHLineMgr</Filter>
     </ClInclude>
+    <ClInclude Include="GHButton.h">
+      <Filter>02.StageGH\GHObj\GHButton</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Default.cpp">
@@ -400,6 +406,9 @@
     </ClCompile>
     <ClCompile Include="GHLineMgr.cpp">
       <Filter>02.StageGH\GHObj\GHLineMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="GHButton.cpp">
+      <Filter>02.StageGH\GHObj\GHButton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

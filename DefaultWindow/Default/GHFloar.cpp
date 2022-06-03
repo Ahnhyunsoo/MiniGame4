@@ -37,15 +37,16 @@ void CGHFloar::Initialize_Floar()
 	{
 		m_tInfo.vPos = { 525.f,0.f,0.f };
 	}
-	m_vOriVertex.push_back(D3DXVECTOR3{ -25.f	, -25.f, 0.f });
-	m_vOriVertex.push_back(D3DXVECTOR3{ 25.f	, -25.f, 0.f });
-	m_vOriVertex.push_back(D3DXVECTOR3{ 25.f	, 25.f, 0.f });
-	m_vOriVertex.push_back(D3DXVECTOR3{ -25.f	, 25.f, 0.f });
+	m_vOriVertex.push_back(D3DXVECTOR3{ -1.f	, -1.f, 0.f });
+	m_vOriVertex.push_back(D3DXVECTOR3{ 1.f	, -1.f, 0.f });
+	m_vOriVertex.push_back(D3DXVECTOR3{ 1.f	, 1.f, 0.f });
+	m_vOriVertex.push_back(D3DXVECTOR3{ -1.f	, 1.f, 0.f });
 
-	m_vVertex.push_back(D3DXVECTOR3{ -25.f, -25.f, 0.f });
-	m_vVertex.push_back(D3DXVECTOR3{ 25.f, -25.f, 0.f });
-	m_vVertex.push_back(D3DXVECTOR3{ 25.f, 25.f, 0.f });
-	m_vVertex.push_back(D3DXVECTOR3{ -25.f, 25.f, 0.f });
+	m_vVertex.push_back(D3DXVECTOR3{ -1.f, -1.f, 0.f });
+	m_vVertex.push_back(D3DXVECTOR3{ 1.f, -1.f, 0.f });
+	m_vVertex.push_back(D3DXVECTOR3{ 1.f, 1.f, 0.f });
+	m_vVertex.push_back(D3DXVECTOR3{ -1.f, 1.f, 0.f });
+	
 	LineOn();
 
 }
@@ -53,8 +54,9 @@ void CGHFloar::Initialize(void)
 {
 	Initialize_Floar();
 	m_fSpeed = 3.f;
-	m_fScale = 1.f;
+	m_fScale = 25.f;
 	m_fAngle = 0.f;
+	m_ScaleDelayTime = GetTickCount();
 	m_bDead = false;
 }
 void CGHFloar::LineOn()
@@ -83,16 +85,20 @@ void CGHFloar::Line_Nail_Down()
 }
 int CGHFloar::Update(void)
 {
+	if ((m_fScale < 66.5f)&&(m_ScaleDelayTime + 100 <GetTickCount())) {
+		++m_fScale;
+		m_ScaleDelayTime = GetTickCount();
+	}
 	if (m_iFloarIndex == 0) 
 		m_tInfo.vDir = { -1.f, 0.f, 0.f };
 	else if (m_iFloarIndex == 1) 
-		m_tInfo.vDir = { -0.8f, 0.f, 0.f };
-	else if (m_iFloarIndex == 2)
 		m_tInfo.vDir = { -0.5f, 0.f, 0.f };
+	else if (m_iFloarIndex == 2)
+		m_tInfo.vDir = { -0.3f, 0.f, 0.f };
 	else if (m_iFloarIndex == 3)
-		m_tInfo.vDir = { 0.5f, 0.f, 0.f };
+		m_tInfo.vDir = { 0.3f, 0.f, 0.f };
 	else if (m_iFloarIndex == 4)
-		m_tInfo.vDir = { 0.8f, 0.f, 0.f };
+		m_tInfo.vDir = { 0.5f, 0.f, 0.f };
 	else if (m_iFloarIndex == 5)
 		m_tInfo.vDir = { 1.f, 0.f, 0.f };
 

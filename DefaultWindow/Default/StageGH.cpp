@@ -4,7 +4,7 @@
 #include "GHPlayer.h"
 #include "GHFloar.h"
 #include "GHLineMgr.h"
-
+#include "GHButton.h"
 CStageGH::CStageGH()
 {
 }
@@ -17,7 +17,14 @@ CStageGH::~CStageGH()
 
 void CStageGH::Initialize(void)
 {
-	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CGHPlayer>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHPlayer>::Create());
+
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::Create());
 	m_ScrollZ = 0;
 	m_ScrollTime = 0;
 	m_bStart = false;
