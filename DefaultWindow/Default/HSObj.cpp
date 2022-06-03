@@ -33,3 +33,4 @@ D3DXVECTOR3 CHSObj::Find_Target(float _fX, float _fY)
 	}
 	return _Target;
 }
+

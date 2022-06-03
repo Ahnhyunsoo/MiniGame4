@@ -16,6 +16,24 @@ CObj::~CObj()
 {
 }
 
+void CObj::ColRender(HDC hDC)
+{
+	HPEN hpen;
+	HPEN hpenOld;
+
+	hpen = CreatePen(PS_SOLID, 3, RGB(255, 0, 0));   // 선 스타일, 굵기, 색상
+	hpenOld = (HPEN)::SelectObject(hDC, (HGDIOBJ)hpen);   // 펜 선택
+
+	Rectangle(hDC,
+		m_tInfo.vPos.x - m_tInfo.fCX * 0.5f,
+		m_tInfo.vPos.y - m_tInfo.fCY * 0.5f,
+		m_tInfo.vPos.x + m_tInfo.fCX * 0.5f,
+		m_tInfo.vPos.y + m_tInfo.fCY * 0.5f);
+
+	hpen = (HPEN)SelectObject(hDC, hpenOld);   // 기존의 펜 다시 선택
+	DeleteObject(hpen);   // 생성한 펜 삭제
+}
+
 void CObj::Update_MatWorld(void)
 {
 	m_tInfo.vDir = { 1.f,0.f,0.f };

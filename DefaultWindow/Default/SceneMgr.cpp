@@ -5,13 +5,14 @@
 #include "StageSelect.h"
 #include "StageGH.h"
 #include "StageYM.h"
+#include "StageHR.h"
 
 
 CSceneMgr*	CSceneMgr::m_pInstance = nullptr;
 
 
 CSceneMgr::CSceneMgr()
-	: m_pScene(nullptr), m_eCurScene(STAGE_HS)
+	: m_pScene(nullptr), m_eCurScene(STAGE_SELECT)
 {
 
 }
@@ -49,6 +50,7 @@ void CSceneMgr::Scene_Change(SCENE eID)
 			m_pScene = new CStageHS;
 			break;
 		case STAGE_HR:
+			m_pScene = new CStageHR;
 			break;
 		case STAGE_END:
 			break;

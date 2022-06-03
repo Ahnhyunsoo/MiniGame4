@@ -31,7 +31,7 @@ void CMainGame::Initialize(void)
 	CSoundMgr::Get_Instance()->Initialize();
 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back");
-
+	CSceneMgr::Get_Instance()->Scene_Change(STAGE_HR);
 }
 
 void CMainGame::Update(void)

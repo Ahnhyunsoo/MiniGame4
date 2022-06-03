@@ -161,6 +161,11 @@
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Functor.h" />
     <ClInclude Include="GunTower.h" />
+    <ClInclude Include="HRBlock.h" />
+    <ClInclude Include="HRMonster.h" />
+    <ClInclude Include="HRObj.h" />
+    <ClInclude Include="HRPlayer.h" />
+    <ClInclude Include="HRSwing.h" />
     <ClInclude Include="HSBullet.h" />
     <ClInclude Include="HSMonster.h" />
     <ClInclude Include="HSObj.h" />
@@ -202,6 +207,11 @@
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Default.cpp" />
     <ClCompile Include="GunTower.cpp" />
+    <ClCompile Include="HRBlock.cpp" />
+    <ClCompile Include="HRMonster.cpp" />
+    <ClCompile Include="HRObj.cpp" />
+    <ClCompile Include="HRPlayer.cpp" />
+    <ClCompile Include="HRSwing.cpp" />
     <ClCompile Include="HSBullet.cpp" />
     <ClCompile Include="HSMonster.cpp" />
     <ClCompile Include="HSObj.cpp" />

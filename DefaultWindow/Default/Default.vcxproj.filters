@@ -135,12 +135,18 @@
     </Filter>
     <Filter Include="04.StageHS\HSObj\HSBullet">
       <UniqueIdentifier>{acfc9c6e-6574-4492-bfb6-76d810a0be7e}</UniqueIdentifier>
-      </Filter>
+    </Filter>
     <Filter Include="02.StageGH\GHObj\GHFloar">
       <UniqueIdentifier>{86a25738-5694-4c22-b948-3c3b30074cbf}</UniqueIdentifier>
-       </Filter>
+    </Filter>
     <Filter Include="03.StageYM\ObjYM">
       <UniqueIdentifier>{e701ab0a-7d13-403a-a6cc-dc625e607a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.StageHR\HRObj\HRBlock">
+      <UniqueIdentifier>{c4bca1e8-fed6-44be-9ba1-f7f68a7ae028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.StageHR\HRObj\HRSwing">
+      <UniqueIdentifier>{6ac2b5c6-a4fb-4537-a301-3ebcb0822ac4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -257,7 +263,7 @@
     </ClInclude>
     <ClInclude Include="HSBullet.h">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
-       </ClInclude>
+    </ClInclude>
     <ClInclude Include="GHPlayer.h">
       <Filter>02.StageGH\GHObj\GHPlayer</Filter>
     </ClInclude>
@@ -266,7 +272,7 @@
     </ClInclude>
     <ClInclude Include="GHFloar.h">
       <Filter>헤더 파일</Filter>
-      </ClInclude>
+    </ClInclude>
     <ClInclude Include="ObjYM.h">
       <Filter>03.StageYM\ObjYM</Filter>
     </ClInclude>
@@ -275,6 +281,21 @@
     </ClInclude>
     <ClInclude Include="YMMonster.h">
       <Filter>03.StageYM\YMObj\YMMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="HRPlayer.h">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="HRObj.h">
+      <Filter>05.StageHR\HRObj</Filter>
+    </ClInclude>
+    <ClInclude Include="HRBlock.h">
+      <Filter>05.StageHR\HRObj\HRBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="HRSwing.h">
+      <Filter>05.StageHR\HRObj\HRSwing</Filter>
+    </ClInclude>
+    <ClInclude Include="HRMonster.h">
+      <Filter>05.StageHR\HRObj\HRMonster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -361,8 +382,7 @@
     </ClCompile>
     <ClCompile Include="HSBullet.cpp">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
-          </ClCompile>
-
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -374,7 +394,7 @@
     </ClCompile>
     <ClCompile Include="GHFloar.cpp">
       <Filter>소스 파일</Filter>
-      </ClCompile>
+    </ClCompile>
     <ClCompile Include="ObjYM.cpp">
       <Filter>03.StageYM\ObjYM</Filter>
     </ClCompile>
@@ -383,6 +403,21 @@
     </ClCompile>
     <ClCompile Include="YMMonster.cpp">
       <Filter>03.StageYM\YMObj\YMMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="HRPlayer.cpp">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="HRObj.cpp">
+      <Filter>05.StageHR\HRObj</Filter>
+    </ClCompile>
+    <ClCompile Include="HRBlock.cpp">
+      <Filter>05.StageHR\HRObj\HRBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="HRSwing.cpp">
+      <Filter>05.StageHR\HRObj\HRSwing</Filter>
+    </ClCompile>
+    <ClCompile Include="HRMonster.cpp">
+      <Filter>05.StageHR\HRObj\HRMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

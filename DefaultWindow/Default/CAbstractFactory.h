@@ -29,6 +29,15 @@ public:
 		return _Temp;
 	}
 
+	static CObj* CreateHRBlock(float _fX, float _fY, float _fCX, float _fCY)
+	{
+		CObj* _Temp = new T;
+		_Temp->Initialize();
+		dynamic_cast<CHRBlock*> (_Temp)->Set_Scale(_fCX, _fCY);
+		_Temp->Set_vPos(_fX, _fY);
+		return _Temp;
+	}
+
 	static CObj* CreateBullet(D3DXVECTOR3 _Dir, float _fX, float _fY)
 	{
 		CObj* _Temp = new T(_Dir);
