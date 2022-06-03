@@ -67,7 +67,7 @@ void CObjMgr::Render(HDC hDC)
 		for (auto& iter : m_ObjList[i])
 		{
 			iter->Render(hDC);
-			// iter->ColRender(hDC);
+			//iter->ColRender(hDC);
 		}
 	}
 }

@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="CAbstractFactory.h" />
+    <ClInclude Include="CameraMgr.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Default.h" />
     <ClInclude Include="Define.h" />
@@ -270,6 +271,7 @@
     <ClCompile Include="YMPlayer.cpp" />
     <ClCompile Include="YMShipMonster.cpp" />
     <ClCompile Include="YMTownMoster.cpp" />
+    <ClCompile Include="CameraMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Default.rc" />

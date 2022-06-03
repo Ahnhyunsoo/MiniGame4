@@ -5,6 +5,7 @@
 #include "KeyMgr.h"
 #include "ObjMgr.h"
 #include "HRSwing.h"
+#include "CameraMgr.h"
 
 CHRPlayer::CHRPlayer()
 	: m_eState(IDLE)
@@ -74,9 +75,10 @@ void CHRPlayer::Render(HDC hDC)
 {
 	Render_Vertex(hDC);
 
-	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
-	MoveToEx(hDC, m_tInfo.vPos.x + iScrollX, m_tInfo.vPos.y, nullptr);
-	LineTo(hDC, m_tInfo.vPos.x + m_fPosinDir.x * 30.f , m_tInfo.vPos.y + m_fPosinDir.y * 30.f);
+	int iScrollX = CCameraMgr::Get_Instance()->Get_ScrollX();
+	int iScrollY = CCameraMgr::Get_Instance()->Get_ScrollY();
+	MoveToEx(hDC, m_tInfo.vPos.x + iScrollX, m_tInfo.vPos.y + iScrollY, nullptr);
+	LineTo(hDC, m_tInfo.vPos.x + m_fPosinDir.x * 30.f + iScrollX, m_tInfo.vPos.y + m_fPosinDir.y * 30.f + iScrollY);
 }
 
 void CHRPlayer::Release(void)
@@ -132,6 +134,8 @@ void CHRPlayer::KeyInput()
 
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
 	{
+		CCameraMgr::Get_Instance()->StartShake(5.f, 5.f, 100.f);
+
 		m_bJump = false;
 		m_eState = DESH;
 		m_fOldDeshTime = GetTickCount();
@@ -149,6 +153,12 @@ void CHRPlayer::KeyInput()
 void CHRPlayer::PosinUpdate()
 {
 	D3DXVECTOR3 vMousePos = Get_Mouse();
+
+	int iScrollX = CCameraMgr::Get_Instance()->Get_ScrollX();
+	int iScrollY = CCameraMgr::Get_Instance()->Get_ScrollY();
+
+	vMousePos.x -= iScrollX;
+	vMousePos.y -= iScrollY;
 
 	m_fPosinDir = vMousePos - m_tInfo.vPos;
 	D3DXVec3Normalize(&m_fPosinDir, &m_fPosinDir);

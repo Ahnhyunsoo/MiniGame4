@@ -7,6 +7,7 @@
 #include "HRPlayer.h"
 #include "HRBlock.h"
 #include "HRMonster.h"
+#include "CameraMgr.h"
 
 
 CStageHR::CStageHR()
@@ -21,9 +22,12 @@ CStageHR::~CStageHR()
 
 void CStageHR::Initialize(void)
 {
-	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CHRPlayer>::CreateObj(300.f, 400.f));
+	CObj* temp = CAbstractFactory<CHRPlayer>::CreateObj(300.f, 400.f);
+	CCameraMgr::Get_Instance()->Set_Target(temp);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, temp);
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(400.f, 400.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(600.f, 100.f));
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_HR_BLOCK, CAbstractFactory<CHRBlock>::CreateHRBlock(300.f, WINCY, 600.f, 100.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_HR_BLOCK, CAbstractFactory<CHRBlock>::CreateHRBlock(650.f, WINCY, 200.f, 600.f));
@@ -33,6 +37,7 @@ void CStageHR::Initialize(void)
 void CStageHR::Update(void)
 {
 	CObjMgr::Get_Instance()->Update();
+	CCameraMgr::Get_Instance()->Update();
 }
 
 void CStageHR::Late_Update(void)

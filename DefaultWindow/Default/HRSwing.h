@@ -28,4 +28,5 @@ private:
 	float m_fDeadTime;
 	float m_fOldDeadTime;
 
+	bool m_bFirst;
 };

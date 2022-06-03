@@ -19,6 +19,7 @@ public:
 
 protected:
 	void Update_Gravity();
+	void Render_Vertex(HDC hDC);
 
 protected:
 	float m_fValY;

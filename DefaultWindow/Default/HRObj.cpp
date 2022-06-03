@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "HRObj.h"
 
+#include "CameraMgr.h"
 
 CHRObj::CHRObj()
 	: m_bOnAir(false)
@@ -75,4 +76,16 @@ void CHRObj::Update_Gravity()
 	}
 
 	m_bOnAir = true;
+}
+
+void CHRObj::Render_Vertex(HDC hDC)
+{
+	int iScrollX = CCameraMgr::Get_Instance()->Get_ScrollX();
+	int iScrollY = CCameraMgr::Get_Instance()->Get_ScrollY();
+	MoveToEx(hDC, (int)m_vVertex[0].x + iScrollX, (int)m_vVertex[0].y + iScrollY, nullptr);
+	for (size_t i = 1; i < m_vVertex.size(); ++i)
+	{
+		LineTo(hDC, (int)m_vVertex[i].x + iScrollX, (int)m_vVertex[i].y + iScrollY);
+	}
+	LineTo(hDC, (int)m_vVertex[0].x + iScrollX, (int)m_vVertex[0].y + iScrollY);
 }
