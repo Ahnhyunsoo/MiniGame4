@@ -183,6 +183,12 @@
     </Filter>
     <Filter Include="03.StageYM\YMObj\YMBullet\Lazer">
       <UniqueIdentifier>{21f311f4-a901-44d3-b4d3-809f62ff711c}</UniqueIdentifier>
+      </Filter>
+    <Filter Include="05.StageHR\HRObj\HRBlock">
+      <UniqueIdentifier>{c4bca1e8-fed6-44be-9ba1-f7f68a7ae028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.StageHR\HRObj\HRSwing">
+      <UniqueIdentifier>{6ac2b5c6-a4fb-4537-a301-3ebcb0822ac4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -369,6 +375,21 @@
     </ClInclude>
     <ClInclude Include="GHButton.h">
       <Filter>02.StageGH\GHObj\GHButton</Filter>
+       </ClInclude>
+    <ClInclude Include="HRPlayer.h">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="HRObj.h">
+      <Filter>05.StageHR\HRObj</Filter>
+    </ClInclude>
+    <ClInclude Include="HRBlock.h">
+      <Filter>05.StageHR\HRObj\HRBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="HRSwing.h">
+      <Filter>05.StageHR\HRObj\HRSwing</Filter>
+    </ClInclude>
+    <ClInclude Include="HRMonster.h">
+      <Filter>05.StageHR\HRObj\HRMonster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -531,6 +552,21 @@
     </ClCompile>
     <ClCompile Include="GHButton.cpp">
       <Filter>02.StageGH\GHObj\GHButton</Filter>
+      </ClCompile>
+    <ClCompile Include="HRPlayer.cpp">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="HRObj.cpp">
+      <Filter>05.StageHR\HRObj</Filter>
+    </ClCompile>
+    <ClCompile Include="HRBlock.cpp">
+      <Filter>05.StageHR\HRObj\HRBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="HRSwing.cpp">
+      <Filter>05.StageHR\HRObj\HRSwing</Filter>
+    </ClCompile>
+    <ClCompile Include="HRMonster.cpp">
+      <Filter>05.StageHR\HRObj\HRMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

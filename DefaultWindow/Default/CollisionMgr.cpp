@@ -64,7 +64,7 @@ void CCollisionMgr::Collision_RectEx(list<CObj*> _Dest, list<CObj*> _Sour, bool 
 				else
 				{
 					// ÁÂ Ãæµ¹
-					if (Dest->Get_Info().vPos.x> Sour->Get_Info().vPos.y)
+					if (Dest->Get_Info().vPos.x> Sour->Get_Info().vPos.x)
 					{
 						if (_bIsPush) Sour->Set_vPosX(-fX);
 						Dest->OnCollision(DIR_LEFT, Sour);

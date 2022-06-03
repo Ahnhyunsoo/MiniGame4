@@ -34,10 +34,13 @@ public:
 
 public:
 	virtual		void	OnCollision(DIRECTION _DIR, CObj* _Other) PURE;
+	void ColRender(HDC hDC);
 
 public:
 	void Update_MatWorld(void);
 	void Render_Vertex(HDC hDC);
+	
+
 protected:
 	INFO		m_tInfo;
 	float		m_fAngle;
