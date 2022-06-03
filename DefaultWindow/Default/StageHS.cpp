@@ -63,13 +63,15 @@ void CStageHS::Late_Update(void)
 void CStageHS::Render(HDC hDC)
 {
 	
-	HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"aa");
-	BitBlt(hDC, 0, 0, 800, 600, hMemDC, 0, 0, SRCCOPY);
-	Rectangle(hMemDC, 0, 0, WINCX, WINCY);
-	Draw_Rect(hMemDC);
-	Draw_UI(hMemDC);
-	CLineMgr::Get_Instance()->Render(hMemDC);
-	CObjMgr::Get_Instance()->Render(hMemDC);
+	HDC		hDC2 = CBmpMgr::Get_Instance()->Find_Image(L"aa");
+	BitBlt(hDC, 0, 0, 800, 600, hDC2, 0, 0, SRCCOPY);
+	//Rectangle(hDC, 0, 0, WINCX, WINCY);
+	CLineMgr::Get_Instance()->Render(hDC);
+	CObjMgr::Get_Instance()->Render(hDC);
+	
+	Draw_Rect(hDC);
+	Draw_UI(hDC);
+	
 
 	LOGFONT m_labelFontInfo{};
 	m_labelFontInfo.lfCharSet = 129;
@@ -78,42 +80,42 @@ void CStageHS::Render(HDC hDC)
 	m_labelFontInfo.lfWeight = FW_EXTRABOLD;
 	HFONT textFont, oldFont;
 	textFont = CreateFontIndirect(&m_labelFontInfo);
-	oldFont = (HFONT)SelectObject(hMemDC, textFont);
-	SetBkMode(hMemDC, TRANSPARENT);
-	SetBkColor(hMemDC, RGB(0, 0, 0));
+	oldFont = (HFONT)SelectObject(hDC, textFont);
+	SetBkMode(hDC, TRANSPARENT);
+	SetBkColor(hDC, RGB(0, 0, 0));
 	
-	SetTextColor(hMemDC, RGB(255, 0, 255));
+	SetTextColor(hDC, RGB(255, 0, 255));
 	TCHAR mName[30];
 	wsprintf(mName, TEXT("Round %d"),m_iRound);
-	TextOut(hMemDC, 10, 30, mName, lstrlen(mName));
+	TextOut(hDC, 10, 30, mName, lstrlen(mName));
 
-	SetTextColor(hMemDC, RGB(255, 0, 0));
+	SetTextColor(hDC, RGB(255, 0, 0));
 	TCHAR mLevel[30];
 	wsprintf(mLevel, TEXT("Level : %d"), m_iLevel);
-	TextOut(hMemDC, 10, 60, mLevel, lstrlen(mLevel));
+	TextOut(hDC, 10, 60, mLevel, lstrlen(mLevel));
 
-	SetTextColor(hMemDC, RGB(255, 0, 0));
+	SetTextColor(hDC, RGB(255, 0, 0));
 	TCHAR mHP[30];
 	wsprintf(mHP, TEXT("Life : %d"), g_iHP);
-	TextOut(hMemDC, 10, 90, mHP, lstrlen(mHP));
+	TextOut(hDC, 10, 90, mHP, lstrlen(mHP));
 
-	SetTextColor(hMemDC, RGB(255, 255, 0));
+	SetTextColor(hDC, RGB(255, 255, 0));
 	TCHAR mGold[30];
 	wsprintf(mGold, TEXT("Gold : %d"), g_iGold);
-	TextOut(hMemDC, 10, 120, mGold, lstrlen(mGold));
+	TextOut(hDC, 10, 120, mGold, lstrlen(mGold));
 
-	SetTextColor(hMemDC, RGB(0, 255, 0));
+	SetTextColor(hDC, RGB(0, 255, 0));
 	TCHAR mExp[30];
 	wsprintf(mExp, TEXT("Exp : %d/%d"), g_iExp,m_iMaxExp);
-	TextOut(hMemDC, 10, 150, mExp, lstrlen(mExp));
+	TextOut(hDC, 10, 150, mExp, lstrlen(mExp));
 
-	SetTextColor(hMemDC, RGB(0, 0, 0));
+	SetTextColor(hDC, RGB(0, 0, 0));
 	TCHAR mMonster[30];
 	wsprintf(mMonster, TEXT("%d / %d"), g_iKill,m_iMaxMonster);
-	TextOut(hMemDC, 10, 300, mMonster, lstrlen(mMonster));
-	SetBkMode(hMemDC, TRANSPARENT);
-	SetTextColor(hMemDC, RGB(0, 0, 0));
-	SelectObject(hMemDC, oldFont);
+	TextOut(hDC, 10, 300, mMonster, lstrlen(mMonster));
+	SetBkMode(hDC, TRANSPARENT);
+	SetTextColor(hDC, RGB(0, 0, 0));
+	SelectObject(hDC, oldFont);
 	DeleteObject(textFont);
 
 }

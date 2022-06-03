@@ -42,10 +42,10 @@ void CStageHR::Late_Update(void)
 
 void CStageHR::Render(HDC hDC)
 {
-	HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Back");
-	BitBlt(hDC, 0, 0, 800, 600, hMemDC, 0, 0, SRCCOPY);
-	Rectangle(hMemDC, 0, 0, WINCX, WINCY);
-	CObjMgr::Get_Instance()->Render(hMemDC);
+	/*HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Back");
+	BitBlt(hDC, 0, 0, 800, 600, hMemDC, 0, 0, SRCCOPY);*/
+	Rectangle(hDC, 0, 0, WINCX, WINCY);
+	CObjMgr::Get_Instance()->Render(hDC);
 }
 
 void CStageHR::Release(void)
