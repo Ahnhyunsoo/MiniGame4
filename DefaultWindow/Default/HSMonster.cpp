@@ -19,11 +19,11 @@ void CHSMonster::Initialize(void)
 	m_tInfo.fCX = 30.f;
 	m_tInfo.fCY = 30.f;
 	m_fAngle = 0.f;
-	m_fSpeed = 5.f;
+	m_fSpeed = 2.5f;
 	m_fScale = 1.f;
 	m_tInfo.vDir = { -1.f,0.f,0.f };
 	m_bDead = false;
-	m_iHp = 5;
+	m_iHp = 2;
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ -15.f, -15.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 15.f, -15.f, 0.f });
