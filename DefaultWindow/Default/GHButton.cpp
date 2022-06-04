@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "GHButton.h"
-
-
+#include "GHScoreMgr.h"
+#include "GHObj.h"
+#include "GHFloar.h"
+#include "SoundMgr.h"
 CGHButton::CGHButton()
 {
 }
@@ -14,6 +16,7 @@ CGHButton::~CGHButton()
 
 void CGHButton::Initialize(void)
 {
+	m_eString = STRING_BUTTON;
 	m_vOriVertex.push_back(D3DXVECTOR3{ -40.f	, -40.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 40.f	, -40.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 66.65f	, 66.65f, 0.f });
@@ -31,6 +34,7 @@ void CGHButton::Initialize(void)
 	m_tInfo.vDir = { 1.f,1.f,1.f };
 	m_tInfo.fCX = 133.3f;
 	m_tInfo.fCY = 50.f;
+	m_ScoreDelayTime = 0;
 }
 
 int CGHButton::Update(void)
@@ -63,4 +67,19 @@ void CGHButton::Release(void)
 
 void CGHButton::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	//Get_GHString
+	if ((0 != dynamic_cast<CGHObj*>(_Other)->Get_GHString())) {
+		if ((m_bPress) && (m_ScoreDelayTime + 10 <GetTickCount())) {
+			CGHScoreMgr::Get_Instance()->Set_iScore();
+
+			m_ScoreDelayTime = GetTickCount();
+		}
+		if (dynamic_cast<CGHFloar*>(_Other)->Get_First()) {
+			CSoundMgr::Get_Instance()->PlaySound(L"GHUndertale.wav", SOUND_BGM, g_GHfSound);
+			g_dwGHBGMStartTime = GetTickCount();
+		}
+
+		_Other->Set_Dead();
+	}
+
 }

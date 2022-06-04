@@ -16,3 +16,5 @@
 #pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
 #endif
 extern HWND			g_hWnd;
+extern float		g_GHfSound;
+extern DWORD		g_dwGHBGMStartTime;

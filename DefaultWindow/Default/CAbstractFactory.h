@@ -46,10 +46,10 @@ public:
 		return _Temp;
 	}
 
-	static CObj* CreateGHFloar(int _iFloarType)
+	static CObj* CreateGHFloar(int _iFloarType, bool _bFirst)
 	{
 		CObj* _Temp = new T;
-		dynamic_cast<CGHFloar*> (_Temp)->Set_Floar(_iFloarType);
+		dynamic_cast<CGHFloar*> (_Temp)->Set_Floar(_iFloarType, _bFirst);
 		_Temp->Initialize();		
 		return _Temp;
 	}

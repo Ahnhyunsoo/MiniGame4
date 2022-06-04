@@ -37,5 +37,6 @@ public:
 private:
 	static CGHLineMgr*		m_pInstance;
 	list<CGHLine*>			m_LineList;
+	
 };
 

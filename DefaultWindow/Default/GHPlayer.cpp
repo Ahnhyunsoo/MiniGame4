@@ -13,6 +13,7 @@ CGHPlayer::~CGHPlayer()
 
 void CGHPlayer::Initialize(void)
 {
+	m_eString = STRING_PLAYER;
 	m_tInfo.fCX = 100.f;
 	m_tInfo.fCY = 100.f;
 	m_tInfo.vPos = { WINCX / 2, WINCY -100.f ,0.f };
@@ -159,12 +160,16 @@ void CGHPlayer::Key_Input()
 	{
 		if (CKeyMgr::Get_Instance()->Key_Pressing(VK_UP)) {
 			m_fScale *= 1.5f;
-			m_fSpeed -= 0.5f;
+			m_tInfo.fCX *= 1.5f;
+			m_tInfo.fCY *= 1.5f;
+			m_fSpeed *= 0.5f;
 			m_ScaleTime = GetTickCount();
 		}
 		if (CKeyMgr::Get_Instance()->Key_Pressing(VK_DOWN)) {
+			m_tInfo.fCX *= 0.5f;
+			m_tInfo.fCY *= 0.5f;
 			m_fScale *= 0.5f;
-			m_fSpeed += 0.5f;
+			m_fSpeed *=2.f;
 			m_ScaleTime = GetTickCount();
 		}
 	}

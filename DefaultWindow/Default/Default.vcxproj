@@ -163,6 +163,8 @@
     <ClInclude Include="GHButton.h" />
     <ClInclude Include="GHLine.h" />
     <ClInclude Include="GHLineMgr.h" />
+    <ClInclude Include="GHScore.h" />
+    <ClInclude Include="GHScoreMgr.h" />
     <ClInclude Include="GunTower.h" />
     <ClInclude Include="HRBlock.h" />
     <ClInclude Include="HRMonster.h" />
@@ -220,6 +222,8 @@
     <ClCompile Include="GHButton.cpp" />
     <ClCompile Include="GHLine.cpp" />
     <ClCompile Include="GHLineMgr.cpp" />
+    <ClCompile Include="GHScore.cpp" />
+    <ClCompile Include="GHScoreMgr.cpp" />
     <ClCompile Include="GunTower.cpp" />
     <ClCompile Include="HRBlock.cpp" />
     <ClCompile Include="HRMonster.cpp" />

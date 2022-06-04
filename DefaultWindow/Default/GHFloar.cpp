@@ -2,6 +2,7 @@
 #include "GHFloar.h"
 #include "GHLineMgr.h"
 
+
 CGHFloar::CGHFloar()
 {
 }
@@ -53,6 +54,8 @@ void CGHFloar::Initialize_Floar()
 void CGHFloar::Initialize(void)
 {
 	Initialize_Floar();
+	m_eString = STRING_FLOAR;
+
 	m_fSpeed = 2.f;
 	m_fScale = 25.f;
 	m_fAngle = 0.f;
@@ -129,6 +132,7 @@ void CGHFloar::Release(void)
 
 void CGHFloar::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	
 }
 
 

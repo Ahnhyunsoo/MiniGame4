@@ -10,11 +10,13 @@
 #include "KeyMgr.h"
 #include "LineMgr.h"
 
-
-
+float g_GHfSound;
+DWORD g_dwGHBGMStartTime;
 CMainGame::CMainGame()
-	:m_dwTime(GetTickCount())
+	:m_dwTime(GetTickCount()) 
 {
+	g_GHfSound = 0.8f;
+	g_dwGHBGMStartTime = 0;
 	ZeroMemory(m_szFPS, sizeof(TCHAR) * 64);
 	m_iFPS = 0;
 }

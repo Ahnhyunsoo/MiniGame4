@@ -127,6 +127,7 @@ void CObjMgr::Late_UpdateST()
 void CObjMgr::Late_UpdateGH()
 {
 	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_GYU_BUTTON], false);
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_GYU_BUTTON], m_ObjList[OBJ_GYU_FLOAR], false);
 
 }
 void CObjMgr::Late_UpdateYM()

@@ -16,9 +16,15 @@ private:
 	void	Create_Floar();
 	void	Key_Input();
 private:
+	int		m_iRoutine;
+	int		m_iRoutine1_Count;
+	int		m_iFloarIndex;
+private:
 	bool	m_bFloarCreate;
 	bool	m_bStart;
-	DWORD	m_ScrollZ;
+	bool	m_bMusicStart_Block;
+	DWORD	m_RoutineTime;
 	DWORD	m_ScrollTime;
+	DWORD	m_MusicTime;
 };
 

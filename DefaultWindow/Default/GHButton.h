@@ -16,5 +16,6 @@ public:
 	void	Set_bPress() { m_bPress = true; }
 private:
 	bool	m_bPress;
+	DWORD	m_ScoreDelayTime;
 };
 
