@@ -43,6 +43,8 @@ public:
 
 	void		StartShake(float _fShakeValue, float _fShakeSpeed, float _fTime, float _fATime = 0.f);
 
+	void		ScaleObj(OBJID _eID);
+
 public:
 	void Nomal();
 	void Shake();

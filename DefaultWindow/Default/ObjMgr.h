@@ -16,7 +16,7 @@ public: // ¸É¹ö ÇÔ¼ö
 	void Release();
 
 
-	list<CObj*> Get_ObjList(OBJID _ID) { return m_ObjList[_ID]; }
+	list<CObj*>& Get_ObjList(OBJID _ID) { return m_ObjList[_ID]; }
 
 	void Delete_ID(OBJID eID);
 
