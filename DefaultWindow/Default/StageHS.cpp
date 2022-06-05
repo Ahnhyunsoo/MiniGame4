@@ -188,7 +188,7 @@ void CStageHS::CreateTower(void)
 			if (pt.x >= m_tTowerPos[i].left && pt.x <= m_tTowerPos[i].right
 				&& pt.y >= m_tTowerPos[i].top && pt.y <= m_tTowerPos[i].bottom)
 			{
-				CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CRaserTower>::CreateObj(m_tTowerPos[i].left + 15.f, m_tTowerPos[i].top + 15.f));
+				CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CGunTower>::CreateObj(m_tTowerPos[i].left + 15.f, m_tTowerPos[i].top + 15.f));
 				g_iGold -= 500;
 			}
 		}		

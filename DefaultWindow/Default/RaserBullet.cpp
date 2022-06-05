@@ -57,10 +57,10 @@ int CRaserBullet::Update(void)
 	
 	m_vTarget = Find_Target(m_tInfo.vPos.x, m_tInfo.vPos.y) - m_tInfo.vPos;
 	
-	D3DXVec3Normalize
+	//D3DXVec3Normalize
 	
 
-		/*m_vTarget = Find_Target(m_tInfo.vPos.x, m_tInfo.vPos.y);
+		m_vTarget = Find_Target(m_tInfo.vPos.x, m_tInfo.vPos.y);
 		float Width = (m_vTarget.x - m_tInfo.vPos.x);
 		float Height = (m_tInfo.vPos.y - m_vTarget.y);
 		float Diagonal = sqrtf((Width * Width) + (Height * Height));
@@ -68,7 +68,7 @@ int CRaserBullet::Update(void)
 		m_fAngle = acosf(Width / Diagonal);
 		m_fAngle = D3DXToDegree(m_fAngle);	
 		if (m_tInfo.vPos.y > m_vTarget.y)
-			m_fAngle *= -1.f;*/
+			m_fAngle *= -1.f;
 		
 
 	if (m_LTarget + 500 < GetTickCount())
