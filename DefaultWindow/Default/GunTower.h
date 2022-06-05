@@ -24,5 +24,6 @@ private:
 	DWORD m_LBullet;
 	D3DXVECTOR3 m_vTarget;
 	bool m_bBattle;
+	int m_iShotDelay;
 };
 

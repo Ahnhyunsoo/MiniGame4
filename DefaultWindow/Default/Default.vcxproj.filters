@@ -127,9 +127,6 @@
     <Filter Include="04.StageHS\HSUI">
       <UniqueIdentifier>{2b9f0f58-8c55-4a30-9c49-48cd7de61f68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04.StageHS\HSUI\UIMgr">
-      <UniqueIdentifier>{d5ddd0ca-48f5-4119-b726-583ab78c03d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04.StageHS\HSObj\HSTower">
       <UniqueIdentifier>{113633fb-49be-4af0-90f4-0f37e1c1e45d}</UniqueIdentifier>
     </Filter>
@@ -258,9 +255,6 @@
     <ClInclude Include="HSObj.h">
       <Filter>04.StageHS\HSObj</Filter>
     </ClInclude>
-    <ClInclude Include="UIMgr.h">
-      <Filter>04.StageHS\HSUI\UIMgr</Filter>
-    </ClInclude>
     <ClInclude Include="HSUI.h">
       <Filter>04.StageHS\HSUI</Filter>
     </ClInclude>
@@ -320,6 +314,12 @@
     </ClInclude>
     <ClInclude Include="TowerUI.h">
       <Filter>04.StageHS\HSObj\HSUI</Filter>
+    </ClInclude>
+    <ClInclude Include="RaserTower.h">
+      <Filter>04.StageHS\HSObj\HSTower</Filter>
+    </ClInclude>
+    <ClInclude Include="RaserBullet.h">
+      <Filter>04.StageHS\HSObj\HSBullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -392,9 +392,6 @@
     <ClCompile Include="HSObj.cpp">
       <Filter>04.StageHS\HSObj</Filter>
     </ClCompile>
-    <ClCompile Include="UIMgr.cpp">
-      <Filter>04.StageHS\HSUI\UIMgr</Filter>
-    </ClCompile>
     <ClCompile Include="HSUI.cpp">
       <Filter>04.StageHS\HSUI</Filter>
     </ClCompile>
@@ -460,6 +457,12 @@
     </ClCompile>
     <ClCompile Include="TowerUI.cpp">
       <Filter>04.StageHS\HSObj\HSUI</Filter>
+    </ClCompile>
+    <ClCompile Include="RaserTower.cpp">
+      <Filter>04.StageHS\HSObj\HSTower</Filter>
+    </ClCompile>
+    <ClCompile Include="RaserBullet.cpp">
+      <Filter>04.StageHS\HSObj\HSBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

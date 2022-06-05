@@ -6,6 +6,8 @@
 #include "HSMonster.h"
 #include "BmpMgr.h"
 #include "LineMgr.h"
+#include "HSUI.h"
+#include "RaserTower.h"
 
 int CStageHS::g_iHP = 30;
 int CStageHS::g_iGold = 1000;
@@ -27,15 +29,39 @@ void CStageHS::Initialize(void)
 {
 	
 	CLineMgr::Get_Instance()->Load_Line();
-	CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CGunTower>::CreateObj(400.f,255.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CGunTower>::CreateObj(400.f,295.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_UI, CAbstractFactory<CHSUI>::Create());
+	m_tTowerPos[0] = { 385,240,415,270 };
+	m_tTowerPos[1] = { 385, 280, 415, 310 };
+	m_tTowerPos[2] = { 185, 300, 215, 330 };
+	m_tTowerPos[3] = { 185, 260, 215, 290 };
+	m_tTowerPos[4] = { 185, 220, 215, 250 };
+	m_tTowerPos[5] = { 185, 180, 215, 210 };
+	m_tTowerPos[6] = { 185, 140, 215, 170 };
+	m_tTowerPos[7] = { 185, 100, 215, 130 };
+	m_tTowerPos[8] = { 185, 340, 215, 370 };
+	m_tTowerPos[9] = { 185, 380, 215, 410 };
+	m_tTowerPos[10] = { 185, 420, 215, 450 };
 
+	m_tTowerPos[11] = { 250, 60, 280, 90 };
+	m_tTowerPos[12] = { 290, 60, 320, 90 };
+	m_tTowerPos[13] = { 330, 60, 360, 90 };
+	m_tTowerPos[14] = { 370, 60, 400, 90 };
+	m_tTowerPos[15] = { 410, 60, 440, 90 };
+	m_tTowerPos[16] = { 450, 60, 480, 90 };
+	m_tTowerPos[17] = { 490, 60, 520, 90 };
+	m_tTowerPos[18] = { 530, 60, 560, 90 };
+
+
+	
+	
 
 }
 
 void CStageHS::Update(void)
 {
 	CObjMgr::Get_Instance()->Update();
+	GetCursorPos(&pt);
+	ScreenToClient(g_hWnd, &pt);
 	if (m_LSponMonster + m_iSponSpeed < GetTickCount())
 	{
 		if (m_iMaxMonster > m_iNowMonster)
@@ -45,6 +71,7 @@ void CStageHS::Update(void)
 			m_LSponMonster = GetTickCount();
 		}
 	}
+	CreateTower();
 
 }
 
@@ -64,12 +91,14 @@ void CStageHS::Render(HDC hDC)
 {
 	
 	HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"aa");
-	BitBlt(hDC, 0, 0, 800, 600, hMemDC, 0, 0, SRCCOPY);
-	Rectangle(hMemDC, 0, 0, WINCX, WINCY);
-	Draw_Rect(hMemDC);
-	Draw_UI(hMemDC);
-	CLineMgr::Get_Instance()->Render(hMemDC);
-	CObjMgr::Get_Instance()->Render(hMemDC);
+
+	BitBlt(hDC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
+	//Rectangle(hDC, 0, 0, WINCX, WINCY);
+	Draw_Rect(hDC);
+	Draw_UI(hDC);
+	CObjMgr::Get_Instance()->Render(hDC);
+	CLineMgr::Get_Instance()->Render(hDC);
+	
 
 	LOGFONT m_labelFontInfo{};
 	m_labelFontInfo.lfCharSet = 129;
@@ -78,43 +107,51 @@ void CStageHS::Render(HDC hDC)
 	m_labelFontInfo.lfWeight = FW_EXTRABOLD;
 	HFONT textFont, oldFont;
 	textFont = CreateFontIndirect(&m_labelFontInfo);
-	oldFont = (HFONT)SelectObject(hMemDC, textFont);
-	SetBkMode(hMemDC, TRANSPARENT);
-	SetBkColor(hMemDC, RGB(0, 0, 0));
+	oldFont = (HFONT)SelectObject(hDC, textFont);
+	SetBkMode(hDC, TRANSPARENT);
+	SetBkColor(hDC, RGB(0, 0, 0));
 	
-	SetTextColor(hMemDC, RGB(255, 0, 255));
+	SetTextColor(hDC, RGB(255, 0, 255));
 	TCHAR mName[30];
 	wsprintf(mName, TEXT("Round %d"),m_iRound);
-	TextOut(hMemDC, 10, 30, mName, lstrlen(mName));
+	TextOut(hDC, 10, 30, mName, lstrlen(mName));
 
-	SetTextColor(hMemDC, RGB(255, 0, 0));
+	SetTextColor(hDC, RGB(255, 0, 0));
 	TCHAR mLevel[30];
 	wsprintf(mLevel, TEXT("Level : %d"), m_iLevel);
-	TextOut(hMemDC, 10, 60, mLevel, lstrlen(mLevel));
+	TextOut(hDC, 10, 60, mLevel, lstrlen(mLevel));
 
-	SetTextColor(hMemDC, RGB(255, 0, 0));
+	SetTextColor(hDC, RGB(255, 0, 0));
 	TCHAR mHP[30];
 	wsprintf(mHP, TEXT("Life : %d"), g_iHP);
-	TextOut(hMemDC, 10, 90, mHP, lstrlen(mHP));
+	TextOut(hDC, 10, 90, mHP, lstrlen(mHP));
 
-	SetTextColor(hMemDC, RGB(255, 255, 0));
+	SetTextColor(hDC, RGB(255, 255, 0));
 	TCHAR mGold[30];
 	wsprintf(mGold, TEXT("Gold : %d"), g_iGold);
-	TextOut(hMemDC, 10, 120, mGold, lstrlen(mGold));
+	TextOut(hDC, 10, 120, mGold, lstrlen(mGold));
 
-	SetTextColor(hMemDC, RGB(0, 255, 0));
+	SetTextColor(hDC, RGB(0, 255, 0));
 	TCHAR mExp[30];
 	wsprintf(mExp, TEXT("Exp : %d/%d"), g_iExp,m_iMaxExp);
-	TextOut(hMemDC, 10, 150, mExp, lstrlen(mExp));
+	TextOut(hDC, 10, 150, mExp, lstrlen(mExp));
 
-	SetTextColor(hMemDC, RGB(0, 0, 0));
+	SetTextColor(hDC, RGB(0, 0, 0));
 	TCHAR mMonster[30];
 	wsprintf(mMonster, TEXT("%d / %d"), g_iKill,m_iMaxMonster);
-	TextOut(hMemDC, 10, 300, mMonster, lstrlen(mMonster));
-	SetBkMode(hMemDC, TRANSPARENT);
-	SetTextColor(hMemDC, RGB(0, 0, 0));
-	SelectObject(hMemDC, oldFont);
+	TextOut(hDC, 10, 300, mMonster, lstrlen(mMonster));
+	SetBkMode(hDC, TRANSPARENT);
+	SetTextColor(hDC, RGB(0, 0, 0));
+	SelectObject(hDC, oldFont);
 	DeleteObject(textFont);
+
+	Rectangle(hDC, pt.x - 5, pt.y - 5, pt.x + 5, pt.y + 5);
+
+	TCHAR mName2[30];
+
+	wsprintf(mName2, TEXT("ÃÑ¾Ë°¹¼ö : %d"), CObjMgr::Get_Instance()->Get_ObjList(OBJ_BULLET).size());
+	TextOut(hDC, 200, 30, mName2, lstrlen(mName2));
+	CLineMgr::Get_Instance()->Render(hDC);
 
 }
 
@@ -129,13 +166,44 @@ void CStageHS::Draw_Rect(HDC hDC)
 
 	hpen = CreatePen(PS_SOLID, 3, RGB(255, 0, 0));	// ¼± ½ºÅ¸ÀÏ, ±½±â, »ö»ó
 	hpenOld = (HPEN)::SelectObject(hDC, (HGDIOBJ)hpen);	// Ææ ¼±ÅÃ
-	Rectangle(hDC, 385, 240, 415, 270);
-	Rectangle(hDC, 385, 280, 415, 310);
+	
+	for(int i = 0; i < sizeof(m_tTowerPos) / sizeof(RECT); ++i)
+	Rectangle(hDC, m_tTowerPos[i].left, m_tTowerPos[i].top, m_tTowerPos[i].right, m_tTowerPos[i].bottom);
+	
+
 	hpen = (HPEN)SelectObject(hDC, hpenOld);	// ±âÁ¸ÀÇ Ææ ´Ù½Ã ¼±ÅÃ
 	DeleteObject(hpen);	// »ý¼ºÇÑ Ææ »èÁ¦
 }
 
 void CStageHS::Draw_UI(HDC hDC)
 {
+}
 
+void CStageHS::CreateTower(void)
+{
+	if (CKeyMgr::Get_Instance()->Key_Up(VK_LBUTTON))
+	{
+		for (int i = 0; i < sizeof(m_tTowerPos) / sizeof(RECT); ++i)
+		{
+			if (pt.x >= m_tTowerPos[i].left && pt.x <= m_tTowerPos[i].right
+				&& pt.y >= m_tTowerPos[i].top && pt.y <= m_tTowerPos[i].bottom)
+			{
+				CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CRaserTower>::CreateObj(m_tTowerPos[i].left + 15.f, m_tTowerPos[i].top + 15.f));
+				g_iGold -= 500;
+			}
+		}		
+	}
+	/*if (CKeyMgr::Get_Instance()->Key_Pressing(VK_RBUTTON))
+	{
+		for (int i = 0; i < sizeof(m_tTowerPos) / sizeof(RECT); ++i)
+		{
+			if (pt.x >= m_tTowerPos[i].left && pt.x <= m_tTowerPos[i].right
+				&& pt.y >= m_tTowerPos[i].top && pt.y <= m_tTowerPos[i].bottom)
+			{
+				m_tTowerPos[i].left = pt.x - ((m_tTowerPos[i].right - m_tTowerPos[i].left) * 0.5);
+				m_tTowerPos[i].top = pt.y - ((m_tTowerPos[i].bottom - m_tTowerPos[i].top) * 0.5);
+				
+			}
+		}
+	}*/
 }

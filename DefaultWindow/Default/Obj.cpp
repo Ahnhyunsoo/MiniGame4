@@ -31,8 +31,9 @@ void CObj::Update_MatWorld(void)
 	{
 		D3DXVec3TransformCoord(&m_vVertex[i], &m_vOriVertex[i], &m_tInfo.matWorld);
 	}
-	D3DXVec3TransformNormal(&m_tInfo.vDir, &m_tInfo.vDir, &m_tInfo.matWorld);
 	D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
+	D3DXVec3TransformNormal(&m_tInfo.vDir, &m_tInfo.vDir, &m_tInfo.matWorld);
+	
 }
 
 void CObj::Render_Vertex(HDC hDC)
