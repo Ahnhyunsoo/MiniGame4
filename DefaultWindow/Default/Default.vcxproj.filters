@@ -225,6 +225,12 @@
     </Filter>
     <Filter Include="03.StageYM\YMObj\YMItem\ItemYMBoom">
       <UniqueIdentifier>{3b4b0b8f-120e-4ad3-82f3-d2203644baae}</UniqueIdentifier>
+       </Filter>
+    <Filter Include="05.StageHR\Mgr">
+      <UniqueIdentifier>{8aa89dbb-dd08-4c7a-8227-fe7b24cc9331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.StageHR\HRObj\HRBullet">
+      <UniqueIdentifier>{794ed303-c5b5-4026-91a8-ec52e1173610}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -470,6 +476,15 @@
     </ClInclude>
     <ClInclude Include="YMIBoom.h">
       <Filter>03.StageYM\YMObj\YMItem\ItemYMBoom</Filter>
+      </ClInclude>
+    <ClInclude Include="CameraMgr.h">
+      <Filter>05.StageHR\Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeMgr.h">
+      <Filter>05.StageHR\Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="HRBullet.h">
+      <Filter>05.StageHR\HRObj\HRBullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -691,6 +706,15 @@
     </ClCompile>
     <ClCompile Include="YMIBoom.cpp">
       <Filter>03.StageYM\YMObj\YMItem\ItemYMBoom</Filter>
+       </ClCompile>
+    <ClCompile Include="CameraMgr.cpp">
+      <Filter>05.StageHR\Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeMgr.cpp">
+      <Filter>05.StageHR\Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="HRBullet.cpp">
+      <Filter>05.StageHR\HRObj\HRBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

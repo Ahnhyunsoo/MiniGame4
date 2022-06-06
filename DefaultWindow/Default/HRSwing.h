@@ -11,6 +11,7 @@ public:
 
 public:
 	void SetDir(D3DXVECTOR3 _vDir) { m_tInfo.vDir = _vDir; }
+	bool GetHit() { return m_bCanHit; }
 
 public:
 	virtual		void	Initialize(void);
@@ -28,4 +29,9 @@ private:
 	float m_fDeadTime;
 	float m_fOldDeadTime;
 
+	bool m_bFirst;
+
+	float m_fHitTime;
+	float m_fOldHitTime;
+	bool m_bCanHit;
 };

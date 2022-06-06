@@ -9,6 +9,7 @@ public:
 
 public:
 	const string Get_Tag() { return m_sTag; }
+	
 
 public:
 	virtual void Initialize(void) override;
@@ -19,8 +20,11 @@ public:
 
 protected:
 	void Update_Gravity();
+	void Render_Vertex(HDC hDC);
 
 protected:
+	D3DXVECTOR3 m_vTempPos;
+
 	float m_fValY;
 	float m_fValX;
 	float m_fRemitSpeed;

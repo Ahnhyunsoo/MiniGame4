@@ -37,6 +37,7 @@ public:
 	}
 
 	SCENE Get_Scene() { return m_eCurScene; }
+	CScene* Get_PScene() { return m_pScene; }
 
 private:
 	static CSceneMgr*		m_pInstance;
