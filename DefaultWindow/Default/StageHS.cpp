@@ -15,8 +15,8 @@ int CStageHS::g_iKill = 0;
 int CStageHS::g_iExp = 1;
 
 CStageHS::CStageHS()
-	:m_iSponSpeed(500),m_iNowMonster(0),m_iMaxMonster(50),m_LSponMonster(GetTickCount()),m_iLevel(1),m_iMaxExp(100), m_iRound(1)
-	,m_eTowerType(GUNTOWER),m_bStop(false)
+	:m_iSponSpeed(700),m_iNowMonster(0),m_iMaxMonster(100),m_LSponMonster(GetTickCount()),m_iLevel(1),m_iMaxExp(100), m_iRound(1)
+	,m_eTowerType(GUNTOWER),m_bStop(false),m_bMonsterUpgrade(false)
 {
 	CObjMgr::Get_Instance()->Add_Object(OBJ_UI, CAbstractFactory<CHSUI>::CreateHSUI(this));
 }
@@ -75,10 +75,29 @@ void CStageHS::Update(void)
 	if(g_iKill >= 100)
 		CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);
 
-	/*if (CKeyMgr::Get_Instance()->Key_Pressing('Q'))
+	
+
+	/*if (g_iKill <= 25)
+		CHSMonster::g_iMonsterHp = 5.f;*/
+	if (g_iKill > 25 && g_iKill <= 50)
 	{
-		CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);
-	}*/
+		CHSMonster::g_iMonsterHp = 15.f;
+		CHSMonster::g_fMonsterSpeed = 2.5f;
+		m_iSponSpeed = 500;
+	}
+
+	else if (g_iKill > 50 && g_iKill <= 75)
+	{
+		CHSMonster::g_iMonsterHp = 30.f;
+		CHSMonster::g_fMonsterSpeed = 5.f;
+		m_iSponSpeed = 300;
+	}
+
+	else if (m_iNowMonster == 99)
+	{
+		CHSMonster::g_iMonsterHp = 500.f;
+		CHSMonster::g_fMonsterSpeed = 1.f;
+	}
 
 }
 

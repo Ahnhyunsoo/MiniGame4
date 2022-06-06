@@ -2,7 +2,8 @@
 #include "HSMonster.h"
 #include "StageHS.h"
 
-
+int CHSMonster::g_iMonsterHp = 5;
+float CHSMonster::g_fMonsterSpeed = 1.f;
 
 CHSMonster::CHSMonster(CScene* _pScene)
 	:m_LCollision(GetTickCount()), m_iDirNum(0)
@@ -22,11 +23,11 @@ void CHSMonster::Initialize(void)
 	m_tInfo.fCX = 30.f;
 	m_tInfo.fCY = 30.f;
 	m_fAngle = 0.f;
-	m_fSpeed = 2.5f;
+	m_fSpeed = g_fMonsterSpeed;
 	m_fScale = 1.f;
 	m_tInfo.vDir = { -1.f,0.f,0.f };
 	m_bDead = false;
-	m_iHp = 10;
+	m_iHp = g_iMonsterHp;
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ -15.f, -15.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 15.f, -15.f, 0.f });

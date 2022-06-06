@@ -41,6 +41,7 @@ private:
 	int m_iLevel;
 	int m_iRound;
 	bool m_bStop;
+	bool m_bMonsterUpgrade;
 	ObjType m_eTowerType;
 	
 

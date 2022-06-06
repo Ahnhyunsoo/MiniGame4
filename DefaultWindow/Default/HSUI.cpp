@@ -90,17 +90,14 @@ void CHSUI::Render(HDC hDC)
 
 	SetTextColor(hDC, RGB(0, 0, 255));
 	TCHAR mGold[30];
-	wsprintf(mGold, TEXT("ICETOWER"));
-	TextOut(hDC, 645, 525, mGold, lstrlen(mGold));
+	wsprintf(mGold, TEXT("스테이지종료"));
+	TextOut(hDC, 640, 525, mGold, lstrlen(mGold));
 
 	SetBkMode(hDC, TRANSPARENT);
 	SetTextColor(hDC, RGB(0, 0, 0));
 	SelectObject(hDC, oldFont);
 	DeleteObject(textFont);
 
-
-	
-	
 }
 
 void CHSUI::Release(void)
@@ -131,7 +128,7 @@ void CHSUI::Change_Type()
 		else if ((pt.x >= 450.f && pt.x <= 550.f) && (pt.y >= 480.f && pt.y <= 580.f))
 			static_cast<CStageHS*>(m_pScene)->Set_Tower(CStageHS::RASERTOWER);
 		else if ((pt.x >= 630.f && pt.x <= 730.f) && (pt.y >= 480.f && pt.y <= 580.f))
-			static_cast<CStageHS*>(m_pScene)->Set_Tower(CStageHS::ICETOWER);
+			CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);;
 	}
 }
 
