@@ -62,6 +62,7 @@ int CYMBoss::Update(void)
 	if (m_bDead)
 	{
 		CYMScoreMgr::Get_Instance()->Plus_Score(10000);
+		CSceneMgr::Get_Instance()->Scene_Reserve(STAGE_ST);
 		return OBJ_DEAD;
 	}
 	else

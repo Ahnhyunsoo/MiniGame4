@@ -124,11 +124,23 @@ void CHSUI::Change_Type()
 			m_LStop = GetTickCount();
 		}
 		else if ((pt.x >= 270.f && pt.x <= 370.f) && (pt.y >= 480.f && pt.y <= 580.f))
+		{
 			static_cast<CStageHS*>(m_pScene)->Set_Tower(CStageHS::GUNTOWER);
+			CSoundMgr::Get_Instance()->StopSound(SOUND_MONSTER);
+			CSoundMgr::Get_Instance()->PlaySound(L"trade.wav", SOUND_MONSTER, 1.f);
+		}
 		else if ((pt.x >= 450.f && pt.x <= 550.f) && (pt.y >= 480.f && pt.y <= 580.f))
+		{
 			static_cast<CStageHS*>(m_pScene)->Set_Tower(CStageHS::RASERTOWER);
+			CSoundMgr::Get_Instance()->StopSound(SOUND_MONSTER);
+			CSoundMgr::Get_Instance()->PlaySound(L"trade.wav", SOUND_MONSTER, 1.f);
+		}
 		else if ((pt.x >= 630.f && pt.x <= 730.f) && (pt.y >= 480.f && pt.y <= 580.f))
+		{
 			CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);;
+			CSoundMgr::Get_Instance()->StopSound(SOUND_MONSTER);
+			CSoundMgr::Get_Instance()->PlaySound(L"trade.wav", SOUND_MONSTER, 1.f);
+		}
 	}
 }
 

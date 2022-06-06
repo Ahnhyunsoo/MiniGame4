@@ -8,6 +8,7 @@
 #include "LineMgr.h"
 #include "HSUI.h"
 #include "RaserTower.h"
+#include "SoundMgr.h"
 
 int CStageHS::g_iHP = 30;
 int CStageHS::g_iGold = 1000;
@@ -29,7 +30,9 @@ CStageHS::~CStageHS()
 
 void CStageHS::Initialize(void)
 {
-	
+	CSoundMgr::Get_Instance()->StopAll();
+	CSoundMgr::Get_Instance()->PlayBGM(L"Tower.wav", 0.6f);
+
 	CLineMgr::Get_Instance()->Load_Line();
 	m_tTowerPos[0] = { 385,240,415,270 };
 	m_tTowerPos[1] = { 385, 280, 415, 310 };
