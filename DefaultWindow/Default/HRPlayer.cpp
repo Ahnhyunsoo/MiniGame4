@@ -5,6 +5,9 @@
 #include "KeyMgr.h"
 #include "ObjMgr.h"
 #include "HRSwing.h"
+#include "CameraMgr.h"
+#include "TimeMgr.h"
+#include "HRBullet.h"
 
 CHRPlayer::CHRPlayer()
 	: m_eState(IDLE)
@@ -13,10 +16,12 @@ CHRPlayer::CHRPlayer()
 	, m_fOldDeshTime(0.f)
 {
 }
-
 CHRPlayer::~CHRPlayer()
 {
 }
+
+
+
 
 void CHRPlayer::Initialize(void)
 {
@@ -43,7 +48,6 @@ void CHRPlayer::Initialize(void)
 	m_vVertex.push_back(D3DXVECTOR3{ 10.f, 10.f, 0.f });
 	m_vVertex.push_back(D3DXVECTOR3{ -10.f, 10.f, 0.f });
 }
-
 int CHRPlayer::Update(void)
 {
 	switch (m_eState)
@@ -62,26 +66,64 @@ int CHRPlayer::Update(void)
 	PosinUpdate();
 	Update_MatWorld();
 
+	Update_Gravity();
+
 	return 0;
 }
-
 void CHRPlayer::Late_Update(void)
 {
-	Update_Gravity();
+	
 }
-
 void CHRPlayer::Render(HDC hDC)
 {
 	Render_Vertex(hDC);
 
-	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
-	MoveToEx(hDC, m_tInfo.vPos.x + iScrollX, m_tInfo.vPos.y, nullptr);
-	LineTo(hDC, m_tInfo.vPos.x + m_fPosinDir.x * 30.f , m_tInfo.vPos.y + m_fPosinDir.y * 30.f);
-}
 
+	if (!(CCameraMgr::Get_Instance()->Get_IsScaling()))
+	{
+		int iScrollX = CCameraMgr::Get_Instance()->Get_ScrollX();
+		int iScrollY = CCameraMgr::Get_Instance()->Get_ScrollY();
+		MoveToEx(hDC, m_tInfo.vPos.x + iScrollX, m_tInfo.vPos.y + iScrollY, nullptr);
+		LineTo(hDC, m_tInfo.vPos.x + m_fPosinDir.x * 30.f + iScrollX, m_tInfo.vPos.y + m_fPosinDir.y * 30.f + iScrollY);
+	}
+}
 void CHRPlayer::Release(void)
 {
 }
+
+
+
+
+void CHRPlayer::PosinUpdate()
+{
+	D3DXVECTOR3 vMousePos = Get_Mouse();
+
+	int iScrollX = CCameraMgr::Get_Instance()->Get_ScrollX();
+	int iScrollY = CCameraMgr::Get_Instance()->Get_ScrollY();
+
+	vMousePos.x -= iScrollX;
+	vMousePos.y -= iScrollY;
+
+	m_fPosinDir = vMousePos - m_tInfo.vPos;
+	D3DXVec3Normalize(&m_fPosinDir, &m_fPosinDir);
+}
+void CHRPlayer::DeshUpdate()
+{
+	if (m_fOldDeshTime + m_fDeshTime + CTimeMgr::Get_Instance()->Get_DelaySecond() < GetTickCount())
+	{
+		m_eState = IDLE;
+		m_fRemitSpeed = 5.f;
+		return;
+	}
+	m_bOnAir = true;
+	m_fRemitSpeed = 20.f;
+	m_fValX += m_fDeshDir.x * 3.f;
+	m_fValY += m_fDeshDir.y * 1.8f;
+}
+
+
+
+
 
 void CHRPlayer::KeyInput()
 {
@@ -132,6 +174,8 @@ void CHRPlayer::KeyInput()
 
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
 	{
+		CCameraMgr::Get_Instance()->StartShake(5.f, 5.f, 100.f);
+
 		m_bJump = false;
 		m_eState = DESH;
 		m_fOldDeshTime = GetTickCount();
@@ -146,31 +190,31 @@ void CHRPlayer::KeyInput()
 
 }
 
-void CHRPlayer::PosinUpdate()
-{
-	D3DXVECTOR3 vMousePos = Get_Mouse();
 
-	m_fPosinDir = vMousePos - m_tInfo.vPos;
-	D3DXVec3Normalize(&m_fPosinDir, &m_fPosinDir);
-}
 
-void CHRPlayer::DeshUpdate()
-{
-	if (m_fOldDeshTime + m_fDeshTime < GetTickCount())
-	{
-		m_eState = IDLE;
-		m_fRemitSpeed = 5.f;
-		return;
-	}
-	m_bOnAir = true;
-	m_fRemitSpeed = 20.f;
-	m_fValX += m_fDeshDir.x * 3.f;
-	m_fValY += m_fDeshDir.y * 1.8f;
-}
 
 
 void CHRPlayer::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	CHRObj* temp = (CHRObj*)_Other;
+
+	if (temp->Get_Tag() == "Bullet")
+	{
+		if (CKeyMgr::Get_Instance()->Key_Down(VK_RBUTTON))
+		{
+			((CHRBullet*)temp)->SetPadding();
+			((CHRBullet*)temp)->SetDefferDir();
+			CCameraMgr::Get_Instance()->StartScale(temp);
+			CCameraMgr::Get_Instance()->StartShake(10.f, 10.f, 200.f);
+
+			return;
+		}
+		//else
+		//	temp->Set_Dead();
+	}
+	else if (temp->Get_Tag() == "Swing")
+		return;
+
 	if (_DIR == DIR_UP)
 	{
 		m_bOnAir = false;
@@ -189,5 +233,6 @@ void CHRPlayer::OnCollision(DIRECTION _DIR, CObj * _Other)
 	{
 		m_bJump = false;
 	}
+
 
 }

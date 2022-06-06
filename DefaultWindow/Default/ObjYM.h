@@ -24,15 +24,9 @@ public:
 public:
 	virtual		void	OnCollision(DIRECTION _DIR, CObj* _Other) PURE;
 
-	string	Get_Tag() { return m_sTag; };
-
 
 public:
 	void Update_MatWorld(void);
 	void Render_Vertex(HDC hDC);
-
-
-protected:
-	string	m_sTag;
 };
 

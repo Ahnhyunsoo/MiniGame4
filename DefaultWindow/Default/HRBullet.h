@@ -2,16 +2,18 @@
 
 #include "HRObj.h"
 
-class CSwing
+class CHRBullet
 	: public CHRObj
 {
 public:
-	CSwing();
-	~CSwing();
+	CHRBullet();
+	~CHRBullet();
 
 public:
 	void SetDir(D3DXVECTOR3 _vDir) { m_tInfo.vDir = _vDir; }
-	bool GetHit() { return m_bCanHit; }
+	void SetDefferDir() { m_tInfo.vDir *= -1.f; }
+	void SetPadding() { m_bPadding = true; }
+	bool GetPadding() { return m_bPadding; }
 
 public:
 	virtual		void	Initialize(void);
@@ -30,8 +32,5 @@ private:
 	float m_fOldDeadTime;
 
 	bool m_bFirst;
-
-	float m_fHitTime;
-	float m_fOldHitTime;
-	bool m_bCanHit;
+	bool m_bPadding;
 };
