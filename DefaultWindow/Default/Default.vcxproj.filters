@@ -91,9 +91,6 @@
     <Filter Include="02.StageGH\GHObj\GHPlayer">
       <UniqueIdentifier>{d8a2cbba-7440-4dad-b68e-78c725367da2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.StageGH\GHObj\GHMonster">
-      <UniqueIdentifier>{8de1597e-2610-4eeb-82d3-3208f92c7873}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.StageYM\YMObj">
       <UniqueIdentifier>{4f820767-0edf-4104-a852-5144217376d0}</UniqueIdentifier>
     </Filter>
@@ -153,7 +150,7 @@
     </Filter>
     <Filter Include="04.StageHS\HSObj\HSUI">
       <UniqueIdentifier>{8723ae00-89ef-4624-be2c-8c6357d28008}</UniqueIdentifier>
-      </Filter>
+    </Filter>
     <Filter Include="02.StageGH\GHObj\GHLineMgr">
       <UniqueIdentifier>{67decc74-3645-4624-b1d1-70b580d1a712}</UniqueIdentifier>
     </Filter>
@@ -162,7 +159,7 @@
     </Filter>
     <Filter Include="02.StageGH\GHObj\GHButton">
       <UniqueIdentifier>{96b1dcd9-f0a2-4538-8f21-ece81b0ccdb0}</UniqueIdentifier>
-      </Filter>
+    </Filter>
     <Filter Include="03.StageYM\YMObj\YMBullet">
       <UniqueIdentifier>{4142c7f7-5ab9-484a-af5a-60efabbc69d7}</UniqueIdentifier>
     </Filter>
@@ -180,12 +177,21 @@
     </Filter>
     <Filter Include="03.StageYM\YMObj\YMBullet\Lazer">
       <UniqueIdentifier>{21f311f4-a901-44d3-b4d3-809f62ff711c}</UniqueIdentifier>
-      </Filter>
+    </Filter>
     <Filter Include="05.StageHR\HRObj\HRBlock">
       <UniqueIdentifier>{c4bca1e8-fed6-44be-9ba1-f7f68a7ae028}</UniqueIdentifier>
     </Filter>
     <Filter Include="05.StageHR\HRObj\HRSwing">
       <UniqueIdentifier>{6ac2b5c6-a4fb-4537-a301-3ebcb0822ac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.StageGH\GHObj\GHScoreMgr">
+      <UniqueIdentifier>{8de1597e-2610-4eeb-82d3-3208f92c7873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.StageGH\GHObj\GHScoreMgr\GHScore">
+      <UniqueIdentifier>{f4652796-42fe-4c01-a1d5-57bb3cab1db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.StageGH\GHObj\GHSkidLine">
+      <UniqueIdentifier>{245f1cb0-b563-46bf-bc15-b3c10ad6ba71}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -359,8 +365,7 @@
     </ClInclude>
     <ClInclude Include="TowerUI.h">
       <Filter>04.StageHS\HSObj\HSUI</Filter>
-       </ClInclude>
-  
+    </ClInclude>
     <ClInclude Include="GHLine.h">
       <Filter>02.StageGH\GHObj\GHLineMgr\GHLine</Filter>
     </ClInclude>
@@ -369,7 +374,7 @@
     </ClInclude>
     <ClInclude Include="GHButton.h">
       <Filter>02.StageGH\GHObj\GHButton</Filter>
-       </ClInclude>
+    </ClInclude>
     <ClInclude Include="HRPlayer.h">
       <Filter>05.StageHR\HRObj\HRPlayer</Filter>
     </ClInclude>
@@ -390,6 +395,15 @@
     </ClInclude>
     <ClInclude Include="RaserBullet.h">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
+      </ClInclude>
+    <ClInclude Include="GHScoreMgr.h">
+      <Filter>02.StageGH\GHObj\GHScoreMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="GHScore.h">
+      <Filter>02.StageGH\GHObj\GHScoreMgr\GHScore</Filter>
+    </ClInclude>
+    <ClInclude Include="GHSkidLine.h">
+      <Filter>02.StageGH\GHObj\GHSkidLine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -539,8 +553,7 @@
     </ClCompile>
     <ClCompile Include="TowerUI.cpp">
       <Filter>04.StageHS\HSObj\HSUI</Filter>
-      </ClCompile>
-
+    </ClCompile>
     <ClCompile Include="GHLine.cpp">
       <Filter>02.StageGH\GHObj\GHLineMgr\GHLine</Filter>
     </ClCompile>
@@ -549,7 +562,7 @@
     </ClCompile>
     <ClCompile Include="GHButton.cpp">
       <Filter>02.StageGH\GHObj\GHButton</Filter>
-      </ClCompile>
+    </ClCompile>
     <ClCompile Include="HRPlayer.cpp">
       <Filter>05.StageHR\HRObj\HRPlayer</Filter>
     </ClCompile>
@@ -570,6 +583,15 @@
     </ClCompile>
     <ClCompile Include="RaserBullet.cpp">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
+      </ClCompile>
+    <ClCompile Include="GHScoreMgr.cpp">
+      <Filter>02.StageGH\GHObj\GHScoreMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="GHScore.cpp">
+      <Filter>02.StageGH\GHObj\GHScoreMgr\GHScore</Filter>
+    </ClCompile>
+    <ClCompile Include="GHSkidLine.cpp">
+      <Filter>02.StageGH\GHObj\GHSkidLine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

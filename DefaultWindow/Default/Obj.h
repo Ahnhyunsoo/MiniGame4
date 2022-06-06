@@ -22,6 +22,8 @@ public:
 	void Set_vPosY(float fY) { m_tInfo.vPos.y += fY; }
 	void Set_Dead(void) { m_bDead = true; }
 	int Get_Hp() { return m_iHp; }
+	bool Get_Dead() { return m_bDead; }
+
 	void Set_Hp(int _Damage) { m_iHp -= _Damage; }
 	const int& Get_Damage() { return m_iDamage; }
 	void Set_Damage(int _Damage) { m_iDamage = _Damage; }
