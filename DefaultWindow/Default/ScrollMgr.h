@@ -34,7 +34,8 @@ public:
 			m_pInstance = nullptr;
 		}
 	}
-
+public:
+	void	Scroll_Reset() { m_fScrollY = 0.f; m_fScrollX = 0.f; }
 private:
 	static CScrollMgr*		m_pInstance;
 	int					m_fScrollX = 0;

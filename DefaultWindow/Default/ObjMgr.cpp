@@ -2,6 +2,8 @@
 #include "ObjMgr.h"
 #include "SceneMgr.h"
 
+#include "Scene.h"
+#include <iostream>
 
 CObjMgr* CObjMgr::m_pInstance = nullptr;
 
@@ -41,7 +43,7 @@ void CObjMgr::Update()
 				++iter;
 		}
 	}
-
+	cout << m_ObjList[OBJ_PLAYER].size() << endl;
 }
 
 void CObjMgr::Late_Update()
@@ -72,6 +74,8 @@ void CObjMgr::Render(HDC hDC)
 
 		}
 	}
+
+	CSceneMgr::Get_Instance()->Check_Reserve();
 }
 
 void CObjMgr::Release()
@@ -125,6 +129,9 @@ void CObjMgr::Late_UpdateSeclect()
 }
 void CObjMgr::Late_UpdateST()
 {
+	if(!m_ObjList[OBJ_PLAYER].size() == 1|| !m_ObjList[OBJ_UI].empty())
+		CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_UI], false);
+
 }
 void CObjMgr::Late_UpdateGH()
 {

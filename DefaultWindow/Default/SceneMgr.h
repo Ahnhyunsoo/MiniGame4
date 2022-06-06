@@ -11,6 +11,10 @@ private:
 
 public:
 	void		Scene_Change(SCENE eID);
+	void		Scene_Reserve(SCENE eID) { m_eReserveScene = eID; }
+	void		Check_Reserve();
+
+
 	void		Update(void);
 	void		Late_Update(void);
 	void		Render(HDC hDC);
@@ -44,6 +48,8 @@ private:
 	CScene*					m_pScene;
 	SCENE					m_eCurScene;
 	SCENE					m_ePreScene;
-	
+
+	SCENE					m_eReserveScene;
+
 };
 

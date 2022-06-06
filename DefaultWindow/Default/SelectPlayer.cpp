@@ -2,7 +2,8 @@
 #include "SelectPlayer.h"
 #include "KeyMgr.h"
 #include "ScrollMgr.h"
-
+#include "SceneMgr.h"
+#include "STStageName.h"
 CSelectPlayer::CSelectPlayer()
 {
 }
@@ -12,8 +13,20 @@ CSelectPlayer::~CSelectPlayer()
 {
 }
 
+void CSelectPlayer::Set_Stage_STPlayerPos()
+{
+	m_tInfo.vPos.x = WINCX / 2;
+	m_tInfo.vPos.y = WINCY;
+	m_fScale = 2.f;
+	m_tInfo.vDir = { 0.f,-1.f,0.f };
+	m_bStageStartPlayer = true;
+	m_fAngle = -90.f;
+
+}
+
 void CSelectPlayer::Initialize(void)
 {
+	m_bStageStartPlayer = false;
 	m_tInfo.fCX = 60.f;
 	m_tInfo.fCY = 40.f;
 	m_tInfo.vPos = { 0.f,300.f,0.f };
@@ -39,7 +52,10 @@ int CSelectPlayer::Update(void)
 {
 	if (m_bDead)
 		return OBJ_DEAD;
-	OffSet();
+	if(!m_bStageStartPlayer)
+		OffSet();
+	
+
 	Key_Input();
 
 	Update_MatWorld();
@@ -73,6 +89,27 @@ void CSelectPlayer::Release(void)
 
 void CSelectPlayer::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	if (m_bStageStartPlayer)
+	{
+		int iStageGo (dynamic_cast<CSTStageName*>(_Other)->Get_Name());
+		if (iStageGo == 0)
+		{
+			CSceneMgr::Get_Instance()->Scene_Reserve(STAGE_GH);
+		}
+		else if (iStageGo == 1)
+		{
+			CSceneMgr::Get_Instance()->Scene_Reserve(STAGE_YM);
+		}
+		else if (iStageGo == 2)
+		{
+			CSceneMgr::Get_Instance()->Scene_Reserve(STAGE_HS);
+		}
+		else if (iStageGo == 3)
+		{
+			CSceneMgr::Get_Instance()->Scene_Reserve(STAGE_HR);
+
+		}
+	}
 }
 
 void CSelectPlayer::Key_Input(void)

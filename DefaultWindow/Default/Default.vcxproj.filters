@@ -192,13 +192,13 @@
     </Filter>
     <Filter Include="02.StageGH\GHObj\GHSkidLine">
       <UniqueIdentifier>{245f1cb0-b563-46bf-bc15-b3c10ad6ba71}</UniqueIdentifier>
-      </Filter>
+    </Filter>
     <Filter Include="03.StageYM\YMObj\YMMonster\MiddleBoss">
       <UniqueIdentifier>{87905a5b-cb7d-4d82-91d0-5e5b0fa3d1ee}</UniqueIdentifier>
-      </Filter>
+    </Filter>
     <Filter Include="05.StageHR\Mgr">
       <UniqueIdentifier>{8aa89dbb-dd08-4c7a-8227-fe7b24cc9331}</UniqueIdentifier>
-      </Filter>
+    </Filter>
     <Filter Include="03.StageYM\YMObj\YMMonster\MiddleBoss">
       <UniqueIdentifier>{87905a5b-cb7d-4d82-91d0-5e5b0fa3d1ee}</UniqueIdentifier>
     </Filter>
@@ -225,12 +225,15 @@
     </Filter>
     <Filter Include="03.StageYM\YMObj\YMItem\ItemYMBoom">
       <UniqueIdentifier>{3b4b0b8f-120e-4ad3-82f3-d2203644baae}</UniqueIdentifier>
-       </Filter>
+    </Filter>
     <Filter Include="05.StageHR\Mgr">
       <UniqueIdentifier>{8aa89dbb-dd08-4c7a-8227-fe7b24cc9331}</UniqueIdentifier>
     </Filter>
     <Filter Include="05.StageHR\HRObj\HRBullet">
       <UniqueIdentifier>{794ed303-c5b5-4026-91a8-ec52e1173610}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.StageST\STObj\STStageName">
+      <UniqueIdentifier>{c5ceff5a-3829-41c3-997b-617954b9441d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -434,7 +437,7 @@
     </ClInclude>
     <ClInclude Include="RaserBullet.h">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
-      </ClInclude>
+    </ClInclude>
     <ClInclude Include="GHScoreMgr.h">
       <Filter>02.StageGH\GHObj\GHScoreMgr</Filter>
     </ClInclude>
@@ -443,13 +446,13 @@
     </ClInclude>
     <ClInclude Include="GHSkidLine.h">
       <Filter>02.StageGH\GHObj\GHSkidLine</Filter>
-       </ClInclude>
+    </ClInclude>
     <ClInclude Include="YMMiddleBoss.h">
       <Filter>03.StageYM\YMObj\YMMonster\MiddleBoss</Filter>
-        </ClInclude>
+    </ClInclude>
     <ClInclude Include="CameraMgr.h">
       <Filter>05.StageHR\Mgr</Filter>
-         </ClInclude>
+    </ClInclude>
     <ClInclude Include="YMMiddleBoss.h">
       <Filter>03.StageYM\YMObj\YMMonster\MiddleBoss</Filter>
     </ClInclude>
@@ -476,7 +479,7 @@
     </ClInclude>
     <ClInclude Include="YMIBoom.h">
       <Filter>03.StageYM\YMObj\YMItem\ItemYMBoom</Filter>
-      </ClInclude>
+    </ClInclude>
     <ClInclude Include="CameraMgr.h">
       <Filter>05.StageHR\Mgr</Filter>
     </ClInclude>
@@ -485,6 +488,12 @@
     </ClInclude>
     <ClInclude Include="HRBullet.h">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="UIMgr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="STStageName.h">
+      <Filter>01.StageST\STObj\STStageName</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -664,7 +673,7 @@
     </ClCompile>
     <ClCompile Include="RaserBullet.cpp">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
-      </ClCompile>
+    </ClCompile>
     <ClCompile Include="GHScoreMgr.cpp">
       <Filter>02.StageGH\GHObj\GHScoreMgr</Filter>
     </ClCompile>
@@ -673,13 +682,13 @@
     </ClCompile>
     <ClCompile Include="GHSkidLine.cpp">
       <Filter>02.StageGH\GHObj\GHSkidLine</Filter>
-      </ClCompile>
+    </ClCompile>
     <ClCompile Include="YMMiddleBoss.cpp">
       <Filter>03.StageYM\YMObj\YMMonster\MiddleBoss</Filter>
-      </ClCompile>
+    </ClCompile>
     <ClCompile Include="CameraMgr.cpp">
       <Filter>05.StageHR\Mgr</Filter>
-       </ClCompile>
+    </ClCompile>
     <ClCompile Include="YMMiddleBoss.cpp">
       <Filter>03.StageYM\YMObj\YMMonster\MiddleBoss</Filter>
     </ClCompile>
@@ -706,7 +715,7 @@
     </ClCompile>
     <ClCompile Include="YMIBoom.cpp">
       <Filter>03.StageYM\YMObj\YMItem\ItemYMBoom</Filter>
-       </ClCompile>
+    </ClCompile>
     <ClCompile Include="CameraMgr.cpp">
       <Filter>05.StageHR\Mgr</Filter>
     </ClCompile>
@@ -715,6 +724,12 @@
     </ClCompile>
     <ClCompile Include="HRBullet.cpp">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="UIMgr.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STStageName.cpp">
+      <Filter>01.StageST\STObj\STStageName</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

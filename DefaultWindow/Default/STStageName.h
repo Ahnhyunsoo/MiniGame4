@@ -1,15 +1,11 @@
 #pragma once
 #include "Obj.h"
-class CSelectPlayer :
+class CSTStageName :
 	public CObj
 {
 public:
-	CSelectPlayer();
-	virtual ~CSelectPlayer();
-
-public:
-	void Key_Input(void);
-	void OffSet(void);
+	CSTStageName();
+	virtual ~CSTStageName();
 
 	// CObj을(를) 통해 상속됨
 	virtual void Initialize(void) override;
@@ -19,8 +15,10 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 public:
-	void	Set_Stage_STPlayerPos();
+	void Set_Name(int _iNum);
+	const int	Get_Name() { return m_iIndexNum; }
 private:
-	bool	m_bStageStartPlayer;
+	void Render_Name(HDC hdc);
+	int	m_iIndexNum;
 };
 

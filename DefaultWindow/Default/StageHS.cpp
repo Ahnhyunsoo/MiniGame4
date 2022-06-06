@@ -89,10 +89,10 @@ void CStageHS::Late_Update(void)
 
 void CStageHS::Render(HDC hDC)
 {
+	Rectangle(hDC, 0, 0, WINCX, WINCY);
+	// HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"aa");
 	
-	HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"aa");
-
-	BitBlt(hDC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
+	//BitBlt(hDC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
 	//Rectangle(hDC, 0, 0, WINCX, WINCY);
 	Draw_Rect(hDC);
 	Draw_UI(hDC);

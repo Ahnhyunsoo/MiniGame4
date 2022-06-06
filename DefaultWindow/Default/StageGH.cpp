@@ -230,8 +230,11 @@ void CStageGH::Render(HDC hDC)
 	// 0 ~ 800 6개라인 한개 133.3
 	// 0 - 133 
 	// 
-	HDC		hDC2 = CBmpMgr::Get_Instance()->Find_Image(L"aa");
-	BitBlt(hDC, 0, 0, 800, 600, hDC2, 0, 0, SRCCOPY);
+
+	//HDC		hDC2 = CBmpMgr::Get_Instance()->Find_Image(L"aa");
+	//BitBlt(hDC, 0, 0, 800, 600, hDC2, 0, 0, SRCCOPY);
+
+	Rectangle(hDC, 0, 0, WINCX, WINCY);
 
 	MoveToEx(hDC, (int)m_Col_Left_RightLine[0].tLPoint.x, (int)m_Col_Left_RightLine[0].tLPoint.y, nullptr);
 	LineTo(hDC, (int)m_Col_Left_RightLine[0].tRPoint.x, (int)m_Col_Left_RightLine[0].tRPoint.y);
@@ -251,7 +254,7 @@ void CStageGH::Release(void)
 {
 	CGHLineMgr::Get_Instance()->Destroy_Instance();
 	CObjMgr::Get_Instance()->Release();
-	CGHScoreMgr::Get_Instance()->Release();
+	CGHScoreMgr::Get_Instance()->Destroy_Instance();
 
 }
 
@@ -278,7 +281,7 @@ void CStageGH::Key_Input()
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON)) {
 		cout <<GetTickCount() - m_MusicTime << endl;
 		m_MusicTime = GetTickCount();
-
+		CSceneMgr::Get_Instance()->Scene_Change(STAGE_HS);
 	}
 
 

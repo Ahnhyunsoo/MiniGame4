@@ -44,6 +44,11 @@ void CStageSelect::Update(void)
 
 		Timer();
 	}
+	else
+	{
+		if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
+			CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);
+	}
 }
 
 void CStageSelect::Late_Update(void)
