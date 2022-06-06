@@ -32,12 +32,14 @@ void CStageHR::Initialize(void)
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(600.f, 100.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(1100.f, 100.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(1200.f, 100.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(1300.f, 100.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(1400.f, 100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(1300.f, 300.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(1400.f, 300.f));
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_HR_BLOCK, CAbstractFactory<CHRBlock>::CreateHRBlock(300.f, WINCY, 10000.f, 100.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_HR_BLOCK, CAbstractFactory<CHRBlock>::CreateHRBlock(650.f, WINCY, 200.f, 600.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_HR_BLOCK, CAbstractFactory<CHRBlock>::CreateHRBlock(300.f, 300.f, 100.f, 300.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_HR_BLOCK, CAbstractFactory<CHRBlock>::CreateHRBlock(1200.f, 200.f, 300.f, 100.f));
+
 }
 
 void CStageHR::Update(void)

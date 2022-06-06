@@ -148,7 +148,17 @@ void CHRMonster::Late_Update(void)
 
 void CHRMonster::Render(HDC hDC)
 {
+
+	HPEN hpen;
+	HPEN hpenOld;
+
+	hpen = CreatePen(PS_SOLID, 3, RGB(255, 0, 255));   // 선 스타일, 굵기, 색상
+	hpenOld = (HPEN)::SelectObject(hDC, (HGDIOBJ)hpen);   // 펜 선택
+
 	Render_Vertex(hDC);
+
+	hpen = (HPEN)SelectObject(hDC, hpenOld);   // 기존의 펜 다시 선택
+	DeleteObject(hpen);   // 생성한 펜 삭제
 }
 
 void CHRMonster::Release(void)
