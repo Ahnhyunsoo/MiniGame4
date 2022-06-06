@@ -1,13 +1,11 @@
 #pragma once
 #include "HSObj.h"
-class CRaserTower :
+class CRaserRect :
 	public CHSObj
 {
 public:
-	CRaserTower();
-	virtual ~CRaserTower();
-
-	void Create_Bullet(void);
+	CRaserRect(D3DXVECTOR3 _DIR);
+	virtual ~CRaserRect();
 
 	// CHSObj을(를) 통해 상속됨
 	virtual void Initialize(void) override;
@@ -16,12 +14,5 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
-
-private:
-	DWORD m_LBullet;
-	DWORD m_LSearchDelay;
-	D3DXVECTOR3 m_vTarget;
-	bool m_bBattle;
-	int m_iShotDelay;
 };
 

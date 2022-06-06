@@ -17,5 +17,7 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 
+private:
+	CObj* m_pObj;
 };
 

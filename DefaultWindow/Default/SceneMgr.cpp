@@ -7,6 +7,7 @@
 #include "StageYM.h"
 #include "StageEdit.h"
 #include "StageHR.h"
+#include "SoundMgr.h"
 
 
 CSceneMgr*	CSceneMgr::m_pInstance = nullptr;
@@ -70,7 +71,6 @@ void CSceneMgr::Update(void)
 {
 	m_pScene->Update();
 
-
 }
 
 void CSceneMgr::Late_Update(void)
@@ -81,13 +81,14 @@ void CSceneMgr::Late_Update(void)
 void CSceneMgr::Render(HDC hDC)
 {
 	m_pScene->Render(hDC);
-	
-	
 }
 
 void CSceneMgr::Release(void)
 {
+	
+	//CObjMgr::Get_Instance()->Release();
 	Safe_Delete(m_pScene);
+	
 }
 
 

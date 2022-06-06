@@ -33,12 +33,13 @@ void CMainGame::Initialize(void)
 
 	CSoundMgr::Get_Instance()->Initialize();
 
-	CSceneMgr::Get_Instance()->Scene_Change(STAGE_YM);
+	CSceneMgr::Get_Instance()->Scene_Change(STAGE_HS);
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back");
 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/aa.bmp", L"aa");
-	//CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back");
-	//CSceneMgr::Get_Instance()->Scene_Change(STAGE_YM);
+	
+
+
 	
 
 

@@ -6,7 +6,7 @@
 
 
 CRaserTower::CRaserTower()
-	:m_LBullet(GetTickCount()), m_iShotDelay(1000)
+	:m_LBullet(GetTickCount()), m_iShotDelay(2000),m_LSearchDelay(GetTickCount())
 {
 }
 

@@ -24,7 +24,7 @@ void CHSMonster::Initialize(void)
 	m_fScale = 1.f;
 	m_tInfo.vDir = { -1.f,0.f,0.f };
 	m_bDead = false;
-	m_iHp = 3;
+	m_iHp = 10;
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ -15.f, -15.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 15.f, -15.f, 0.f });

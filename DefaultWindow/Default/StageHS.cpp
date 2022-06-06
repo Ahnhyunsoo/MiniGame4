@@ -15,14 +15,15 @@ int CStageHS::g_iKill = 0;
 int CStageHS::g_iExp = 1;
 
 CStageHS::CStageHS()
-	:m_iSponSpeed(1000),m_iNowMonster(0),m_iMaxMonster(15),m_LSponMonster(GetTickCount()),m_iLevel(1),m_iMaxExp(100), m_iRound(1)
-	
+	:m_iSponSpeed(500),m_iNowMonster(0),m_iMaxMonster(150),m_LSponMonster(GetTickCount()),m_iLevel(1),m_iMaxExp(100), m_iRound(1)	
 {
+	//CObjMgr::Get_Instance()->Add_Object(OBJ_UI,CAbstractFactory<CHSUI>::CreateHSUI)
 }
 
 
 CStageHS::~CStageHS()
 {
+	Release();
 }
 
 void CStageHS::Initialize(void)
@@ -51,10 +52,6 @@ void CStageHS::Initialize(void)
 	m_tTowerPos[17] = { 490, 60, 520, 90 };
 	m_tTowerPos[18] = { 530, 60, 560, 90 };
 
-
-	
-	
-
 }
 
 void CStageHS::Update(void)
@@ -72,6 +69,17 @@ void CStageHS::Update(void)
 		}
 	}
 	CreateTower();
+	if (g_iHP <= 0)
+		CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);
+
+	if(g_iKill >= 150)
+		CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);
+
+	if (CKeyMgr::Get_Instance()->Key_Pressing('Q'))
+	{
+		//CSceneMgr::Get_Instance()->Release();
+		CSceneMgr::Get_Instance()->Scene_Change(STAGE_GH);
+	}
 
 }
 
@@ -157,6 +165,7 @@ void CStageHS::Render(HDC hDC)
 
 void CStageHS::Release(void)
 {
+	CObjMgr::Get_Instance()->Release();
 }
 
 void CStageHS::Draw_Rect(HDC hDC)
@@ -188,7 +197,7 @@ void CStageHS::CreateTower(void)
 			if (pt.x >= m_tTowerPos[i].left && pt.x <= m_tTowerPos[i].right
 				&& pt.y >= m_tTowerPos[i].top && pt.y <= m_tTowerPos[i].bottom)
 			{
-				CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CGunTower>::CreateObj(m_tTowerPos[i].left + 15.f, m_tTowerPos[i].top + 15.f));
+				CObjMgr::Get_Instance()->Add_Object(OBJ_TOWER, CAbstractFactory<CRaserTower>::CreateObj(m_tTowerPos[i].left + 15.f, m_tTowerPos[i].top + 15.f));
 				g_iGold -= 500;
 			}
 		}		

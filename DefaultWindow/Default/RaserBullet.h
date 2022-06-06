@@ -16,6 +16,7 @@ public:
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 
 	DWORD m_LTarget;
+	DWORD m_LBulletSpon;
 	D3DXVECTOR3 m_vTarget;
 	CObj* m_pTower;
 	bool m_bRaser;

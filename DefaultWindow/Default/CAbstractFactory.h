@@ -62,4 +62,11 @@ public:
 		return _Temp;
 	}
 
+	/*static CObj* CreateHSUI(CObj* pObj)
+	{
+		CObj* _Temp = new T(pObj);
+		_Temp->Initialize();
+		return _Temp;
+	}*/
+
 };
