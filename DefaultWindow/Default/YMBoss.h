@@ -1,11 +1,11 @@
 #pragma once
 #include "ObjYM.h"
-class CYMMiddleBoss :
+class CYMBoss :
 	public CObjYM
 {
 public:
-	CYMMiddleBoss();
-	virtual ~CYMMiddleBoss();
+	CYMBoss();
+	virtual ~CYMBoss();
 
 public:
 	virtual void Initialize(void) override;
@@ -15,12 +15,8 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 
-
 private:
-	int m_iSide;
-	int m_iSideCount;
-
-	int m_iBulletCount;
-	bool m_bBulletCount;
+	bool	m_bUi_Check;
 };
+
 

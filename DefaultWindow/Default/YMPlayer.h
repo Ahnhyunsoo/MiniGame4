@@ -35,5 +35,6 @@ private:
 	int			m_iBoomCount;
 	bool		m_bBoom;
 	int			m_iBoom;
+	bool		m_iGameOver;
 };
 

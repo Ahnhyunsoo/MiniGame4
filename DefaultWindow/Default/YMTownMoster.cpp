@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "YMTownMoster.h"
+#include "ObjMgr.h"
+#include "CAbstractFactory.h"
+#include "YMMonsterBullet.h"
 
 
 CYMTownMoster::CYMTownMoster()
@@ -14,12 +17,15 @@ CYMTownMoster::~CYMTownMoster()
 void CYMTownMoster::Initialize(void)
 {
 	m_fAngle = 1.f;
-	m_fSpeed = 0.f;
+	m_fSpeed = 2.f;
 	m_fScale = 3.f;
 	m_iHp = 3;
 	m_bDead = false;
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 	m_sTag = "monster";
+	m_iSideCount = 0;
+
+	m_iSide = 0;
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ 0.f, 0.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 8.f, -10.f, 0.f });
@@ -190,6 +196,21 @@ int CYMTownMoster::Update(void)
 
 void CYMTownMoster::Late_Update(void)
 {
+	if (m_tInfo.vPos.y >= 100 && m_iSide <= 2)
+	{
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x , m_tInfo.vPos.y + 50, DIR_DOWN));
+		m_iSide++;
+	}
+
+	if (m_iSide == 3 && m_iSideCount == 0)
+	{
+		m_iSideCount = GetTickCount();
+	}
+	else if (m_iSide == 3 && m_iSideCount + 1000 < GetTickCount())
+	{
+		m_iSide = 0;
+		m_iSideCount = 0;
+	}
 }
 
 void CYMTownMoster::Render(HDC hDC)

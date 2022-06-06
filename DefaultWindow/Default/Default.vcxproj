@@ -215,6 +215,7 @@
     <ClInclude Include="TowerUI.h" />
     <ClInclude Include="UIMgr.h" />
     <ClInclude Include="YMBoom.h" />
+    <ClInclude Include="YMBoss.h" />
     <ClInclude Include="YMBullet.h" />
     <ClInclude Include="YMHeal.h" />
     <ClInclude Include="YMIBoom.h" />
@@ -289,6 +290,7 @@
     <ClCompile Include="TowerUI.cpp" />
     <ClCompile Include="UIMgr.cpp" />
     <ClCompile Include="YMBoom.cpp" />
+    <ClCompile Include="YMBoss.cpp" />
     <ClCompile Include="YMBullet.cpp" />
     <ClCompile Include="YMHeal.cpp" />
     <ClCompile Include="YMIBoom.cpp" />
