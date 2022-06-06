@@ -54,8 +54,34 @@ void CHRMonster::Initialize(void)
 
 int CHRMonster::Update(void)
 {
+	//if (m_bRealDead)
+	//	return OBJ_DEAD;
+
+	if (CKeyMgr::Get_Instance()->Key_Pressing('P') || CTimeMgr::Get_Instance()->Get_Record())
+	{
+		m_fValX = 0.f;
+		m_fValY = 0.f;
+		m_eState = IDLE;
+		m_bCanHit = true;
+		m_bRecord = true;
+	}
+	else
+		m_bRecord = false;
+
+	if (!m_bRecord)
+	{
+		Update_Record();
+	}
+	else
+	{
+		Update_BackRecord();
+		Update_MatWorld();
+		return 0;
+	}
+
 	if (m_bDead)
-		return OBJ_DEAD;
+		return OBJ_NOEVENT;
+
 
 	switch (m_eState)
 	{
@@ -148,6 +174,8 @@ void CHRMonster::Late_Update(void)
 
 void CHRMonster::Render(HDC hDC)
 {
+	if (m_bDead)
+		return;
 
 	HPEN hpen;
 	HPEN hpenOld;
@@ -167,6 +195,9 @@ void CHRMonster::Release(void)
 
 void CHRMonster::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	if (m_bDead || m_bRecord)
+		return;
+
 	CHRObj* temp = (CHRObj*)_Other;
 
 	if (temp->Get_Tag() == "Swing" && m_bCanHit)

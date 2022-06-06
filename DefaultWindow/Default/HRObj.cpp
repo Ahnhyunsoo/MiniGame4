@@ -11,6 +11,8 @@ CHRObj::CHRObj()
 	, m_fValY(0.f)
 	, m_fValX(0.f)
 	, m_fRemitSpeed(0.f)
+	, m_bRecord(false)
+	, m_bRealDead(false)
 {
 	m_bDead = false;
 }
@@ -87,6 +89,33 @@ void CHRObj::Update_Gravity()
 
 	m_tInfo.vPos += m_vTempPos;
 }
+
+void CHRObj::Update_Record()
+{
+	m_vRecords.push_back(RECORD(m_tInfo.vPos.x, m_tInfo.vPos.y, m_bDead));
+}
+void CHRObj::Update_BackRecord()
+{
+	if (m_vRecords.size() == 0)
+	{
+		m_bRealDead = true;
+		return;
+	}
+
+	m_tInfo.vPos = m_vRecords.back().m_vRecord;
+	m_bDead = m_vRecords.back().m_bDead;
+	m_vRecords.pop_back();
+
+	if (m_vRecords.size() == 0)
+	{
+		m_bRealDead = true;
+		return;
+	}
+	m_vRecords.pop_back();
+}
+
+
+
 
 
 void CHRObj::Render_Vertex(HDC hDC)

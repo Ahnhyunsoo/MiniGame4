@@ -405,6 +405,9 @@
     <ClInclude Include="HRBullet.h">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
     </ClInclude>
+    <ClInclude Include="HRPlayerHP.h">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Default.cpp">
@@ -589,6 +592,9 @@
     </ClCompile>
     <ClCompile Include="HRBullet.cpp">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="HRPlayerHP.cpp">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

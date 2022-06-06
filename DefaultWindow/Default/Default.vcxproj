@@ -170,6 +170,7 @@
     <ClInclude Include="HRMonster.h" />
     <ClInclude Include="HRObj.h" />
     <ClInclude Include="HRPlayer.h" />
+    <ClInclude Include="HRPlayerHP.h" />
     <ClInclude Include="HRSwing.h" />
     <ClInclude Include="HSBullet.h" />
     <ClInclude Include="HSMonster.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="HRMonster.cpp" />
     <ClCompile Include="HRObj.cpp" />
     <ClCompile Include="HRPlayer.cpp" />
+    <ClCompile Include="HRPlayerHP.cpp" />
     <ClCompile Include="HRSwing.cpp" />
     <ClCompile Include="HSBullet.cpp" />
     <ClCompile Include="HSMonster.cpp" />

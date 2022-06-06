@@ -37,6 +37,8 @@ private:
 public:
 	float Get_TimeValue() { return m_fTimeValue; }
 	float Get_DelaySecond() { return m_iDelayScond; }
+	bool Get_Record() { return m_bRecord; }
+	void Set_Record(bool _bValue) { m_bRecord = _bValue; }
 
 public:
 	void CalTimeUpdate();
@@ -54,4 +56,5 @@ private:
 	int m_iFPS;
 	float m_iDelayScond;
 
+	bool m_bRecord;
 };

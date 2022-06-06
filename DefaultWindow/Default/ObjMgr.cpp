@@ -67,7 +67,7 @@ void CObjMgr::Render(HDC hDC)
 		for (auto& iter : m_ObjList[i])
 		{
 			iter->Render(hDC);
-			//iter->HR_ColRender(hDC);
+			// iter->HR_ColRender(hDC);
 		}
 	}
 }
@@ -136,12 +136,12 @@ void CObjMgr::Late_UpdateHS()
 }
 void CObjMgr::Late_UpdateHR()
 {
-	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_HR_BLOCK], m_ObjList[OBJ_PLAYER], true);
-	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_HR_BLOCK], m_ObjList[OBJ_MONSTER], true);
-
-	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER], true);
-	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BULLET], false);
-	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET], false);
+	CCollisionMgr::Get_Instance()->Collision_HR_RectEx(m_ObjList[OBJ_HR_BLOCK], m_ObjList[OBJ_PLAYER], true);
+	CCollisionMgr::Get_Instance()->Collision_HR_RectEx(m_ObjList[OBJ_HR_BLOCK], m_ObjList[OBJ_MONSTER], true);
+								   
+	CCollisionMgr::Get_Instance()->Collision_HR_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER], true);
+	CCollisionMgr::Get_Instance()->Collision_HR_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BULLET], false);
+	CCollisionMgr::Get_Instance()->Collision_HR_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET], false);
 }
 void CObjMgr::Late_UpdateEND()
 {
