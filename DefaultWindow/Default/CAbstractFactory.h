@@ -36,6 +36,14 @@ public:
 		_Temp->Set_vPos(_fX, _fY);
 		return _Temp;
 	}
+	static CObj* CreateObj(float _fX, float _fY, DIRECTION _Dir)
+	{
+		CObj* _Temp = new T(_Dir);
+		_Temp->Initialize();
+		_Temp->Set_vPos(_fX, _fY);
+		return _Temp;
+	}
+
 	static CObj* CreateObj(float _fX, float _fY,int _iNameNum)
 	{
 		CObj* _Temp = new T;

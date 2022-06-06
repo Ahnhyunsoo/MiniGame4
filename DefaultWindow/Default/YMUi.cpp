@@ -2,6 +2,7 @@
 #include "YMUi.h"
 #include "YMPlayer.h"
 #include "ObjMgr.h"
+#include "YMScoreMgr.h"
 
 
 CYMUi::CYMUi()
@@ -24,6 +25,7 @@ void CYMUi::Initialize(void)
 
 	m_bBossStart = false;
 	m_iBossHp = 0;
+	m_iScore = 0;
 
 	m_vBoom = {175.f, 535.f, 0.f};
 	m_b2P = false;
@@ -51,6 +53,8 @@ int CYMUi::Update(void)
 	m_iHp = static_cast<CYMPlayer*>(CObjMgr::Get_Instance()->Get_ObjList(OBJ_PLAYER).back())->Get_Hp();
 	m_iBoom = static_cast<CYMPlayer*>(CObjMgr::Get_Instance()->Get_ObjList(OBJ_PLAYER).back())->Get_Boom();
 	m_iLevel = static_cast<CYMPlayer*>(CObjMgr::Get_Instance()->Get_ObjList(OBJ_PLAYER).back())->Get_Level();
+	m_iScore = CYMScoreMgr::Get_Score();
+
 
 	return 0;
 }
@@ -124,6 +128,9 @@ void CYMUi::Render(HDC hDC)
 		DeleteObject(hpen);
 	}
 
+	TCHAR mName3[30];
+	wsprintf(mName, TEXT("SCORE  %d"), m_iScore);
+	TextOut(hDC, 20, 20, mName, lstrlen(mName));
 }
 
 void CYMUi::Release(void)

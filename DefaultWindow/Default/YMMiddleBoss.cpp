@@ -3,6 +3,8 @@
 #include "CAbstractFactory.h"
 #include "ObjMgr.h"
 #include "YMMonsterBullet.h"
+#include "YMScoreMgr.h"
+#include "YMHeal.h"
 
 
 CYMMiddleBoss::CYMMiddleBoss()
@@ -19,7 +21,7 @@ void CYMMiddleBoss::Initialize(void)
 	m_fAngle = 180.f;
 	m_fSpeed = 2.f;
 	m_fScale = 2.f;
-	m_iHp = 1000;
+	m_iHp = 3000;
 	m_bDead = false;
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 	m_tInfo.vDir = { 0.f,0.f,0.f };
@@ -126,7 +128,7 @@ void CYMMiddleBoss::Initialize(void)
 
 int CYMMiddleBoss::Update(void)
 {
-	if(m_tInfo.vPos.y == 100)
+	if (m_tInfo.vPos.y >= 100)
 		m_tInfo.vPos.x += m_fSpeed;
 	else
 		m_tInfo.vPos.y += m_fSpeed;
@@ -153,9 +155,12 @@ int CYMMiddleBoss::Update(void)
 
 
 	if (m_bDead)
+	{
+		CYMScoreMgr::Get_Instance()->Plus_Score(1000);
+		CObjMgr::Get_Instance()->Add_Object(OBJ_ITEM, CAbstractFactory<CYMHeal>::CreateObj(m_tInfo.vPos.x, m_tInfo.vPos.y - 50));
 		return OBJ_DEAD;
+	}
 	else
-
 		return OBJ_NOEVENT;
 }
 
@@ -205,6 +210,6 @@ void CYMMiddleBoss::OnCollision(DIRECTION _DIR, CObj * _Other)
 	else if (temp->Get_Tag() == "lazer")
 		Set_Hp(5);
 
-	if (m_iHp == 0)
+	if (m_iHp <= 0)
 		m_bDead = true;
 }
