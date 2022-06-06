@@ -1,6 +1,8 @@
 #pragma once
 #include "Obj.h"
 #include "GHFloar.h"
+#include "SelectPlayer.h"
+#include "STStageName.h"
 template <typename T>
 class CAbstractFactory
 {
@@ -20,12 +22,27 @@ public:
 		_Temp->Initialize();
 		return _Temp;
 	}
-
+	static CObj* Create(bool _bStageStartPlayer)
+	{
+		CObj* _Temp = new T;
+		_Temp->Initialize();
+		dynamic_cast<CSelectPlayer*>(_Temp)->Set_Stage_STPlayerPos();
+		return _Temp;
+	}
 	static CObj* CreateObj(float _fX, float _fY)
 	{
 		CObj* _Temp = new T;
 		_Temp->Initialize();
 		_Temp->Set_vPos(_fX, _fY);
+		return _Temp;
+	}
+	static CObj* CreateObj(float _fX, float _fY,int _iNameNum)
+	{
+		CObj* _Temp = new T;
+		_Temp->Initialize();
+		_Temp->Set_vPos(_fX, _fY);
+		dynamic_cast<CSTStageName*>(_Temp)->Set_Name(_iNameNum);
+
 		return _Temp;
 	}
 

@@ -6,8 +6,7 @@ class CStageST : public CScene
 public:
 	CStageST();
 	~CStageST();
-
-	// CScene을(를) 통해 상속됨
+public:
 	virtual void Initialize(void) override;
 	virtual void Update(void) override;
 	virtual void Late_Update(void) override;

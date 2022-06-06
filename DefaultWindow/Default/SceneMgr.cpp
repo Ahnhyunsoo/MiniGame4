@@ -9,12 +9,11 @@
 #include "StageHR.h"
 #include "SoundMgr.h"
 
-
 CSceneMgr*	CSceneMgr::m_pInstance = nullptr;
 
 
 CSceneMgr::CSceneMgr()
-	: m_pScene(nullptr), m_eCurScene(STAGE_SELECT)
+	: m_pScene(nullptr), m_eCurScene(STAGE_SELECT), m_eReserveScene(STAGE_END)
 {
 
 }
@@ -63,12 +62,23 @@ void CSceneMgr::Scene_Change(SCENE eID)
 			break;
 		}
 		m_pScene->Initialize();
+		CScrollMgr::Get_Instance()->Scroll_Reset();
 		m_ePreScene = m_eCurScene;
+		m_eReserveScene = STAGE_END;
 	}
+}
+
+void CSceneMgr::Check_Reserve()
+{
+	if (m_eReserveScene == STAGE_END)
+		return;
+
+	Scene_Change(m_eReserveScene);
 }
 
 void CSceneMgr::Update(void)
 {
+
 	m_pScene->Update();
 
 }

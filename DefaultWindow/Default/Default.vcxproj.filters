@@ -232,6 +232,9 @@
     <Filter Include="05.StageHR\HRObj\HRBullet">
       <UniqueIdentifier>{794ed303-c5b5-4026-91a8-ec52e1173610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.StageST\STObj\STStageName">
+      <UniqueIdentifier>{c5ceff5a-3829-41c3-997b-617954b9441d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -491,6 +494,9 @@
     </ClInclude>
     <ClInclude Include="RaserRect.h">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
+      </ClInclude>
+    <ClInclude Include="STStageName.h">
+      <Filter>01.StageST\STObj\STStageName</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -727,6 +733,9 @@
     </ClCompile>
     <ClCompile Include="RaserRect.cpp">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
+      </ClCompile>
+    <ClCompile Include="STStageName.cpp">
+      <Filter>01.StageST\STObj\STStageName</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
