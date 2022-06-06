@@ -33,6 +33,7 @@ void CSwing::Initialize(void)
 
 	m_fHitTime = 100.f;
 	m_fOldHitTime = GetTickCount();
+	
 }
 
 int CSwing::Update(void)
