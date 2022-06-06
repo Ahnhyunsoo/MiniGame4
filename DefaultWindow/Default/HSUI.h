@@ -1,11 +1,12 @@
 #pragma once
 #include "Include.h"
 #include "HSObj.h"
+#include "StageHS.h"
 class CHSUI:
 	public CHSObj
 {
 public:
-	CHSUI();
+	CHSUI(CScene* _pScene);
 	~CHSUI();
 
 public:
@@ -16,8 +17,13 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
-
 private:
-	CObj* m_pObj;
+	void Change_Type();
+	void StopTime();
+private:
+	DWORD m_LStop;	
+	CScene* m_pScene;
+	CStageHS::ObjType m_eType;
+
 };
 

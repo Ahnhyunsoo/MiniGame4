@@ -28,6 +28,22 @@ public:
 		_Temp->Set_vPos(_fX, _fY);
 		return _Temp;
 	}
+	static CObj* CreateObj(float _fX, float _fY,CScene* pScene)
+	{
+		CObj* _Temp = new T(pScene);
+		_Temp->Initialize();
+		_Temp->Set_vPos(_fX, _fY);
+		return _Temp;
+	}
+	static CObj* CreateObj(float _fX, float _fY,int _iNameNum)
+	{
+		CObj* _Temp = new T;
+		_Temp->Initialize();
+		_Temp->Set_vPos(_fX, _fY);
+		dynamic_cast<CSTStageName*>(_Temp)->Set_Name(_iNameNum);
+
+		return _Temp;
+	}
 
 	static CObj* CreateHRBlock(float _fX, float _fY, float _fCX, float _fCY)
 	{
@@ -62,11 +78,11 @@ public:
 		return _Temp;
 	}
 
-	/*static CObj* CreateHSUI(CObj* pObj)
+	static CObj* CreateHSUI(CScene* pScene)
 	{
-		CObj* _Temp = new T(pObj);
+		CObj* _Temp = new T(pScene);
 		_Temp->Initialize();
 		return _Temp;
-	}*/
+	}
 
 };
