@@ -32,6 +32,7 @@ public:
 
 	static bool Check_Rect(CObj* pDest, CObj* pSour, float *pX, float *pY);
 	static void Collision_RectEx(list<CObj*> _Dest, list<CObj*> _Sour, bool _IsPush);
+	static void Collision_HR_RectEx(list<CObj*> _Dest, list<CObj*> _Sour, bool _IsPush);
 
 private:
 	static CCollisionMgr* m_pInstance;

@@ -21,6 +21,7 @@ public:
 	void Set_vPosX(float fX) { m_tInfo.vPos.x += fX; }
 	void Set_vPosY(float fY) { m_tInfo.vPos.y += fY; }
 	void Set_Dead(void) { m_bDead = true; }
+	bool Get_Dead(void) { return m_bDead; }
 	int Get_Hp() { return m_iHp; }
 	bool Get_Dead() { return m_bDead; }
 

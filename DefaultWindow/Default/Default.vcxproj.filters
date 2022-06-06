@@ -489,6 +489,10 @@
     <ClInclude Include="HRBullet.h">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
     </ClInclude>
+
+    <ClInclude Include="HRPlayerHP.h">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClInclude>
     <ClInclude Include="UIMgr.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -733,6 +737,9 @@
     </ClCompile>
     <ClCompile Include="HRBullet.cpp">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="HRPlayerHP.cpp">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
     </ClCompile>
     <ClCompile Include="UIMgr.cpp">
       <Filter>소스 파일</Filter>

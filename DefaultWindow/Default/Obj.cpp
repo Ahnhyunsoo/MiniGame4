@@ -4,7 +4,7 @@
 #include "CameraMgr.h"
 
 CObj::CObj()
-	: m_fSpeed(3.f), m_fAngle(1.f), m_fScale(0.f)
+	: m_fSpeed(3.f), m_fAngle(1.f), m_fScale(0.f), m_bDead(false)
 {
 	/*ZeroMemory(&m_vVertex, sizeof(D3DXVECTOR3));
 	ZeroMemory(&m_vOriVertex, sizeof(D3DXVECTOR3));*/

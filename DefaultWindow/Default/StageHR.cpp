@@ -9,6 +9,7 @@
 #include "HRMonster.h"
 #include "CameraMgr.h"
 #include "TimeMgr.h"
+#include "HRPlayerHP.h"
 
 
 CStageHR::CStageHR()
@@ -27,6 +28,7 @@ void CStageHR::Initialize(void)
 	CObj* temp = CAbstractFactory<CHRPlayer>::CreateObj(-100.f, 400.f);
 	CCameraMgr::Get_Instance()->Set_Target(temp);
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, temp);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CHRPlayerHP>::CreateObj(-100.f, 400.f));
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(400.f, 100.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CHRMonster>::CreateObj(600.f, 100.f));
@@ -88,6 +90,13 @@ void CStageHR::Render(HDC hDC)
 
 	wsprintf(mName, TEXT("DelayTime: %d"), int(CTimeMgr::Get_Instance()->Get_DelaySecond()));
 	TextOut(hDC, 10, 60, mName, lstrlen(mName));
+
+	if (CTimeMgr::Get_Instance()->Get_Record())
+	{
+		SetTextColor(hDC, RGB(0, 0, 0));
+		wsprintf(mName, TEXT("¸Ó¾³..."));
+		TextOut(hDC, 430, 220, mName, lstrlen(mName));
+	}
 
 	SetBkMode(hDC, TRANSPARENT);
 	SetTextColor(hDC, RGB(0, 0, 0));

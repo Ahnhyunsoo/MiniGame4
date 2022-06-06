@@ -29,8 +29,6 @@ private:
 	float m_fDeadTime;
 	float m_fOldDeadTime;
 
-	bool m_bFirst;
-
 	float m_fHitTime;
 	float m_fOldHitTime;
 	bool m_bCanHit;

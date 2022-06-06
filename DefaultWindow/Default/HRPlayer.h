@@ -5,7 +5,7 @@
 class CHRPlayer
 	: public CHRObj
 {
-	enum STATE{IDLE, MOVE, HANG, ATTACK, DESH, END};
+	enum STATE{IDLE, MOVE, HANG, ATTACK, DESH, DEAD, END};
 
 public:
 	CHRPlayer();
@@ -15,6 +15,10 @@ public:
 	void KeyInput();
 	void PosinUpdate();
 	void DeshUpdate();
+	
+	void Update_Dead();
+
+	void Update_BackRecord();
 
 public:
 	virtual void Initialize(void) override;
@@ -35,4 +39,10 @@ private:
 
 	float m_fDeshTime;
 	float m_fOldDeshTime;
+
+	float m_fKnockTime;
+	float m_fDeadTime;
+	float m_fOldDeadTime;
+
+	bool m_bGM;
 };
