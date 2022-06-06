@@ -35,9 +35,9 @@ void CStageEdit::Render(HDC hDC)
 
 	TCHAR mName2[30];
 
-	wsprintf(mName2, TEXT("x축 : %d, y축 : %d"), pt.x, pt.y);
+	/*wsprintf(mName2, TEXT("x축 : %d, y축 : %d"), pt.x, pt.y);
 	TextOut(hDC, 500, 30, mName2, lstrlen(mName2));
-	CLineMgr::Get_Instance()->Render(hDC);
+	CLineMgr::Get_Instance()->Render(hDC);*/
 }
 
 void CStageEdit::Release(void)

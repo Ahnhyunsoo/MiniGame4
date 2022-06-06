@@ -36,6 +36,13 @@ public:
 		_Temp->Set_vPos(_fX, _fY);
 		return _Temp;
 	}
+	static CObj* CreateObj(float _fX, float _fY,CScene* pScene)
+	{
+		CObj* _Temp = new T(pScene);
+		_Temp->Initialize();
+		_Temp->Set_vPos(_fX, _fY);
+		return _Temp;
+	}
 	static CObj* CreateObj(float _fX, float _fY,int _iNameNum)
 	{
 		CObj* _Temp = new T;
@@ -87,11 +94,11 @@ public:
 		return _Temp;
 	}
 
-	/*static CObj* CreateHSUI(CObj* pObj)
+	static CObj* CreateHSUI(CScene* pScene)
 	{
-		CObj* _Temp = new T(pObj);
+		CObj* _Temp = new T(pScene);
 		_Temp->Initialize();
 		return _Temp;
-	}*/
+	}
 
 };

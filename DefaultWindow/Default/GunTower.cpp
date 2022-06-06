@@ -50,8 +50,11 @@ int CGunTower::Update(void)
 		m_bBattle = false;
 	else
 		m_bBattle = true;
-
+	
+	if(m_bBattle == true && CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER).empty() == false)
+	{ 
 	Update_MatWorld();
+
 	m_vTarget = Find_Target(m_tInfo.vPos.x, m_tInfo.vPos.y);
 	if (m_vTarget.y > m_tInfo.vPos.y && abs(m_vTarget.x - m_tInfo.vPos.x) > 100)
 	{
@@ -69,7 +72,7 @@ int CGunTower::Update(void)
 	}
 
 	D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
-
+	}
 	if (m_bBattle)
 	{
 		Create_Bullet();

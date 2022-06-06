@@ -8,6 +8,7 @@ public:
 	virtual ~CStageHS();
 
 public:
+	enum ObjType {STOPITEM,GUNTOWER,RASERTOWER,ICETOWER,ENDTOWER};
 	void Draw_Rect(HDC hDC);
 	void Draw_UI(HDC hDC);
 	void CreateTower(void);
@@ -20,6 +21,11 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 
+public:
+	ObjType Get_Tower() { return m_eTowerType; }
+	void Set_Tower(ObjType _Type) { m_eTowerType = _Type; }
+	bool Get_Stop() { return m_bStop; }
+	void Set_Stop(bool _Stop) { m_bStop = _Stop; }
 public:
 	static int g_iHP;
 	static int g_iGold;
@@ -34,6 +40,10 @@ private:
 	int m_iMaxExp;
 	int m_iLevel;
 	int m_iRound;
+	bool m_bStop;
+	bool m_bMonsterUpgrade;
+	ObjType m_eTowerType;
+	
 
 
 };

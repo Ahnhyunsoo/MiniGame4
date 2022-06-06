@@ -2,16 +2,19 @@
 #include "HSMonster.h"
 #include "StageHS.h"
 
+int CHSMonster::g_iMonsterHp = 5;
+float CHSMonster::g_fMonsterSpeed = 1.f;
 
-
-CHSMonster::CHSMonster()
+CHSMonster::CHSMonster(CScene* _pScene)
 	:m_LCollision(GetTickCount()), m_iDirNum(0)
 {
+	m_pScene = _pScene;
 }
 
 
 CHSMonster::~CHSMonster()
 {
+	CStageHS::g_iKill += 1;
 }
 
 
@@ -20,11 +23,11 @@ void CHSMonster::Initialize(void)
 	m_tInfo.fCX = 30.f;
 	m_tInfo.fCY = 30.f;
 	m_fAngle = 0.f;
-	m_fSpeed = 2.5f;
+	m_fSpeed = g_fMonsterSpeed;
 	m_fScale = 1.f;
 	m_tInfo.vDir = { -1.f,0.f,0.f };
 	m_bDead = false;
-	m_iHp = 10;
+	m_iHp = g_iMonsterHp;
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ -15.f, -15.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 15.f, -15.f, 0.f });
@@ -69,8 +72,11 @@ int CHSMonster::Update(void)
 {
 	if (m_bDead)
 		return OBJ_DEAD;
-	Update_MatWorld();
-	Move_Monster();
+	if (static_cast<CStageHS*>(m_pScene)->Get_Stop() == false)
+	{
+		Update_MatWorld();
+		Move_Monster();
+	}
 	return OBJ_NOEVENT;
 }
 
@@ -133,7 +139,7 @@ void CHSMonster::Late_Update(void)
 	{
 		Set_Dead();
 		CStageHS::g_iHP -= 1;
-		CStageHS::g_iKill += 1;
+		
 	}
 		
 	
@@ -148,9 +154,9 @@ void CHSMonster::Render(HDC hDC)
 
 
 
-	TCHAR mName2[30];
+	/*TCHAR mName2[30];
 	wsprintf(mName2, TEXT("x√‡ : %d, y√‡ : %d"), pt.x, pt.y);
-	TextOut(hDC, 500, 30, mName2, lstrlen(mName2));
+	TextOut(hDC, 500, 30, mName2, lstrlen(mName2));*/
 
 	TCHAR mName[30];
 	wsprintf(mName, TEXT("Hp : %d"), m_iHp);
@@ -174,7 +180,6 @@ void CHSMonster::OnCollision(DIRECTION _DIR, CObj * _Other)
 	{
 		Set_Dead();
 		CStageHS::g_iGold += 100;
-		CStageHS::g_iKill += 1;
 		CStageHS::g_iExp += 20;
 	}
 }

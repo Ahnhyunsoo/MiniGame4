@@ -5,7 +5,7 @@ class CHSMonster :
 	public CHSObj
 {
 public:
-	CHSMonster();
+	CHSMonster(CScene* _pScene);
 	virtual ~CHSMonster();
 
 public:
@@ -20,9 +20,12 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 
+	static int g_iMonsterHp;
+	static float g_fMonsterSpeed;
 private:
 	DWORD m_LCollision;
 	D3DXVECTOR3 m_vPt[15];
 	int m_iDirNum;
+	CScene* m_pScene;
 };
 
