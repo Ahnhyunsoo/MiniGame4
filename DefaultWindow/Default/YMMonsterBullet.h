@@ -1,11 +1,11 @@
 #pragma once
 #include "ObjYM.h"
-class CYMBullet :
+class CYMMonsterBullet :
 	public CObjYM
 {
 public:
-	CYMBullet(D3DXVECTOR3 _Dir);
-	virtual ~CYMBullet();
+	CYMMonsterBullet(D3DXVECTOR3 _Dir);
+	virtual ~CYMMonsterBullet();
 
 	virtual void Initialize(void) override;
 	virtual int Update(void) override;
@@ -13,9 +13,5 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
-
-private:
-	int	m_iCount;
-	int	m_iCountText;
-	bool m_bText;
 };
+

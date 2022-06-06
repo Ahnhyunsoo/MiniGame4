@@ -18,6 +18,9 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 
+	float Get_Lazer() { return m_LazerGauge;}
+	int Get_Boom() { return m_iBoom; }
+	int Get_Level() { return m_iLevel; }
 
 private:
 	D3DXVECTOR3 m_vTarget;
@@ -27,5 +30,10 @@ private:
 	float		m_LazerGauge;
 	int			m_iCountLazer;
 	bool		m_bLazer;
+	int			m_iLevel;
+
+	int			m_iBoomCount;
+	bool		m_bBoom;
+	int			m_iBoom;
 };
 

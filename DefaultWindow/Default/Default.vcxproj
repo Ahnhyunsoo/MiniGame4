@@ -154,9 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BmpMgr.h" />
-    <ClInclude Include="HRBullet.h" />
     <ClInclude Include="CAbstractFactory.h" />
-    <ClInclude Include="CameraMgr.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Default.h" />
     <ClInclude Include="Define.h" />
@@ -206,19 +204,26 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="TowerUI.h" />
     <ClInclude Include="UIMgr.h" />
+    <ClInclude Include="YMBoom.h" />
     <ClInclude Include="YMBullet.h" />
+    <ClInclude Include="YMHeal.h" />
+    <ClInclude Include="YMIBoom.h" />
+    <ClInclude Include="YMItem.h" />
     <ClInclude Include="YMLazer.h" />
+    <ClInclude Include="YMLevelUp.h" />
+    <ClInclude Include="YMMiddleBoss.h" />
     <ClInclude Include="YMMonster.h" />
+    <ClInclude Include="YMMonsterBullet.h" />
     <ClInclude Include="YMPlayer.h" />
     <ClInclude Include="YMShipMonster.h" />
     <ClInclude Include="YMTownMoster.h" />
+    <ClInclude Include="YMUi.h" />
+    <ClInclude Include="YMUiMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpMgr.cpp" />
-    <ClCompile Include="HRBullet.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Default.cpp" />
     <ClCompile Include="GHButton.cpp" />
@@ -266,16 +271,23 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="TowerUI.cpp" />
     <ClCompile Include="UIMgr.cpp" />
+    <ClCompile Include="YMBoom.cpp" />
     <ClCompile Include="YMBullet.cpp" />
+    <ClCompile Include="YMHeal.cpp" />
+    <ClCompile Include="YMIBoom.cpp" />
+    <ClCompile Include="YMItem.cpp" />
     <ClCompile Include="YMLazer.cpp" />
+    <ClCompile Include="YMLevelUp.cpp" />
+    <ClCompile Include="YMMiddleBoss.cpp" />
     <ClCompile Include="YMMonster.cpp" />
+    <ClCompile Include="YMMonsterBullet.cpp" />
     <ClCompile Include="YMPlayer.cpp" />
     <ClCompile Include="YMShipMonster.cpp" />
     <ClCompile Include="YMTownMoster.cpp" />
-    <ClCompile Include="CameraMgr.cpp" />
+    <ClCompile Include="YMUi.cpp" />
+    <ClCompile Include="YMUiMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Default.rc" />
