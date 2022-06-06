@@ -14,14 +14,21 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
-public:
+private:
 	void	LineOn();
 	void	Line_Nail_Down();
 	void	Initialize_Floar();
-	void	Set_Floar(int _iIndex) { m_iFloarIndex = _iIndex; }
+public:
+	void	SetReDirection();
+	void	Set_Floar(int _iIndex, bool _bFirst) { m_iFloarIndex = _iIndex; m_bFirst = _bFirst; }
+	bool	Get_First() { return m_bFirst; }
+	int		Get_FloarIndex() { return m_iFloarIndex; }
 private:
 	int		m_iFloarIndex;
-	CGHLine  m_KyuLine;
-	DWORD	 m_ScaleDelayTime;
+	bool	m_bLeft;
+	bool	m_bFirst;
+	CGHLine	m_KyuLine;
+	DWORD	m_ScaleDelayTime;
+	DWORD	m_RedirectionDelayTime;
 };
 

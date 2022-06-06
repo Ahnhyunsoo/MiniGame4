@@ -91,9 +91,6 @@
     <Filter Include="02.StageGH\GHObj\GHPlayer">
       <UniqueIdentifier>{d8a2cbba-7440-4dad-b68e-78c725367da2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.StageGH\GHObj\GHMonster">
-      <UniqueIdentifier>{8de1597e-2610-4eeb-82d3-3208f92c7873}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.StageYM\YMObj">
       <UniqueIdentifier>{4f820767-0edf-4104-a852-5144217376d0}</UniqueIdentifier>
     </Filter>
@@ -126,9 +123,6 @@
     </Filter>
     <Filter Include="04.StageHS\HSUI">
       <UniqueIdentifier>{2b9f0f58-8c55-4a30-9c49-48cd7de61f68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04.StageHS\HSUI\UIMgr">
-      <UniqueIdentifier>{d5ddd0ca-48f5-4119-b726-583ab78c03d7}</UniqueIdentifier>
     </Filter>
     <Filter Include="04.StageHS\HSObj\HSTower">
       <UniqueIdentifier>{113633fb-49be-4af0-90f4-0f37e1c1e45d}</UniqueIdentifier>
@@ -190,11 +184,59 @@
     <Filter Include="05.StageHR\HRObj\HRSwing">
       <UniqueIdentifier>{6ac2b5c6-a4fb-4537-a301-3ebcb0822ac4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.StageGH\GHObj\GHScoreMgr">
+      <UniqueIdentifier>{8de1597e-2610-4eeb-82d3-3208f92c7873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.StageGH\GHObj\GHScoreMgr\GHScore">
+      <UniqueIdentifier>{f4652796-42fe-4c01-a1d5-57bb3cab1db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.StageGH\GHObj\GHSkidLine">
+      <UniqueIdentifier>{245f1cb0-b563-46bf-bc15-b3c10ad6ba71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMMonster\MiddleBoss">
+      <UniqueIdentifier>{87905a5b-cb7d-4d82-91d0-5e5b0fa3d1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.StageHR\Mgr">
+      <UniqueIdentifier>{8aa89dbb-dd08-4c7a-8227-fe7b24cc9331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMMonster\MiddleBoss">
+      <UniqueIdentifier>{87905a5b-cb7d-4d82-91d0-5e5b0fa3d1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMUi">
+      <UniqueIdentifier>{93c0d3eb-7136-4d84-b788-0f6fb71dfec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMItem">
+      <UniqueIdentifier>{c87198fd-a9f9-4cf8-9c9c-f4ea26a8cff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMBullet\YMMonsterBullet">
+      <UniqueIdentifier>{3fbfa7de-0eaf-40d8-a0d1-9ba083696fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMUi\YMUiMgr">
+      <UniqueIdentifier>{a43c6d69-b641-4b88-a142-49af6cafe9e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMItem\YMLevelUp">
+      <UniqueIdentifier>{7901e446-5815-471d-b4c5-2f0e4a2cd253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMBullet\Bullet\YMBoom">
+      <UniqueIdentifier>{6191ee83-dc45-49b6-9d35-96b195b086af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMItem\YMHeal">
+      <UniqueIdentifier>{5354c709-9cb8-4052-9c48-4bdbd5173fc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMItem\ItemYMBoom">
+      <UniqueIdentifier>{3b4b0b8f-120e-4ad3-82f3-d2203644baae}</UniqueIdentifier>
+    </Filter>
     <Filter Include="05.StageHR\Mgr">
       <UniqueIdentifier>{8aa89dbb-dd08-4c7a-8227-fe7b24cc9331}</UniqueIdentifier>
     </Filter>
     <Filter Include="05.StageHR\HRObj\HRBullet">
       <UniqueIdentifier>{794ed303-c5b5-4026-91a8-ec52e1173610}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.StageST\STObj\STStageName">
+      <UniqueIdentifier>{c5ceff5a-3829-41c3-997b-617954b9441d}</UniqueIdentifier>
+      </Filter>
+    <Filter Include="03.StageYM\YMObj\YMMonster\Boss">
+      <UniqueIdentifier>{002b14aa-851b-464b-8337-bc0ba5291424}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -236,9 +278,6 @@
     </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>01.StageST\STObj\STMonster</Filter>
-    </ClInclude>
-    <ClInclude Include="Obj.h">
-      <Filter>10.Obj</Filter>
     </ClInclude>
     <ClInclude Include="CAbstractFactory.h">
       <Filter>98.Design\AbstractFactory</Filter>
@@ -296,9 +335,6 @@
     </ClInclude>
     <ClInclude Include="HSObj.h">
       <Filter>04.StageHS\HSObj</Filter>
-    </ClInclude>
-    <ClInclude Include="UIMgr.h">
-      <Filter>04.StageHS\HSUI\UIMgr</Filter>
     </ClInclude>
     <ClInclude Include="HSUI.h">
       <Filter>04.StageHS\HSUI</Filter>
@@ -396,6 +432,54 @@
     <ClInclude Include="HRMonster.h">
       <Filter>05.StageHR\HRObj\HRMonster</Filter>
     </ClInclude>
+    <ClInclude Include="RaserTower.h">
+      <Filter>04.StageHS\HSObj\HSTower</Filter>
+    </ClInclude>
+    <ClInclude Include="RaserBullet.h">
+      <Filter>04.StageHS\HSObj\HSBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="GHScoreMgr.h">
+      <Filter>02.StageGH\GHObj\GHScoreMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="GHScore.h">
+      <Filter>02.StageGH\GHObj\GHScoreMgr\GHScore</Filter>
+    </ClInclude>
+    <ClInclude Include="GHSkidLine.h">
+      <Filter>02.StageGH\GHObj\GHSkidLine</Filter>
+    </ClInclude>
+    <ClInclude Include="YMMiddleBoss.h">
+      <Filter>03.StageYM\YMObj\YMMonster\MiddleBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraMgr.h">
+      <Filter>05.StageHR\Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="YMMiddleBoss.h">
+      <Filter>03.StageYM\YMObj\YMMonster\MiddleBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="YMUi.h">
+      <Filter>03.StageYM\YMObj\YMUi</Filter>
+    </ClInclude>
+    <ClInclude Include="YMItem.h">
+      <Filter>03.StageYM\YMObj\YMItem</Filter>
+    </ClInclude>
+    <ClInclude Include="YMMonsterBullet.h">
+      <Filter>03.StageYM\YMObj\YMBullet\YMMonsterBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="YMUiMgr.h">
+      <Filter>03.StageYM\YMObj\YMUi\YMUiMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="YMBoom.h">
+      <Filter>03.StageYM\YMObj\YMBullet\Bullet\YMBoom</Filter>
+    </ClInclude>
+    <ClInclude Include="YMHeal.h">
+      <Filter>03.StageYM\YMObj\YMItem\YMHeal</Filter>
+    </ClInclude>
+    <ClInclude Include="YMLevelUp.h">
+      <Filter>03.StageYM\YMObj\YMItem\YMLevelUp</Filter>
+    </ClInclude>
+    <ClInclude Include="YMIBoom.h">
+      <Filter>03.StageYM\YMObj\YMItem\ItemYMBoom</Filter>
+    </ClInclude>
     <ClInclude Include="CameraMgr.h">
       <Filter>05.StageHR\Mgr</Filter>
     </ClInclude>
@@ -405,8 +489,24 @@
     <ClInclude Include="HRBullet.h">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
     </ClInclude>
+
     <ClInclude Include="HRPlayerHP.h">
       <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="UIMgr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RaserRect.h">
+      <Filter>04.StageHS\HSObj\HSBullet</Filter>
+      </ClInclude>
+    <ClInclude Include="STStageName.h">
+      <Filter>01.StageST\STObj\STStageName</Filter>
+      </ClInclude>
+    <ClInclude Include="YMBoss.h">
+      <Filter>03.StageYM\YMObj\YMMonster\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>11.Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -478,9 +578,6 @@
     </ClCompile>
     <ClCompile Include="HSObj.cpp">
       <Filter>04.StageHS\HSObj</Filter>
-    </ClCompile>
-    <ClCompile Include="UIMgr.cpp">
-      <Filter>04.StageHS\HSUI\UIMgr</Filter>
     </ClCompile>
     <ClCompile Include="HSUI.cpp">
       <Filter>04.StageHS\HSUI</Filter>
@@ -584,6 +681,54 @@
     <ClCompile Include="HRMonster.cpp">
       <Filter>05.StageHR\HRObj\HRMonster</Filter>
     </ClCompile>
+    <ClCompile Include="RaserTower.cpp">
+      <Filter>04.StageHS\HSObj\HSTower</Filter>
+    </ClCompile>
+    <ClCompile Include="RaserBullet.cpp">
+      <Filter>04.StageHS\HSObj\HSBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="GHScoreMgr.cpp">
+      <Filter>02.StageGH\GHObj\GHScoreMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="GHScore.cpp">
+      <Filter>02.StageGH\GHObj\GHScoreMgr\GHScore</Filter>
+    </ClCompile>
+    <ClCompile Include="GHSkidLine.cpp">
+      <Filter>02.StageGH\GHObj\GHSkidLine</Filter>
+    </ClCompile>
+    <ClCompile Include="YMMiddleBoss.cpp">
+      <Filter>03.StageYM\YMObj\YMMonster\MiddleBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraMgr.cpp">
+      <Filter>05.StageHR\Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="YMMiddleBoss.cpp">
+      <Filter>03.StageYM\YMObj\YMMonster\MiddleBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="YMUi.cpp">
+      <Filter>03.StageYM\YMObj\YMUi</Filter>
+    </ClCompile>
+    <ClCompile Include="YMItem.cpp">
+      <Filter>03.StageYM\YMObj\YMItem</Filter>
+    </ClCompile>
+    <ClCompile Include="YMMonsterBullet.cpp">
+      <Filter>03.StageYM\YMObj\YMBullet\YMMonsterBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="YMUiMgr.cpp">
+      <Filter>03.StageYM\YMObj\YMUi\YMUiMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="YMBoom.cpp">
+      <Filter>03.StageYM\YMObj\YMBullet\Bullet\YMBoom</Filter>
+    </ClCompile>
+    <ClCompile Include="YMHeal.cpp">
+      <Filter>03.StageYM\YMObj\YMItem\YMHeal</Filter>
+    </ClCompile>
+    <ClCompile Include="YMLevelUp.cpp">
+      <Filter>03.StageYM\YMObj\YMItem\YMLevelUp</Filter>
+    </ClCompile>
+    <ClCompile Include="YMIBoom.cpp">
+      <Filter>03.StageYM\YMObj\YMItem\ItemYMBoom</Filter>
+    </ClCompile>
     <ClCompile Include="CameraMgr.cpp">
       <Filter>05.StageHR\Mgr</Filter>
     </ClCompile>
@@ -595,6 +740,18 @@
     </ClCompile>
     <ClCompile Include="HRPlayerHP.cpp">
       <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="UIMgr.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="RaserRect.cpp">
+      <Filter>04.StageHS\HSObj\HSBullet</Filter>
+      </ClCompile>
+    <ClCompile Include="STStageName.cpp">
+      <Filter>01.StageST\STObj\STStageName</Filter>
+       </ClCompile>
+    <ClCompile Include="YMBoss.cpp">
+      <Filter>03.StageYM\YMObj\YMMonster\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

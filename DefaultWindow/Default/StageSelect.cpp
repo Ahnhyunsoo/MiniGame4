@@ -44,6 +44,11 @@ void CStageSelect::Update(void)
 
 		Timer();
 	}
+	else
+	{
+		if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
+			CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);
+	}
 }
 
 void CStageSelect::Late_Update(void)
@@ -57,7 +62,7 @@ void CStageSelect::Late_Update(void)
 void CStageSelect::Render(HDC hDC)
 {
 
-	HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Back");
+	HDC		hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"aa");
 	BitBlt(hDC, 0, 0, 800, 600, hMemDC, 0, 0, SRCCOPY);
 	Rectangle(hMemDC, 0, 0, WINCX, WINCY);
 	CObjMgr::Get_Instance()->Render(hMemDC);

@@ -1,18 +1,23 @@
 #pragma once
 #include "Include.h"
-class CHSUI
+#include "HSObj.h"
+class CHSUI:
+	public CHSObj
 {
 public:
 	CHSUI();
 	~CHSUI();
 
 public:
-	virtual void Initialize(void) PURE;
-	virtual	int	Update(void) PURE;
-	virtual	void Late_Update(void) PURE;
-	virtual	void Render(HDC hDC) PURE;
-	virtual	void Release(void) PURE;
+	// CHSObj을(를) 통해 상속됨
+	virtual void Initialize(void) override;
+	virtual int Update(void) override;
+	virtual void Late_Update(void) override;
+	virtual void Render(HDC hDC) override;
+	virtual void Release(void) override;
+	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 
-
+private:
+	CObj* m_pObj;
 };
 

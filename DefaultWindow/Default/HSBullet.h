@@ -4,7 +4,7 @@ class CHSBullet :
 	public CHSObj
 {
 public:
-	CHSBullet(D3DXVECTOR3 _DIR);
+	CHSBullet(D3DXVECTOR3 _DIR, CObj* pObj);
 	virtual ~CHSBullet();
 
 	// CHSObj을(를) 통해 상속됨

@@ -16,4 +16,6 @@ public:
 
 private:
 	int	m_iCount;
+	int	m_iCountText;
+	bool m_bText;
 };

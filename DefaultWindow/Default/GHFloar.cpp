@@ -37,6 +37,10 @@ void CGHFloar::Initialize_Floar()
 	{
 		m_tInfo.vPos = { 525.f,0.f,0.f };
 	}
+	else if (m_iFloarIndex == 6)
+	{
+		m_tInfo.vPos = { 275.f,0.f,0.f };
+	}
 	m_vOriVertex.push_back(D3DXVECTOR3{ -1.f	, -1.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 1.f	, -1.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 1.f	, 1.f, 0.f });
@@ -46,18 +50,36 @@ void CGHFloar::Initialize_Floar()
 	m_vVertex.push_back(D3DXVECTOR3{ 1.f, -1.f, 0.f });
 	m_vVertex.push_back(D3DXVECTOR3{ 1.f, 1.f, 0.f });
 	m_vVertex.push_back(D3DXVECTOR3{ -1.f, 1.f, 0.f });
-	
-	LineOn();
+	if(m_iFloarIndex != 6)
+		LineOn();
 
+}
+void CGHFloar::SetReDirection()
+{
+	if (m_RedirectionDelayTime + 1000 < GetTickCount()) {
+		if (m_bLeft) {
+			m_RedirectionDelayTime = GetTickCount();
+			m_bLeft = false;
+		}
+		else {
+			m_RedirectionDelayTime = GetTickCount();
+			m_bLeft = true;
+		}
+	}
 }
 void CGHFloar::Initialize(void)
 {
 	Initialize_Floar();
-	m_fSpeed = 3.f;
+	m_eString = STRING_FLOAR;
+	m_RedirectionDelayTime = 0;
+	m_fSpeed = 2.f;
 	m_fScale = 25.f;
 	m_fAngle = 0.f;
+	
 	m_ScaleDelayTime = GetTickCount();
 	m_bDead = false;
+	m_bLeft = false;
+	//CStageGH::
 }
 void CGHFloar::LineOn()
 {
@@ -86,26 +108,43 @@ void CGHFloar::Line_Nail_Down()
 int CGHFloar::Update(void)
 {
 	if ((m_fScale < 66.5f)&&(m_ScaleDelayTime + 100 <GetTickCount())) {
-		++m_fScale;
+		m_fScale += 4.f;
+		m_tInfo.fCX = abs(m_vVertex[0].x - m_vVertex[1].x);
+		m_tInfo.fCY = abs(m_vVertex[1].y - m_vVertex[2].y);
 		m_ScaleDelayTime = GetTickCount();
 	}
 	if (m_iFloarIndex == 0) 
 		m_tInfo.vDir = { -1.f, 0.f, 0.f };
 	else if (m_iFloarIndex == 1) 
-		m_tInfo.vDir = { -0.5f, 0.f, 0.f };
+		m_tInfo.vDir = { -0.6f, 0.f, 0.f };
 	else if (m_iFloarIndex == 2)
-		m_tInfo.vDir = { -0.3f, 0.f, 0.f };
+		m_tInfo.vDir = { -0.2f, 0.f, 0.f };
 	else if (m_iFloarIndex == 3)
-		m_tInfo.vDir = { 0.3f, 0.f, 0.f };
+		m_tInfo.vDir = { 0.2f, 0.f, 0.f };
 	else if (m_iFloarIndex == 4)
-		m_tInfo.vDir = { 0.5f, 0.f, 0.f };
-	else if (m_iFloarIndex == 5)
+		m_tInfo.vDir = { 0.6f, 0.f, 0.f };
+	else if ((m_iFloarIndex == 5))
 		m_tInfo.vDir = { 1.f, 0.f, 0.f };
+	else if (m_iFloarIndex == 6)
+	{
+		m_tInfo.vDir = { 1.f, 0.5f, 0.f };
 
-	Line_Nail_Down();
+		if (m_bLeft == true)
+			m_tInfo.vDir.x = -1;
+		else 
+			m_tInfo.vDir.x = 1;
+		m_fAngle += 3.f;
+		//m_fSpeed += 0.5f;
+
+	}
+
+	if (m_iFloarIndex != 6)
+		Line_Nail_Down();
+	
 	if (m_bDead)
 		return OBJ_DEAD;
-	m_tInfo.vPos += m_tInfo.vDir ;
+	
+	m_tInfo.vPos += m_tInfo.vDir * m_fSpeed;
 
 
 	Update_MatWorld();
@@ -120,15 +159,19 @@ void CGHFloar::Late_Update(void)
 void CGHFloar::Render(HDC hDC)
 {
 	Render_Vertex(hDC);
+	if (m_bFirst)
+		ColRender(hDC);
 
 }
 
 void CGHFloar::Release(void)
 {
+	
 }
 
 void CGHFloar::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
+	
 }
 
 

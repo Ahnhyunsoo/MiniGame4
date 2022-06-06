@@ -5,7 +5,7 @@
 #include "CAbstractFactory.h"
 
 CGunTower::CGunTower()
-	:m_LBullet(GetTickCount())
+	:m_LBullet(GetTickCount()),m_iShotDelay(1000)
 {
 }
 
@@ -21,7 +21,7 @@ void CGunTower::Initialize(void)
 {
 	m_tInfo.fCX = 20.f;
 	m_tInfo.fCY = 20.f;
-	m_tInfo.vPos = { 400.f,300.f,0.f };
+	//m_tInfo.vPos = { 400.f,300.f,0.f };
 	m_vTarget = { 0.f,0.f,0.f };
 	m_fAngle = 0.f;
 	m_fSpeed = 1.f;
@@ -51,17 +51,23 @@ int CGunTower::Update(void)
 	else
 		m_bBattle = true;
 
-
-	
-	
-
-
-	//m_tInfo.vPos += m_tInfo.vDir * 3;
-	//m_fAngle += cos(m_tInfo.vDir.x);
-
 	Update_MatWorld();
 	m_vTarget = Find_Target(m_tInfo.vPos.x, m_tInfo.vPos.y);
-	m_tInfo.vDir = m_vTarget - m_tInfo.vPos;
+	if (m_vTarget.y > m_tInfo.vPos.y && abs(m_vTarget.x - m_tInfo.vPos.x) > 100)
+	{
+		m_vTarget.y -= 35;
+		m_tInfo.vDir = m_vTarget - m_tInfo.vPos;
+	}
+	else if(m_vTarget.y < m_tInfo.vPos.y && abs(m_vTarget.x - m_tInfo.vPos.x) > 100)
+	{
+		m_vTarget.y += 35;
+		m_tInfo.vDir = m_vTarget - m_tInfo.vPos;
+	}
+	else
+	{
+		m_tInfo.vDir = m_vTarget - m_tInfo.vPos;
+	}
+
 	D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
 
 	if (m_bBattle)
@@ -78,13 +84,12 @@ void CGunTower::Late_Update(void)
 
 void CGunTower::Render(HDC hDC)
 {
-	
-	
 
 	Render_Vertex(hDC);
 	MoveToEx(hDC, (int)m_tInfo.vPos.x, (int)m_tInfo.vPos.y, nullptr);
 	LineTo(hDC, int(m_tInfo.vPos.x + m_tInfo.vDir.x * m_fScale * 30.f), int(m_tInfo.vPos.y + m_tInfo.vDir.y * m_fScale * 30.f));
-	//LineTo(hDC, int(m_tInfo.vPos.x + m_fAngle * 1.f), int(m_tInfo.vPos.y + m_fAngle * 1.f));
+	
+	
 }
 
 void CGunTower::Release(void)
@@ -97,9 +102,9 @@ void CGunTower::OnCollision(DIRECTION _DIR, CObj * _Other)
 
 void CGunTower::Create_Bullet(void)
 {
-	if (m_LBullet + 300 < GetTickCount())
+	if (m_LBullet + m_iShotDelay < GetTickCount())
 	{
-		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CHSBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + m_tInfo.vDir.x * m_fScale * 30.f, m_tInfo.vPos.y + m_tInfo.vDir.y * m_fScale * 30.f));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CHSBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + m_tInfo.vDir.x * m_fScale * 30.f, m_tInfo.vPos.y + m_tInfo.vDir.y * m_fScale * 30.f,this));
 		m_LBullet = GetTickCount();
 	}
 }

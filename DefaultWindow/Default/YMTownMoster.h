@@ -14,5 +14,9 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
+
+private:
+	int m_iSide;
+	int m_iSideCount;
 };
 

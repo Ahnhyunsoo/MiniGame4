@@ -123,7 +123,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DEFAULT));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
+	wcex.hCursor = LoadCursor(nullptr, nullptr);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = nullptr;
     wcex.lpszClassName  = szWindowClass;
@@ -165,7 +165,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
-
+   ShowCursor(false);
    return TRUE;
 }
 

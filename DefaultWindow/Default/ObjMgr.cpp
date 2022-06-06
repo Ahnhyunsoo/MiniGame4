@@ -2,6 +2,8 @@
 #include "ObjMgr.h"
 #include "SceneMgr.h"
 
+#include "Scene.h"
+#include <iostream>
 
 CObjMgr* CObjMgr::m_pInstance = nullptr;
 
@@ -41,7 +43,7 @@ void CObjMgr::Update()
 				++iter;
 		}
 	}
-
+	cout << m_ObjList[OBJ_PLAYER].size() << endl;
 }
 
 void CObjMgr::Late_Update()
@@ -67,9 +69,10 @@ void CObjMgr::Render(HDC hDC)
 		for (auto& iter : m_ObjList[i])
 		{
 			iter->Render(hDC);
-			// iter->HR_ColRender(hDC);
 		}
 	}
+
+	CSceneMgr::Get_Instance()->Check_Reserve();
 }
 
 void CObjMgr::Release()
@@ -123,12 +126,22 @@ void CObjMgr::Late_UpdateSeclect()
 }
 void CObjMgr::Late_UpdateST()
 {
+	if(!m_ObjList[OBJ_PLAYER].size() == 1|| !m_ObjList[OBJ_UI].empty())
+		CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_UI], false);
+
 }
 void CObjMgr::Late_UpdateGH()
 {
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_GYU_BUTTON], false);
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_GYU_BUTTON], m_ObjList[OBJ_GYU_FLOAR], false);
+
 }
 void CObjMgr::Late_UpdateYM()
 {
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET], false);
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_BULLET], m_ObjList[OBJ_BULLET], false);
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BULLET], false);
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_ITEM], false);
 }
 void CObjMgr::Late_UpdateHS()
 {

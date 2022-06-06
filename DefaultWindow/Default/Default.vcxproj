@@ -165,6 +165,9 @@
     <ClInclude Include="GHButton.h" />
     <ClInclude Include="GHLine.h" />
     <ClInclude Include="GHLineMgr.h" />
+    <ClInclude Include="GHScore.h" />
+    <ClInclude Include="GHScoreMgr.h" />
+    <ClInclude Include="GHSkidLine.h" />
     <ClInclude Include="GunTower.h" />
     <ClInclude Include="HRBlock.h" />
     <ClInclude Include="HRMonster.h" />
@@ -190,6 +193,9 @@
     <ClInclude Include="ObjMgr.h" />
     <ClInclude Include="ObjYM.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RaserBullet.h" />
+    <ClInclude Include="RaserRect.h" />
+    <ClInclude Include="RaserTower.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="Scene.h" />
@@ -206,16 +212,27 @@
     <ClInclude Include="StageYM.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Struct.h" />
+    <ClInclude Include="STStageName.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="TowerUI.h" />
     <ClInclude Include="UIMgr.h" />
+    <ClInclude Include="YMBoom.h" />
+    <ClInclude Include="YMBoss.h" />
     <ClInclude Include="YMBullet.h" />
+    <ClInclude Include="YMHeal.h" />
+    <ClInclude Include="YMIBoom.h" />
+    <ClInclude Include="YMItem.h" />
     <ClInclude Include="YMLazer.h" />
+    <ClInclude Include="YMLevelUp.h" />
+    <ClInclude Include="YMMiddleBoss.h" />
     <ClInclude Include="YMMonster.h" />
+    <ClInclude Include="YMMonsterBullet.h" />
     <ClInclude Include="YMPlayer.h" />
     <ClInclude Include="YMShipMonster.h" />
     <ClInclude Include="YMTownMoster.h" />
+    <ClInclude Include="YMUi.h" />
+    <ClInclude Include="YMUiMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpMgr.cpp" />
@@ -225,6 +242,9 @@
     <ClCompile Include="GHButton.cpp" />
     <ClCompile Include="GHLine.cpp" />
     <ClCompile Include="GHLineMgr.cpp" />
+    <ClCompile Include="GHScore.cpp" />
+    <ClCompile Include="GHScoreMgr.cpp" />
+    <ClCompile Include="GHSkidLine.cpp" />
     <ClCompile Include="GunTower.cpp" />
     <ClCompile Include="HRBlock.cpp" />
     <ClCompile Include="HRMonster.cpp" />
@@ -249,6 +269,9 @@
     <ClCompile Include="ObjMgr.cpp" />
     <ClCompile Include="ObjYM.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RaserBullet.cpp" />
+    <ClCompile Include="RaserRect.cpp" />
+    <ClCompile Include="RaserTower.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScrollMgr.cpp" />
@@ -268,15 +291,26 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="STStageName.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="TowerUI.cpp" />
     <ClCompile Include="UIMgr.cpp" />
+    <ClCompile Include="YMBoom.cpp" />
+    <ClCompile Include="YMBoss.cpp" />
     <ClCompile Include="YMBullet.cpp" />
+    <ClCompile Include="YMHeal.cpp" />
+    <ClCompile Include="YMIBoom.cpp" />
+    <ClCompile Include="YMItem.cpp" />
     <ClCompile Include="YMLazer.cpp" />
+    <ClCompile Include="YMLevelUp.cpp" />
+    <ClCompile Include="YMMiddleBoss.cpp" />
     <ClCompile Include="YMMonster.cpp" />
+    <ClCompile Include="YMMonsterBullet.cpp" />
     <ClCompile Include="YMPlayer.cpp" />
     <ClCompile Include="YMShipMonster.cpp" />
     <ClCompile Include="YMTownMoster.cpp" />
+    <ClCompile Include="YMUi.cpp" />
+    <ClCompile Include="YMUiMgr.cpp" />
     <ClCompile Include="CameraMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
