@@ -53,9 +53,9 @@ void CHRPlayer::Initialize(void)
 }
 int CHRPlayer::Update(void)
 {
-	if (3000.f < m_tInfo.vPos.x)
+	if (2000.f < m_tInfo.vPos.x)
 	{
-		
+		CSceneMgr::Get_Instance()->Scene_Reserve(STAGE_ST);
 	}
 
 

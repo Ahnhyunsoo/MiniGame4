@@ -109,4 +109,5 @@ void CStageHR::Render(HDC hDC)
 
 void CStageHR::Release(void)
 {
+	CObjMgr::Get_Instance()->Release();
 }

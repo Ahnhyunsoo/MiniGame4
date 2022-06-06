@@ -23,7 +23,6 @@ public:
 	void Set_Dead(void) { m_bDead = true; }
 	bool Get_Dead(void) { return m_bDead; }
 	int Get_Hp() { return m_iHp; }
-	bool Get_Dead() { return m_bDead; }
 
 	void Set_Hp(int _Damage) { m_iHp -= _Damage; }
 	const int& Get_Damage() { return m_iDamage; }
