@@ -14,5 +14,9 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 
+private:
+	float m_dwOldTime;
+	float m_dwLateOldTime;
+
 };
 
