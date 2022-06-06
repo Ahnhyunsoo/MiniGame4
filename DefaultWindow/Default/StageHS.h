@@ -10,7 +10,8 @@ public:
 public:
 	void Draw_Rect(HDC hDC);
 	void Draw_UI(HDC hDC);
-
+	void CreateTower(void);
+	POINT	pt{};
 public:
 	// CScene을(를) 통해 상속됨
 	virtual void Initialize(void) override;
@@ -26,12 +27,14 @@ public:
 	static int g_iExp;
 private:
 	DWORD m_LSponMonster;
+	RECT m_tTowerPos[19];
 	int m_iMaxMonster;
 	int m_iNowMonster;
 	int m_iSponSpeed;
 	int m_iMaxExp;
 	int m_iLevel;
 	int m_iRound;
+
 
 };
 

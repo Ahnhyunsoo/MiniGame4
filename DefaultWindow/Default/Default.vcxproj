@@ -187,6 +187,8 @@
     <ClInclude Include="ObjMgr.h" />
     <ClInclude Include="ObjYM.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RaserBullet.h" />
+    <ClInclude Include="RaserTower.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="Scene.h" />
@@ -243,6 +245,8 @@
     <ClCompile Include="ObjMgr.cpp" />
     <ClCompile Include="ObjYM.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RaserBullet.cpp" />
+    <ClCompile Include="RaserTower.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScrollMgr.cpp" />

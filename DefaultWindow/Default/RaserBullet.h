@@ -1,11 +1,11 @@
 #pragma once
 #include "HSObj.h"
-class CHSBullet :
+class CRaserBullet :
 	public CHSObj
 {
 public:
-	CHSBullet(D3DXVECTOR3 _DIR, CObj* pObj);
-	virtual ~CHSBullet();
+	CRaserBullet(D3DXVECTOR3 _DIR, CObj* pObj);
+	virtual ~CRaserBullet();
 
 	// CHSObj을(를) 통해 상속됨
 	virtual void Initialize(void) override;
@@ -15,5 +15,9 @@ public:
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 
+	DWORD m_LTarget;
+	D3DXVECTOR3 m_vTarget;
+	CObj* m_pTower;
+	bool m_bRaser;
 };
 

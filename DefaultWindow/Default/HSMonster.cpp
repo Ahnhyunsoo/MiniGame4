@@ -3,6 +3,7 @@
 #include "StageHS.h"
 
 
+
 CHSMonster::CHSMonster()
 	:m_LCollision(GetTickCount()), m_iDirNum(0)
 {
@@ -23,7 +24,7 @@ void CHSMonster::Initialize(void)
 	m_fScale = 1.f;
 	m_tInfo.vDir = { -1.f,0.f,0.f };
 	m_bDead = false;
-	m_iHp = 2;
+	m_iHp = 3;
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ -15.f, -15.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 15.f, -15.f, 0.f });
@@ -126,6 +127,7 @@ void CHSMonster::Late_Update(void)
 		default:
 			break;
 		}
+		
 	}
 	else if (m_tInfo.vPos.x <= 5)
 	{
@@ -161,7 +163,7 @@ void CHSMonster::Release(void)
 
 void CHSMonster::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
-	if (m_LCollision + 300 < GetTickCount())
+	if (m_LCollision + 10 < GetTickCount())
 	{
 		m_iHp -= _Other->Get_Damage();
 		m_LCollision = GetTickCount();

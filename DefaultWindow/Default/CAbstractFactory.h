@@ -46,6 +46,14 @@ public:
 		return _Temp;
 	}
 
+	static CObj* CreateBullet(D3DXVECTOR3 _Dir, float _fX, float _fY, CObj* pObj)
+	{
+		CObj* _Temp = new T(_Dir,pObj);
+		_Temp->Initialize();
+		_Temp->Set_vPos(_fX, _fY);
+		return _Temp;
+	}
+
 	static CObj* CreateGHFloar(int _iFloarType)
 	{
 		CObj* _Temp = new T;
