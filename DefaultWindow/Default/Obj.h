@@ -27,10 +27,6 @@ public:
 	void Set_Hp(int _Damage) { m_iHp -= _Damage; }
 	const int& Get_Damage() { return m_iDamage; }
 	void Set_Damage(int _Damage) { m_iDamage = _Damage; }
-
-	vector<D3DXVECTOR3>& Get_VertexList() { return m_vVertex; }
-	vector<D3DXVECTOR3>& Get_OriVertexList() { return m_vOriVertex; }
-
 public:
 	virtual		void	Initialize(void)	PURE;
 	virtual		int		Update(void)		PURE;
@@ -41,7 +37,6 @@ public:
 public:
 	virtual		void	OnCollision(DIRECTION _DIR, CObj* _Other) PURE;
 	void ColRender(HDC hDC);
-	void HR_ColRender(HDC hDC);
 
 public:
 	void Update_MatWorld(void);

@@ -16,8 +16,7 @@ public: // ¸É¹ö ÇÔ¼ö
 	void Release();
 
 
-	list<CObj*>& Get_ObjList(OBJID _ID) { return m_ObjList[_ID]; }
-	CObj* Get_Player() { return m_ObjList[OBJ_PLAYER].front(); }
+	list<CObj*> Get_ObjList(OBJID _ID) { return m_ObjList[_ID]; }
 
 	void Delete_ID(OBJID eID);
 

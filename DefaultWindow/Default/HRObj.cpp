@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "HRObj.h"
 
-#include "CameraMgr.h"
 
 CHRObj::CHRObj()
 	: m_bOnAir(false)
@@ -42,17 +41,15 @@ void CHRObj::Release(void)
 
 void CHRObj::Update_Gravity()
 {
-	m_vTempPos = m_tInfo.vPos;
-
 	if (m_bJump)
 	{
-		m_vTempPos.y -= m_fJumpPower;
+		m_tInfo.vPos.y -= m_fJumpPower;
 	}
 
 	if (m_bOnAir)
 	{
 		m_fValY += 0.4f;
-		m_vTempPos.y += m_fValY;
+		m_tInfo.vPos.y += m_fValY;
 	}
 	else
 	{
@@ -65,7 +62,7 @@ void CHRObj::Update_Gravity()
 	else if (m_fValX < -m_fRemitSpeed)
 		m_fValX = -m_fRemitSpeed;
 
-	m_vTempPos.x += m_fValX;
+	m_tInfo.vPos.x += m_fValX;
 
 	if (!m_bMove && !m_bJump)
 	{
@@ -78,25 +75,4 @@ void CHRObj::Update_Gravity()
 	}
 
 	m_bOnAir = true;
-
-
-	m_vTempPos -= m_tInfo.vPos;
-
-	// TODO: 중력 구현 가능
-	// m_vTempPos *= CTimeMgr::Get_Instance()->Get_TimeValue();
-
-	m_tInfo.vPos += m_vTempPos;
-}
-
-
-void CHRObj::Render_Vertex(HDC hDC)
-{
-	int iScrollX = CCameraMgr::Get_Instance()->Get_ScrollX();
-	int iScrollY = CCameraMgr::Get_Instance()->Get_ScrollY();
-	MoveToEx(hDC, (int)m_vVertex[0].x + iScrollX, (int)m_vVertex[0].y + iScrollY, nullptr);
-	for (size_t i = 1; i < m_vVertex.size(); ++i)
-	{
-		LineTo(hDC, (int)m_vVertex[i].x + iScrollX, (int)m_vVertex[i].y + iScrollY);
-	}
-	LineTo(hDC, (int)m_vVertex[0].x + iScrollX, (int)m_vVertex[0].y + iScrollY);
 }

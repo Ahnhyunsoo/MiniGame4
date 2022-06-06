@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Obj.h"
 
-#include "CameraMgr.h"
 
 CObj::CObj()
 	: m_fSpeed(3.f), m_fAngle(1.f), m_fScale(0.f)
@@ -64,29 +63,4 @@ void CObj::Render_Vertex(HDC hDC)
 		LineTo(hDC, (int)m_vVertex[i].x + iScrollX, (int)m_vVertex[i].y);
 	}
 	LineTo(hDC, (int)m_vVertex[0].x + iScrollX, (int)m_vVertex[0].y);
-}
-
-
-
-
-
-void CObj::HR_ColRender(HDC hDC)
-{
-	int iScrollX = CCameraMgr::Get_Instance()->Get_ScrollX();
-	int iScrollY = CCameraMgr::Get_Instance()->Get_ScrollY();
-
-	HPEN hpen;
-	HPEN hpenOld;
-
-	hpen = CreatePen(PS_SOLID, 3, RGB(0, 255, 0));   // 선 스타일, 굵기, 색상
-	hpenOld = (HPEN)::SelectObject(hDC, (HGDIOBJ)hpen);   // 펜 선택
-
-	Rectangle(hDC,
-		m_tInfo.vPos.x - m_tInfo.fCX * 0.5f + iScrollX,
-		m_tInfo.vPos.y - m_tInfo.fCY * 0.5f + iScrollY,
-		m_tInfo.vPos.x + m_tInfo.fCX * 0.5f + iScrollX,
-		m_tInfo.vPos.y + m_tInfo.fCY * 0.5f + iScrollY);
-
-	hpen = (HPEN)SelectObject(hDC, hpenOld);   // 기존의 펜 다시 선택
-	DeleteObject(hpen);   // 생성한 펜 삭제
 }
