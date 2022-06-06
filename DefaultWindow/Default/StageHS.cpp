@@ -201,8 +201,7 @@ void CStageHS::CreateTower(void)
 				&& pt.y >= m_tTowerPos[i].top && pt.y <= m_tTowerPos[i].bottom)
 			{
 				m_tTowerPos[i].left = pt.x - ((m_tTowerPos[i].right - m_tTowerPos[i].left) * 0.5);
-				m_tTowerPos[i].top = pt.y - ((m_tTowerPos[i].bottom - m_tTowerPos[i].top) * 0.5);
-				
+				m_tTowerPos[i].top = pt.y - ((m_tTowerPos[i].bottom - m_tTowerPos[i].top) * 0.5);				
 			}
 		}
 	}*/
