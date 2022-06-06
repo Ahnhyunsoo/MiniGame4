@@ -17,9 +17,13 @@ void CYMUi::Initialize(void)
 {
 	m_iCount2P = 0;
 
+
 	m_iBoom = 0;
 	m_fLazer = 0;
 	m_iLevel = 0;
+
+	m_bBossStart = false;
+	m_iBossHp = 0;
 
 	m_vBoom = {175.f, 535.f, 0.f};
 	m_b2P = false;
@@ -109,6 +113,17 @@ void CYMUi::Render(HDC hDC)
 	TCHAR mName2[30];
 	wsprintf(mName2, TEXT("Lv %d"), m_iLevel);
 	TextOut(hDC, (int)m_vBoom.x, (int)m_vBoom.y - 38, mName2, lstrlen(mName));
+
+	if (m_bBossStart && m_iBossHp > 5)
+	{
+		Rectangle(hDC, 200, 50, 600, 100);
+		hpen = CreatePen(PS_SOLID, 3, RGB(255, 0, 0));
+		hpenOld = (HPEN)::SelectObject(hDC, (HGDIOBJ)hpen);
+		Rectangle(hDC, 200, 50, 200 + m_iBossHp, 100);
+		hpen = (HPEN)::SelectObject(hDC, hpenOld);
+		DeleteObject(hpen);
+	}
+
 }
 
 void CYMUi::Release(void)

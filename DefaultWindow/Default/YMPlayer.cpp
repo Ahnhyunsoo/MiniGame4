@@ -25,9 +25,10 @@ void CYMPlayer::Initialize(void)
 	m_fScale = 1.f;
 	m_tInfo.vDir = { 1.f, 0.f,0.f };
 	m_tInfo.vLook = { 1.f, 0.f,0.f };
-	m_iHp = 100;
+	m_iHp = 10;
 	m_iLevel = 3;
 	m_iBoom = 4;
+	m_iGameOver = false;
 
 	m_LazerGauge = 100;
 
@@ -65,6 +66,7 @@ void CYMPlayer::Initialize(void)
 
 int CYMPlayer::Update(void)
 {
+
 	Update_MatWorld();
 	Key_Input();
 
@@ -119,7 +121,7 @@ void CYMPlayer::OnCollision(DIRECTION _DIR, CObj * _Other)
 	{
 		Set_Hp(1);
 		if (m_iHp == 0)
-			Set_Hp(-100);
+			m_iGameOver = true;
 	}
 	else if (temp->Get_Tag() == "levelup")
 	{

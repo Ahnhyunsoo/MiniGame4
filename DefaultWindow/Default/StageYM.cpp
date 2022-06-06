@@ -11,6 +11,7 @@
 #include "YMLevelUp.h"
 #include "YMHeal.h"
 #include "YMIBoom.h"
+#include "YMBoss.h"
 
 
 CStageYM::CStageYM()
@@ -35,6 +36,8 @@ void CStageYM::Initialize(void)
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<YMShipMonster>::CreateObj(100.f, -500.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMMiddleBoss>::CreateObj(200.f, 0.f));
+
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMBoss>::CreateObj(200.f, -300.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_ITEM, CAbstractFactory<CYMLevelUp>::CreateObj(200.f, 100.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_ITEM, CAbstractFactory<CYMHeal>::CreateObj(400.f, -300.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_ITEM, CAbstractFactory<CYMIBoom>::CreateObj(400.f, -500.f));
@@ -61,4 +64,6 @@ void CStageYM::Render(HDC hDC)
 
 void CStageYM::Release(void)
 {
+	CObjMgr::Get_Instance()->Release();
+	CYMUiMgr::Get_Instance()->Release();
 }

@@ -26,6 +26,8 @@ void CYMMiddleBoss::Initialize(void)
 	m_tInfo.fCX = 140;
 	m_tInfo.fCY = 90;
 	m_sTag = "monster";
+	m_iBulletCount = 0;
+	m_bBulletCount = false;
 
 	m_iSide = 0;
 	m_iSideCount = 0;
@@ -137,6 +139,19 @@ int CYMMiddleBoss::Update(void)
 
 	Update_MatWorld();
 
+
+	if (m_iBulletCount == 0)
+	{
+		m_iBulletCount = GetTickCount();
+		m_bBulletCount = true;
+	}
+	else if (m_iBulletCount + 500 < GetTickCount() && m_bBulletCount)
+	{
+		m_iBulletCount = 0;
+		m_bBulletCount = false;
+	}
+
+
 	if (m_bDead)
 		return OBJ_DEAD;
 	else
@@ -148,16 +163,16 @@ void CYMMiddleBoss::Late_Update(void)
 {
 	if (m_tInfo.vPos.y == 100 && m_iSide <= 5)
 	{
-		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + 75, m_tInfo.vPos.y + 50));
-		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x - 75, m_tInfo.vPos.y + 50));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + 75, m_tInfo.vPos.y + 50, DIR_DOWN));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x - 75, m_tInfo.vPos.y + 50, DIR_DOWN));
 		m_iSide++;
 	}
 
-	else
+	if(m_tInfo.vPos.y == 100 && !m_bBulletCount)
 	{
-		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + 3, m_tInfo.vPos.y + 100));
-		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x, m_tInfo.vPos.y + 100));
-		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x - 3, m_tInfo.vPos.y + 100));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + 3, m_tInfo.vPos.y + 100, DIR_LEFT));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x, m_tInfo.vPos.y + 100, DIR_DOWN));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CYMMonsterBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x - 3, m_tInfo.vPos.y + 100,DIR_RIGHT));
 	}
 
 

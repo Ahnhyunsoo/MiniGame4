@@ -4,6 +4,7 @@ class CYMMonsterBullet :
 	public CObjYM
 {
 public:
+	CYMMonsterBullet(D3DXVECTOR3 _Dir,DIRECTION _Num);
 	CYMMonsterBullet(D3DXVECTOR3 _Dir);
 	virtual ~CYMMonsterBullet();
 
@@ -13,5 +14,8 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
+
+private:
+	int m_iNum;
 };
 
