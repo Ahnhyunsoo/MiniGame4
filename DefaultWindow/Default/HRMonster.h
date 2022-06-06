@@ -14,6 +14,7 @@ public:
 	void Update_Idle();
 	void Update_Move();
 	void Update_Attack();
+	void Update_Chase();
 	void Update_Dead();
 
 public:
@@ -33,4 +34,11 @@ private:
 	float m_fKnockTime;
 	float m_fDeadTime;
 	float m_fOldDeadTime;
+
+	float m_fChaseDis;
+
+	float m_fAttackTime;
+	float m_fOldAttackTime;
+
+	bool m_bCanHit;
 };

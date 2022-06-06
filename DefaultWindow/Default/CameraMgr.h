@@ -36,26 +36,38 @@ private:
 
 
 public:
-	void		Set_Target(CObj* _pTarget) { m_pTarget = _pTarget; }
+	void		StartShake(float _fShakeValue, float _fShakeSpeed, float _fTime, float _fATime = 0.f);
+	void		StartScale(CObj* _pTarget);
+
+public:
+	void		Set_Target(CObj* _pTarget) 
+	{ 
+		if(m_pTempTarget == nullptr)
+			m_pTempTarget = _pTarget;
+
+		m_pTarget = _pTarget;
+	}
 
 	float		Get_ScrollX(void) { return m_fScrollX; }
 	float		Get_ScrollY(void) { return m_fScrollY; }
 
-	void		StartShake(float _fShakeValue, float _fShakeSpeed, float _fTime, float _fATime = 0.f);
+	bool		Get_IsScaling(void) { return m_bScale; }
 
 	void		ScaleObj(OBJID _eID);
 
 public:
-	void Nomal();
-	void Shake();
+	void		Update_Nomal(void);
+	void		Update_Shake(void);
+	void		Update_Scale(void);
 
 public:
 	void		Initialize(void);
 	void		Update(void);
-	void		Update_Scale(void);
 
 private:
 	CObj*					m_pTarget;
+	CObj*					m_pTempTarget;
+
 	float					m_fScrollX;
 	float					m_fScrollY;
 
@@ -75,5 +87,8 @@ private:
 
 	bool					m_bScale;
 	float					m_fScaleValue;
+	float					m_fScaleTime;
+	float					m_fScaleOldTime;
+
 };
 

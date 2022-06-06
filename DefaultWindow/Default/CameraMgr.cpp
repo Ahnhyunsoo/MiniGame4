@@ -9,6 +9,7 @@ CCameraMgr*	CCameraMgr::m_pInstance = nullptr;
 
 CCameraMgr::CCameraMgr()
 	: m_pTarget(nullptr)
+	, m_pTempTarget(nullptr)
 	, m_fScrollX(0.f)
 	, m_fScrollY(0.f)
 	, m_bMoveX(false)
@@ -21,12 +22,16 @@ CCameraMgr::CCameraMgr()
 	, m_bShakeTurn(false)
 	, m_bScale(true)
 	, m_fScaleValue(1.f)
+	, m_fScaleTime(0.f)
+	, m_fScaleOldTime(0.f)
 {
 }
-
 CCameraMgr::~CCameraMgr()
 {
 }
+
+
+
 
 void CCameraMgr::Initialize(void)
 {
@@ -59,55 +64,20 @@ void CCameraMgr::Initialize(void)
 	//	m_fScrollY = -900.f + WINCY;
 	//}
 }
-
 void CCameraMgr::Update(void)
 {
-	if (CKeyMgr::Get_Instance()->Key_Pressing('W'))
-	{
-		m_fScaleValue += 0.1f;
-	}
-	else if (CKeyMgr::Get_Instance()->Key_Pressing('S'))
-	{
-		m_fScaleValue -= 0.1f;
-	}
-
-
-
 	if (m_bShake)
-		Shake();
+		Update_Shake();
 	if(m_bScale)
 		Update_Scale();
 
-	Nomal();
+	Update_Nomal();
 }
 
-void CCameraMgr::Update_Scale(void)
-{
-	ScaleObj(OBJ_PLAYER);
-	ScaleObj(OBJ_MONSTER);
-	ScaleObj(OBJ_HR_BLOCK);
-}
-void CCameraMgr::ScaleObj(OBJID _eID)
-{
-	D3DXMATRIX		matWorld, matScale, matTrans;
-	D3DXMatrixScaling(&matScale, m_fScaleValue, m_fScaleValue, 0.f);
 
-	list<CObj*>& ObjTemp = CObjMgr::Get_Instance()->Get_ObjList(_eID);
-	for (list<CObj*>::iterator iter = ObjTemp.begin(); iter != ObjTemp.end(); ++iter)
-	{
-		vector<D3DXVECTOR3>& VerTemp = (*iter)->Get_VertexList();
-		//vector<D3DXVECTOR3>& OriVerTemp = (*iter)->Get_OriVertexList();
-		//D3DXMatrixTranslation(&matTrans, (*iter)->Get_Info().vPos.x, (*iter)->Get_Info().vPos.y, 0.f);
-		matWorld = matScale;
 
-		for (int i = 0; i < VerTemp.size(); ++i)
-		{
-			VerTemp[i].x += m_pTarget->Get_Info().vPos.x;
-			VerTemp[i].y += m_pTarget->Get_Info().vPos.y;
-			D3DXVec3TransformCoord(&VerTemp[i], &VerTemp[i], &matWorld);
-		}
-	}
-}
+
+
 
 void CCameraMgr::StartShake(float _fShakeValue, float _fShakeSpeed, float _fTime, float _fATime)
 {
@@ -123,20 +93,38 @@ void CCameraMgr::StartShake(float _fShakeValue, float _fShakeSpeed, float _fTime
 	m_fATime = _fATime;
 	m_fOldATime = GetTickCount64();
 }
+void CCameraMgr::StartScale(CObj * _pTarget)
+{
+	// 1) 타겟을 바꾼다.
+	Set_Target(_pTarget);
 
-void CCameraMgr::Nomal()
+	m_bScale = true;
+
+	m_fScaleValue = 1.f;
+	m_fScaleTime = 2000.f;
+	m_fScaleOldTime = GetTickCount64();
+}
+
+
+
+
+
+
+
+
+void CCameraMgr::Update_Nomal()
 {
 	// target이 없다면 0, 0 고정
 	if (!m_pTarget)
 		return;
-
+	 
 	//m_fScrollX = -m_pTarget->Get_Info().fX + WINCX * 0.5f;
 	//m_fScrollY = -m_pTarget->Get_Info().fY + WINCY * 0.5f;
 
 	int		iOffSetX = WINCX >> 1;
 	int		iOffSetY = WINCY >> 1;
-	int		iItvX = 200;
-	int		iItvY = 100;
+	int		iItvX = 100;
+	int		iItvY = 50;
 
 	if (iOffSetX - iItvX > m_pTarget->Get_Info().vPos.x + m_fScrollX)
 	{
@@ -218,8 +206,7 @@ void CCameraMgr::Nomal()
 	//	m_fScrollY = -900.f + WINCY;
 	//}
 }
-
-void CCameraMgr::Shake()
+void CCameraMgr::Update_Shake()
 {
 	if (m_fOldATime + m_fATime < GetTickCount64())
 	{
@@ -255,4 +242,69 @@ void CCameraMgr::Shake()
 		m_fShakeOldTime = GetTickCount();
 
 }
+void CCameraMgr::Update_Scale(void)
+{
+	if (m_fScaleOldTime + m_fScaleTime < GetTickCount())
+	{
+		m_bScale = false;
+		Set_Target(m_pTempTarget);
+		return;
+	}
 
+	if (m_fScaleValue < 3.f)
+		m_fScaleValue += 0.1f;
+
+	ScaleObj(OBJ_PLAYER);
+	ScaleObj(OBJ_MONSTER);
+	ScaleObj(OBJ_HR_BLOCK);
+}
+
+
+
+
+
+
+void CCameraMgr::ScaleObj(OBJID _eID)
+{
+	// TODO : 행렬 곱으로 최적화 필요
+
+	// 1) 스케일 매트릭스를 만든다.
+	D3DXMATRIX		matWorld, matScale, matBackTrans, matOriTrans;
+	D3DXMatrixScaling(&matScale, m_fScaleValue, m_fScaleValue, 0.f);
+
+	// 3) 타겟 vPos를 받아둔다.
+	D3DXVECTOR3 vTargetPos = m_pTarget->Get_Info().vPos;
+
+	// 4) vPos를 빼고 더하는 이동 행렬을 만든다.(빽 행렬, 오리 행렬)
+	D3DXMatrixTranslation(&matBackTrans, -vTargetPos.x, -vTargetPos.y, 0.f);
+	D3DXMatrixTranslation(&matOriTrans, vTargetPos.x, vTargetPos.y, 0.f);
+
+	// 5) 모든 객체에 빽 행렬을 적용한다.
+	list<CObj*>& ObjTemp = CObjMgr::Get_Instance()->Get_ObjList(_eID);
+
+	for (list<CObj*>::iterator iter = ObjTemp.begin(); iter != ObjTemp.end(); ++iter)
+	{
+		vector<D3DXVECTOR3>& VerTemp = (*iter)->Get_VertexList();
+
+		for (int i = 0; i < VerTemp.size(); ++i)
+			D3DXVec3TransformCoord(&VerTemp[i], &VerTemp[i], &matBackTrans);
+	}
+
+	// 6) 모든 객체를 자신의 좌표에서 스케일링한다.
+	for (list<CObj*>::iterator iter = ObjTemp.begin(); iter != ObjTemp.end(); ++iter)
+	{
+		vector<D3DXVECTOR3>& VerTemp = (*iter)->Get_VertexList();
+
+		for (int i = 0; i < VerTemp.size(); ++i)
+			D3DXVec3TransformCoord(&VerTemp[i], &VerTemp[i], &matScale);
+	}
+
+	// 7) 모든 객체에 오리 행렬을 적용한다.
+	for (list<CObj*>::iterator iter = ObjTemp.begin(); iter != ObjTemp.end(); ++iter)
+	{
+		vector<D3DXVECTOR3>& VerTemp = (*iter)->Get_VertexList();
+
+		for (int i = 0; i < VerTemp.size(); ++i)
+			D3DXVec3TransformCoord(&VerTemp[i], &VerTemp[i], &matOriTrans);
+	}
+}

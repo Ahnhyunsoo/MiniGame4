@@ -39,6 +39,7 @@ public:
 public:
 	virtual		void	OnCollision(DIRECTION _DIR, CObj* _Other) PURE;
 	void ColRender(HDC hDC);
+	void HR_ColRender(HDC hDC);
 
 public:
 	void Update_MatWorld(void);
