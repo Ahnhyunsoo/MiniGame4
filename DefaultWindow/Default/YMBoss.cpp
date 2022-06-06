@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "YMBoss.h"
 #include "YMUIMgr.h"
+#include "YMScoreMgr.h"
 
 CYMBoss::CYMBoss()
 {
@@ -42,7 +43,7 @@ int CYMBoss::Update(void)
 {
 	Update_MatWorld();
 
-	if (m_tInfo.vPos.y == 100)
+	if (m_tInfo.vPos.y >= 100)
 		m_tInfo.vPos.x += m_fSpeed;
 	else
 		m_tInfo.vPos.y += m_fSpeed;
@@ -59,7 +60,10 @@ int CYMBoss::Update(void)
 		m_iHp += 20;
 
 	if (m_bDead)
+	{
+		CYMScoreMgr::Get_Instance()->Plus_Score(10000);
 		return OBJ_DEAD;
+	}
 	else
 		return OBJ_NOEVENT;
 }

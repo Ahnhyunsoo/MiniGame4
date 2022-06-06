@@ -220,6 +220,7 @@
     <ClInclude Include="YMBoom.h" />
     <ClInclude Include="YMBoss.h" />
     <ClInclude Include="YMBullet.h" />
+    <ClInclude Include="YMCommon.h" />
     <ClInclude Include="YMHeal.h" />
     <ClInclude Include="YMIBoom.h" />
     <ClInclude Include="YMItem.h" />
@@ -229,6 +230,7 @@
     <ClInclude Include="YMMonster.h" />
     <ClInclude Include="YMMonsterBullet.h" />
     <ClInclude Include="YMPlayer.h" />
+    <ClInclude Include="YMScoreMgr.h" />
     <ClInclude Include="YMShipMonster.h" />
     <ClInclude Include="YMTownMoster.h" />
     <ClInclude Include="YMUi.h" />
@@ -236,6 +238,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpMgr.cpp" />
+    <ClCompile Include="CYMCommon.cpp" />
+    <ClCompile Include="CYMScoreMgr.cpp" />
     <ClCompile Include="HRBullet.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Default.cpp" />

@@ -234,9 +234,12 @@
     </Filter>
     <Filter Include="01.StageST\STObj\STStageName">
       <UniqueIdentifier>{c5ceff5a-3829-41c3-997b-617954b9441d}</UniqueIdentifier>
-      </Filter>
+    </Filter>
     <Filter Include="03.StageYM\YMObj\YMMonster\Boss">
       <UniqueIdentifier>{002b14aa-851b-464b-8337-bc0ba5291424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.StageYM\YMObj\YMUi\YMScoreMgr">
+      <UniqueIdentifier>{25e15c5f-e5b5-498a-ac07-0d7d60020a93}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -498,15 +501,21 @@
     </ClInclude>
     <ClInclude Include="RaserRect.h">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
-      </ClInclude>
+    </ClInclude>
     <ClInclude Include="STStageName.h">
       <Filter>01.StageST\STObj\STStageName</Filter>
-      </ClInclude>
+    </ClInclude>
     <ClInclude Include="YMBoss.h">
       <Filter>03.StageYM\YMObj\YMMonster\Boss</Filter>
     </ClInclude>
     <ClInclude Include="Obj.h">
       <Filter>11.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="YMScoreMgr.h">
+      <Filter>03.StageYM\YMObj\YMUi\YMScoreMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="YMCommon.h">
+      <Filter>03.StageYM\YMObj\YMMonster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -746,12 +755,18 @@
     </ClCompile>
     <ClCompile Include="RaserRect.cpp">
       <Filter>04.StageHS\HSObj\HSBullet</Filter>
-      </ClCompile>
+    </ClCompile>
     <ClCompile Include="STStageName.cpp">
       <Filter>01.StageST\STObj\STStageName</Filter>
-       </ClCompile>
+    </ClCompile>
     <ClCompile Include="YMBoss.cpp">
       <Filter>03.StageYM\YMObj\YMMonster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CYMScoreMgr.cpp">
+      <Filter>03.StageYM\YMObj\YMUi\YMScoreMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CYMCommon.cpp">
+      <Filter>03.StageYM\YMObj\YMMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

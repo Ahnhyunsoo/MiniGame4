@@ -3,6 +3,7 @@
 #include "ObjMgr.h"
 #include "CAbstractFactory.h"
 #include "YMMonsterBullet.h"
+#include "YMScoreMgr.h"
 
 
 CYMTownMoster::CYMTownMoster()
@@ -17,8 +18,8 @@ CYMTownMoster::~CYMTownMoster()
 void CYMTownMoster::Initialize(void)
 {
 	m_fAngle = 1.f;
-	m_fSpeed = 2.f;
-	m_fScale = 3.f;
+	m_fSpeed = 2.5f;
+	m_fScale = 2.f;
 	m_iHp = 3;
 	m_bDead = false;
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
@@ -185,11 +186,18 @@ int CYMTownMoster::Update(void)
 {
 
 	m_tInfo.vPos.y += m_fSpeed;
+
+	if (m_tInfo.vPos.y > 500)
+		m_fSpeed *= -1.0f;
+
 	Update_MatWorld();
 
 
 	if (m_bDead)
+	{
+		CYMScoreMgr::Get_Instance()->Plus_Score(300);
 		return OBJ_DEAD;
+	}
 	else
 		return OBJ_NOEVENT;
 }
@@ -230,6 +238,6 @@ void CYMTownMoster::OnCollision(DIRECTION _DIR, CObj * _Other)
 	else if (temp->Get_Tag() == "lazer")
 		Set_Hp(5);
 
-	if (m_iHp == 0)
+	if (m_iHp <= 0)
 		m_bDead = true;
 }
