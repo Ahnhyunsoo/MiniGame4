@@ -130,7 +130,9 @@ void CObjMgr::Late_UpdateGH()
 void CObjMgr::Late_UpdateYM()
 {
 	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET], false);
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_BULLET], m_ObjList[OBJ_BULLET], false);
 	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BULLET], false);
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_ITEM], false);
 }
 void CObjMgr::Late_UpdateHS()
 {

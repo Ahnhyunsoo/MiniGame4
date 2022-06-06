@@ -21,6 +21,7 @@ void YMShipMonster::Initialize(void)
 	m_tInfo.fCY = 500;
 	m_iHp = 500;
 	m_bDead = false;
+	m_sTag = "monster";
 
 	m_vOriVertex.push_back(D3DXVECTOR3{ 20.f, 0.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 20.f, 50.f, 0.f });
@@ -98,7 +99,7 @@ int YMShipMonster::Update(void)
 	m_tInfo.vPos.x += m_fSpeed;
 	Update_MatWorld();
 
-	if (m_bDead)
+	if (m_bDead || m_tInfo.vPos.y > 800)
 		return OBJ_DEAD;
 	else
 		return OBJ_NOEVENT;

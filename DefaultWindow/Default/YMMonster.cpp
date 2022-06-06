@@ -21,6 +21,7 @@ void CYMMonster::Initialize(void)
 	m_tInfo.fCX = 100;
 	m_tInfo.fCY = 100;
 	m_iHp = 20;
+	m_sTag = "monster";
 
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 	m_bDead = false;

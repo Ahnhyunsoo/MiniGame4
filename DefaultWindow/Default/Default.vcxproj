@@ -206,9 +206,13 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TowerUI.h" />
     <ClInclude Include="UIMgr.h" />
+    <ClInclude Include="YMBoom.h" />
     <ClInclude Include="YMBullet.h" />
+    <ClInclude Include="YMHeal.h" />
+    <ClInclude Include="YMIBoom.h" />
     <ClInclude Include="YMItem.h" />
     <ClInclude Include="YMLazer.h" />
+    <ClInclude Include="YMLevelUp.h" />
     <ClInclude Include="YMMiddleBoss.h" />
     <ClInclude Include="YMMonster.h" />
     <ClInclude Include="YMMonsterBullet.h" />
@@ -216,6 +220,7 @@
     <ClInclude Include="YMShipMonster.h" />
     <ClInclude Include="YMTownMoster.h" />
     <ClInclude Include="YMUi.h" />
+    <ClInclude Include="YMUiMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpMgr.cpp" />
@@ -268,9 +273,13 @@
     </ClCompile>
     <ClCompile Include="TowerUI.cpp" />
     <ClCompile Include="UIMgr.cpp" />
+    <ClCompile Include="YMBoom.cpp" />
     <ClCompile Include="YMBullet.cpp" />
+    <ClCompile Include="YMHeal.cpp" />
+    <ClCompile Include="YMIBoom.cpp" />
     <ClCompile Include="YMItem.cpp" />
     <ClCompile Include="YMLazer.cpp" />
+    <ClCompile Include="YMLevelUp.cpp" />
     <ClCompile Include="YMMiddleBoss.cpp" />
     <ClCompile Include="YMMonster.cpp" />
     <ClCompile Include="YMMonsterBullet.cpp" />
@@ -278,6 +287,7 @@
     <ClCompile Include="YMShipMonster.cpp" />
     <ClCompile Include="YMTownMoster.cpp" />
     <ClCompile Include="YMUi.cpp" />
+    <ClCompile Include="YMUiMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Default.rc" />

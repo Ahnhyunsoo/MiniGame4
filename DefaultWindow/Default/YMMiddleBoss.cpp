@@ -25,6 +25,7 @@ void CYMMiddleBoss::Initialize(void)
 	m_tInfo.vDir = { 0.f,0.f,0.f };
 	m_tInfo.fCX = 140;
 	m_tInfo.fCY = 90;
+	m_sTag = "monster";
 
 	m_iSide = 0;
 	m_iSideCount = 0;

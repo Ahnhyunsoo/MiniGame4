@@ -17,14 +17,14 @@ void CYMMonsterBullet::Initialize(void)
 	m_tInfo.fCX = 10;
 	m_tInfo.fCY = 10;
 	m_tInfo.vDir = { 0.f,1.f,0.f };
-	m_fSpeed = 2.f;
+	m_fSpeed = 1.f;
 	m_sTag = "monsterbullet";
 	m_bDead = false;
 }
 
 int CYMMonsterBullet::Update(void)
 {
-	m_tInfo.vPos.x += m_tInfo.vDir.x * 20;
+	m_tInfo.vPos.x += m_tInfo.vDir.x * 40;
 	m_tInfo.vPos.y += m_tInfo.vDir.y * 20;
 
 	if (m_tInfo.vPos.y > 600 || m_tInfo.vPos.y < 0 || m_tInfo.vPos.x > 800 || m_tInfo.vPos.x < 0 || m_bDead)
@@ -53,4 +53,6 @@ void CYMMonsterBullet::OnCollision(DIRECTION _DIR, CObj * _Other)
 	if (temp->Get_Tag() == "player")
 		Set_Dead();
 
+	else if (temp->Get_Tag() == "boom")
+		Set_Dead();
 }
