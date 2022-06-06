@@ -193,6 +193,9 @@
     <Filter Include="02.StageGH\GHObj\GHScoreMgr\GHScore">
       <UniqueIdentifier>{f4652796-42fe-4c01-a1d5-57bb3cab1db5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.StageGH\GHObj\GHSkidLine">
+      <UniqueIdentifier>{245f1cb0-b563-46bf-bc15-b3c10ad6ba71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -399,6 +402,9 @@
     <ClInclude Include="GHScore.h">
       <Filter>02.StageGH\GHObj\GHScoreMgr\GHScore</Filter>
     </ClInclude>
+    <ClInclude Include="GHSkidLine.h">
+      <Filter>02.StageGH\GHObj\GHSkidLine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Default.cpp">
@@ -580,6 +586,9 @@
     </ClCompile>
     <ClCompile Include="GHScore.cpp">
       <Filter>02.StageGH\GHObj\GHScoreMgr\GHScore</Filter>
+    </ClCompile>
+    <ClCompile Include="GHSkidLine.cpp">
+      <Filter>02.StageGH\GHObj\GHSkidLine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

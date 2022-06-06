@@ -70,6 +70,8 @@ void CGHButton::OnCollision(DIRECTION _DIR, CObj * _Other)
 	//Get_GHString
 	if ((0 != dynamic_cast<CGHObj*>(_Other)->Get_GHString())) {
 		if ((m_bPress) && (m_ScoreDelayTime + 10 <GetTickCount())) {
+			//if((dynamic_cast<CGHFloar*>(_Other)->Get_FloarIndex()) == 6)
+				
 			CGHScoreMgr::Get_Instance()->Set_iScore();
 
 			m_ScoreDelayTime = GetTickCount();
@@ -78,6 +80,7 @@ void CGHButton::OnCollision(DIRECTION _DIR, CObj * _Other)
 			CSoundMgr::Get_Instance()->PlaySound(L"GHUndertale.wav", SOUND_BGM, g_GHfSound);
 			g_dwGHBGMStartTime = GetTickCount();
 		}
+		
 
 		_Other->Set_Dead();
 	}

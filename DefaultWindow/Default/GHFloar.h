@@ -19,12 +19,16 @@ private:
 	void	Line_Nail_Down();
 	void	Initialize_Floar();
 public:
+	void	SetReDirection();
 	void	Set_Floar(int _iIndex, bool _bFirst) { m_iFloarIndex = _iIndex; m_bFirst = _bFirst; }
 	bool	Get_First() { return m_bFirst; }
+	int		Get_FloarIndex() { return m_iFloarIndex; }
 private:
 	int		m_iFloarIndex;
+	bool	m_bLeft;
 	bool	m_bFirst;
-	CGHLine  m_KyuLine;
-	DWORD	 m_ScaleDelayTime;
+	CGHLine	m_KyuLine;
+	DWORD	m_ScaleDelayTime;
+	DWORD	m_RedirectionDelayTime;
 };
 
