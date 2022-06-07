@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GHFloar.h"
 #include "GHLineMgr.h"
-
+#include "GHPlayer.h"
 CGHFloar::CGHFloar()
 {
 }
@@ -41,6 +41,11 @@ void CGHFloar::Initialize_Floar()
 	{
 		m_tInfo.vPos = { 275.f,0.f,0.f };
 	}
+	else if (m_iFloarIndex == 7)
+	{
+		m_tInfo.vPos = { 525.f,0.f,0.f };
+	}
+	
 	m_vOriVertex.push_back(D3DXVECTOR3{ -1.f	, -1.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 1.f	, -1.f, 0.f });
 	m_vOriVertex.push_back(D3DXVECTOR3{ 1.f	, 1.f, 0.f });
@@ -50,7 +55,7 @@ void CGHFloar::Initialize_Floar()
 	m_vVertex.push_back(D3DXVECTOR3{ 1.f, -1.f, 0.f });
 	m_vVertex.push_back(D3DXVECTOR3{ 1.f, 1.f, 0.f });
 	m_vVertex.push_back(D3DXVECTOR3{ -1.f, 1.f, 0.f });
-	if(m_iFloarIndex != 6)
+	if(m_iFloarIndex != 6 && m_iFloarIndex != 7)
 		LineOn();
 
 }
@@ -133,12 +138,23 @@ int CGHFloar::Update(void)
 			m_tInfo.vDir.x = -1;
 		else 
 			m_tInfo.vDir.x = 1;
-		m_fAngle += 3.f;
+		m_fAngle += 5.f;
 		//m_fSpeed += 0.5f;
 
 	}
+	else if (m_iFloarIndex == 7)
+	{
+		m_tInfo.vDir = { -1.f, 0.5f, 0.f };
 
-	if (m_iFloarIndex != 6)
+		if (m_bLeft == true)
+			m_tInfo.vDir.x = 1;
+		else
+			m_tInfo.vDir.x = -1;
+		m_fAngle -= 5.f;
+		//m_fSpeed += 0.5f;
+
+	}
+	if (m_iFloarIndex != 6 && m_iFloarIndex != 7)
 		Line_Nail_Down();
 	
 	if (m_bDead)
@@ -158,7 +174,21 @@ void CGHFloar::Late_Update(void)
 
 void CGHFloar::Render(HDC hDC)
 {
-	Render_Vertex(hDC);
+	if (m_iFloarIndex == 6||m_iFloarIndex == 7) {
+		HPEN hpen;
+		HPEN hpenOld;
+
+		hpen = CreatePen(PS_SOLID, 3, RGB(214, 214, 10));   // 선 스타일, 굵기, 색상
+		hpenOld = (HPEN)::SelectObject(hDC, (HGDIOBJ)hpen);   // 펜 선택
+
+		Render_Vertex(hDC);
+
+		hpen = (HPEN)SelectObject(hDC, hpenOld);   // 기존의 펜 다시 선택
+		DeleteObject(hpen);   // 생성한 펜 삭제
+	}
+	else
+		Render_Vertex(hDC);
+
 	if (m_bFirst)
 		ColRender(hDC);
 
@@ -171,7 +201,9 @@ void CGHFloar::Release(void)
 
 void CGHFloar::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
-	
+	if(dynamic_cast<CGHObj*>(_Other)->Get_GHString() == 0)
+		if (m_iFloarIndex == 6)
+			dynamic_cast<CGHPlayer*>(_Other)->Set_SkidBool();
 }
 
 

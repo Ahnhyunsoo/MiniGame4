@@ -238,6 +238,9 @@
     <Filter Include="03.StageYM\YMObj\YMMonster\Boss">
       <UniqueIdentifier>{002b14aa-851b-464b-8337-bc0ba5291424}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.StageGH\GHObj\GHHeros_Of_Stone">
+      <UniqueIdentifier>{dfbe8ba2-afc8-4a43-a993-5f2553ca0482}</UniqueIdentifier>
+    </Filter>
     <Filter Include="03.StageYM\YMObj\YMUi\YMScoreMgr">
       <UniqueIdentifier>{25e15c5f-e5b5-498a-ac07-0d7d60020a93}</UniqueIdentifier>
     </Filter>
@@ -511,6 +514,9 @@
     <ClInclude Include="Obj.h">
       <Filter>11.Scene</Filter>
     </ClInclude>
+    <ClInclude Include="GHHeros_Of_Stone.h">
+      <Filter>02.StageGH\GHObj\GHHeros_Of_Stone</Filter>
+    </ClInclude>
     <ClInclude Include="YMScoreMgr.h">
       <Filter>03.StageYM\YMObj\YMUi\YMScoreMgr</Filter>
     </ClInclude>
@@ -762,6 +768,10 @@
     <ClCompile Include="YMBoss.cpp">
       <Filter>03.StageYM\YMObj\YMMonster\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="GHHeros_Of_Stone.cpp">
+      <Filter>02.StageGH\GHObj\GHHeros_Of_Stone</Filter>
+    </ClCompile>
+
     <ClCompile Include="CYMScoreMgr.cpp">
       <Filter>03.StageYM\YMObj\YMUi\YMScoreMgr</Filter>
     </ClCompile>
