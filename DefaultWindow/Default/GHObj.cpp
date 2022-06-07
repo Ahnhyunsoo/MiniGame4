@@ -2,7 +2,7 @@
 #include "GHObj.h"
 
 
-CGHObj::CGHObj()
+CGHObj::CGHObj() : m_bflip{ false }
 {
 }
 
@@ -33,5 +33,9 @@ void CGHObj::Release(void)
 }
 
 void CGHObj::OnCollision(DIRECTION _DIR, CObj * _Other)
+{
+}
+
+void CGHObj::Set_GHFlip()
 {
 }

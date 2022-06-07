@@ -14,6 +14,7 @@ public:
 	virtual void OnCollision(DIRECTION _DIR, CObj * _Other) override;
 public:
 	void	Set_Skid_Pos(int _iLeft_Middle_Right);
+	void	Set_SkidBool();
 private:
 	void	Key_Input();
 	void	Foot_Change();
@@ -32,7 +33,11 @@ private:
 	float	 m_fJumpPower;
 	DWORD	 m_FootTime;
 	DWORD	 m_ScaleTime;
+	
+	float	m_fRadius;
 private:
+	DWORD		 m_SororokTime;
+	float		  m_fSpinAngle;
 	D3DXVECTOR3	  m_vLeft_Middle_Right;
 	bool  m_bSkid;
 };

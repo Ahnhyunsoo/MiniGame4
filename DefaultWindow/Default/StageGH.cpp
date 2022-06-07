@@ -8,7 +8,7 @@
 #include "BmpMgr.h"
 #include "GHScoreMgr.h"
 #include "SoundMgr.h"
-#include <iostream>
+#include "GHHeros_Of_Stone.h"
 #include "Include.h"
 
 
@@ -47,8 +47,7 @@ void CStageGH::Initialize(void)
 	D3DXVECTOR3 m_RightLineVector = { m_Col_Left_RightLine[1].tRPoint.x - m_Col_Left_RightLine[1].tLPoint.x, m_Col_Left_RightLine[1].tRPoint.y - m_Col_Left_RightLine[1].tLPoint.y,0.f };
 	D3DXVec3Normalize(&m_LeftLineVector, &m_LeftLineVector);
 	D3DXVec3Normalize(&m_RightLineVector, &m_RightLineVector);
-	cout << "Left X :" << m_LeftLineVector.x << "\t Y : " << m_LeftLineVector.y << "\t Z : " << m_LeftLineVector.z << endl;
-	cout << "Rightt X :" << m_RightLineVector.x << "\t Y : " << m_RightLineVector.y << "\t Z : " << m_RightLineVector.z << endl;
+	
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::CreateObj(66.5, WINCY- 53.325f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_BUTTON, CAbstractFactory<CGHButton>::CreateObj(199.8f,WINCY - 53.325f));
@@ -135,15 +134,33 @@ void CStageGH::Create_Floar()
 			{
 				if (m_WarigariFloar->Get_Dead())
 				{
+					CObjMgr::Get_Instance()->Add_Object(OBJ_ITEM, CAbstractFactory<CGHHeros_Of_Stone>::Create());
+
 					m_WarigariFloar = nullptr;
 					m_bWarigari = false;
+					m_iRoutine = 3;
 				}
 			}
 		}
-		else if (m_iRoutine == 3)
-		{//스키드라인.
+		//else if (m_iRoutine == 3)
+		//{//스키드라인.
+		//	if (!m_bWarigari) {
+		//		CObjMgr::Get_Instance()->Add_Object(OBJ_GYU_FLOAR, CAbstractFactory<CGHFloar>::CreateGHFloar(7, false));
+		//		m_WarigariFloar = CObjMgr::Get_Instance()->Get_ObjList(OBJ_GYU_FLOAR).back();
+		//		m_bWarigari = true;
+		//	}
+		//	else
+		//	{
+		//		if (m_WarigariFloar->Get_Dead())
+		//		{
+		//			//CObjMgr::Get_Instance()->Add_Object(OBJ_ITEM, CAbstractFactory<CGHHeros_Of_Stone>::Create());
 
-		}
+		//			m_WarigariFloar = nullptr;
+		//			m_bWarigari = false;
+		//			m_iRoutine = 4;
+		//		}
+		//	}
+		//}
 		m_bFloarCreate = true;
 
 	}
@@ -180,7 +197,6 @@ void CStageGH::SetWarigari()
 		float fDotRight = D3DXVec3Dot(&m_RightLineVector, &ToWarigariVectorRight);
 		float	fAngleLeft = acosf(fDotLeft);
 		float	fAngleRight = acosf(fDotRight);
-		cout << "L: " << fAngleLeft << "\t" << "R: " << fAngleRight << endl;
 		if (0.02f<fAngleLeft && 0.03f > fAngleLeft) {
 			dynamic_cast<CGHFloar*>(m_WarigariFloar)->SetReDirection();
 		}
@@ -255,7 +271,7 @@ void CStageGH::Release(void)
 	CGHLineMgr::Get_Instance()->Destroy_Instance();
 	CObjMgr::Get_Instance()->Release();
 	CGHScoreMgr::Get_Instance()->Destroy_Instance();
-
+	CSoundMgr::Get_Instance()->StopAll();
 }
 
 void CStageGH::Key_Input()
@@ -272,16 +288,14 @@ void CStageGH::Key_Input()
 		if (!m_bStart) {
 			m_bStart = true;
 			/*GHUndertale*/
-			//m_iRoutine = 0;
-			m_iRoutine = 2;
- 			cout << 0 << endl;
+			m_iRoutine = 0;
+			//m_iRoutine = 2;
 			m_MusicTime = GetTickCount();
 		}
 	}
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON)) {
-		cout <<GetTickCount() - m_MusicTime << endl;
 		m_MusicTime = GetTickCount();
-		CSceneMgr::Get_Instance()->Scene_Change(STAGE_HS);
+		CSceneMgr::Get_Instance()->Scene_Change(STAGE_ST);
 	}
 
 

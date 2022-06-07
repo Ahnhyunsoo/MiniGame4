@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ObjMgr.h"
 #include "SceneMgr.h"
-
+#include "GHPlayer.h"
 #include "Scene.h"
 #include <iostream>
 
@@ -137,7 +137,8 @@ void CObjMgr::Late_UpdateGH()
 {
 	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_GYU_BUTTON], false);
 	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_GYU_BUTTON], m_ObjList[OBJ_GYU_FLOAR], false);
-
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_GYU_FLOAR], m_ObjList[OBJ_PLAYER], false); 
+	CCollisionMgr::Get_Instance()->Collision_RectEx(m_ObjList[OBJ_ITEM], m_ObjList[OBJ_PLAYER], false);
 }
 void CObjMgr::Late_UpdateYM()
 {

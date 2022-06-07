@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GHPlayer.h"
 #include "GHButton.h"
-#include <iostream>
+#include "GHFloar.h"
 CGHPlayer::CGHPlayer()
 {
 }
@@ -45,6 +45,9 @@ void CGHPlayer::Initialize(void)
 	m_vVertex.push_back(D3DXVECTOR3{ 50.f, -50.f, 0.f });
 	m_vVertex.push_back(D3DXVECTOR3{ 50.f, 50.f, 0.f });
 	m_vVertex.push_back(D3DXVECTOR3{ -50.f, 50.f, 0.f });
+
+	
+
 	m_FootTime = 0;
 	m_ScaleTime = 0;
 	m_bFoot = true;
@@ -52,7 +55,10 @@ void CGHPlayer::Initialize(void)
 	m_fJumpPower = 13.f;
 	m_fJumpTime = 0.f;
 	m_iFloarY = 0;
+	m_SororokTime = 0.f;
 	m_iFootChangeTime = 100;
+	m_fRadius = 0.f;
+	m_fSpinAngle = 0.f;
 }
 void CGHPlayer::ModeChange()
 {
@@ -63,6 +69,18 @@ void CGHPlayer::ModeChange()
 
 void CGHPlayer::Update_SkidWorld()
 {
+	if (m_SororokTime + 1000 < GetTickCount() ){
+		m_fAngle += 3.f;
+		m_SororokTime = GetTickCount();
+	}
+	m_fSpinAngle += 5.f;
+	m_fRadius -= 0.5f;
+		m_tInfo.vPos.x = cos(D3DXToRadian(m_fSpinAngle)) * m_fRadius + 400.f;
+		m_tInfo.vPos.y = sin(D3DXToRadian(m_fSpinAngle)) * m_fRadius + 100.f;
+	
+	
+
+	Update_MatWorld();
 }
 
 int CGHPlayer::Update(void)
@@ -146,10 +164,10 @@ void CGHPlayer::Render(HDC hDC)
 		Ellipse(hDC, int(m_tInfo.vPos.x + m_BodyDistanceX - 5), int(m_tInfo.vPos.y - 10), int(m_tInfo.vPos.x + m_BodyDistanceX + 20), int(m_tInfo.vPos.y + 25));
 
 	}
-	Render_Vertex(hDC);
+	//Render_Vertex(hDC);
 	Ellipse(hDC, (int)m_vVertex[0].x, (int)m_vVertex[0].y, (int)m_vVertex[2].x, (int)m_vVertex[2].y);
-	MoveToEx(hDC, int(m_tInfo.vPos.x), int(m_tInfo.vPos.y), nullptr);
-	LineTo(hDC, int(m_tInfo.vPos.x + m_tInfo.vDir.x * 100), int(m_tInfo.vPos.y + m_tInfo.vDir.y * 100));
+	/*MoveToEx(hDC, int(m_tInfo.vPos.x), int(m_tInfo.vPos.y), nullptr);
+	LineTo(hDC, int(m_tInfo.vPos.x + m_tInfo.vDir.x * 100), int(m_tInfo.vPos.y + m_tInfo.vDir.y * 100));*/
 
 }
 
@@ -159,7 +177,18 @@ void CGHPlayer::Release(void)
 
 void CGHPlayer::OnCollision(DIRECTION _DIR, CObj * _Other)
 {
-	dynamic_cast<CGHButton*>(_Other)->Set_bPress();
+	//enum eGHObjString { STRING_PLAYER, STRING_FLOAR, STRING_BUTTON, STRING_SKIDLINE };
+	int iResult = dynamic_cast<CGHObj*>(_Other)->Get_GHString();
+	if (iResult == 2)
+		dynamic_cast<CGHButton*>(_Other)->Set_bPress();
+	else if (iResult == 1 && dynamic_cast<CGHFloar*>(_Other)->Get_FloarIndex() == 6)
+	{
+		_Other->Set_Dead();
+
+	}
+	else if(iResult != 1)
+		_Other->Set_Dead();
+
 }
 void CGHPlayer::Set_Skid_Pos(int _iLeft_Middle_Right)
 {
@@ -175,6 +204,14 @@ void CGHPlayer::Set_Skid_Pos(int _iLeft_Middle_Right)
 		m_vLeft_Middle_Right = m_tInfo.vPos;
 	}
 	m_vLeft_Middle_Right.y = 443.75f;
+
+}
+void CGHPlayer::Set_SkidBool()
+{
+	m_bSkid = true;
+	float fWidth = abs(m_tInfo.vPos.x - 400.f);
+	float fHeight = abs(m_tInfo.vPos.y - 100.f);
+	m_fRadius = sqrtf(fWidth *fWidth + fHeight * fHeight);
 
 }
 void CGHPlayer::Key_Input()
