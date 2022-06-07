@@ -29,5 +29,6 @@ private:
 
 	bool	m_bBossStart;
 	int		m_iBossHp;
+	int         m_iScore;
 };
 

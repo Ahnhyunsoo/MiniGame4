@@ -8,7 +8,6 @@ CHRBullet::CHRBullet()
 	: m_fDeadTime(0.f)
 	, m_fOldDeadTime(0.f)
 	, m_fLenth(0.f)
-	, m_bFirst(false)
 	, m_bPadding(false)
 {
 }
@@ -32,23 +31,34 @@ void CHRBullet::Initialize(void)
 
 int CHRBullet::Update(void)
 {
-	if (m_bDead)
+	if (m_bRealDead)
 		return OBJ_DEAD;
 
-	if (m_fOldDeadTime + m_fDeadTime + CTimeMgr::Get_Instance()->Get_DelaySecond() < GetTickCount())
-		m_bDead = true;
+	if (CKeyMgr::Get_Instance()->Key_Pressing('P') || CTimeMgr::Get_Instance()->Get_Record())
+		m_bRecord = true;
+	else
+		m_bRecord = false;
 
-	if (m_bFirst)
-	{
-		m_tInfo.vPos.x += m_tInfo.vDir.x * m_fSpeed;
-		m_tInfo.vPos.y += m_tInfo.vDir.y * m_fSpeed;
-	}
+	if (!m_bRecord)
+		Update_Record();
 	else
 	{
-		m_tInfo.vPos.x -= m_tInfo.vDir.x * m_fSpeed;
-		m_tInfo.vPos.y -= m_tInfo.vDir.y * m_fSpeed;
-		m_bFirst = true;
+		Update_BackRecord();
+		return 0;
 	}
+
+	if (m_bDead)
+		return OBJ_NOEVENT;
+
+
+
+	//if (m_fOldDeadTime + m_fDeadTime + CTimeMgr::Get_Instance()->Get_DelaySecond() < GetTickCount())
+	//	m_bDead = true;
+
+
+	m_tInfo.vPos.x += m_tInfo.vDir.x * m_fSpeed;
+	m_tInfo.vPos.y += m_tInfo.vDir.y * m_fSpeed;
+
 
 
 	return OBJ_NOEVENT;
@@ -60,6 +70,9 @@ void CHRBullet::Late_Update(void)
 
 void CHRBullet::Render(HDC hDC)
 {
+	if (m_bDead)
+		return;
+
 	HPEN hpen;
 	HPEN hpenOld;
 

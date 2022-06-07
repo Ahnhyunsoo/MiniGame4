@@ -13,6 +13,7 @@ CTimeMgr::CTimeMgr()
 	, m_iFPS(0)
 	, m_iDelayScond(0)
 	, m_fTempTimeValue(0.f)
+	, m_bRecord(false)
 {
 }
 CTimeMgr::~CTimeMgr()

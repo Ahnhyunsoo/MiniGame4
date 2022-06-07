@@ -25,8 +25,8 @@ void CYMPlayer::Initialize(void)
 	m_fScale = 1.f;
 	m_tInfo.vDir = { 1.f, 0.f,0.f };
 	m_tInfo.vLook = { 1.f, 0.f,0.f };
-	m_iHp = 10;
-	m_iLevel = 3;
+	m_iHp = 100;
+	m_iLevel = 1;
 	m_iBoom = 4;
 	m_iGameOver = false;
 

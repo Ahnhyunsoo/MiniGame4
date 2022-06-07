@@ -6,6 +6,7 @@
 #include "SelectMonster.h"
 #include "ScrollMgr.h"
 #include "BmpMgr.h"
+#include "SoundMgr.h"
 
 CStageSelect::CStageSelect()
 	:m_iNowRank(0),m_iTotalRank(0),m_iSecond(0),m_LTimer(GetTickCount()),m_bGoal(false),m_iGoal(5000)
@@ -31,7 +32,7 @@ void CStageSelect::Initialize(void)
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1800.f, 450.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(1400.f, 400.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CSelectMonster>::CreateObj(2100.f, 350.f));
-	
+	CSoundMgr::Get_Instance()->PlayBGM(L"Cart.wav", 0.5f);
 }
 
 void CStageSelect::Update(void)

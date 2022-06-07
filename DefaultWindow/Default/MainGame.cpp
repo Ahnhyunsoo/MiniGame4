@@ -38,11 +38,6 @@ void CMainGame::Initialize(void)
 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/aa.bmp", L"aa");
 	
-
-
-	
-
-
 }
 
 void CMainGame::Update(void)

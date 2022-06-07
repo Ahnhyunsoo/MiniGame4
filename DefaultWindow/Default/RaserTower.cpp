@@ -3,6 +3,7 @@
 #include "ObjMgr.h"
 #include "RaserBullet.h"
 #include "CAbstractFactory.h"
+#include "SoundMgr.h"
 
 
 CRaserTower::CRaserTower()
@@ -90,6 +91,8 @@ void CRaserTower::Create_Bullet(void)
 	if (m_LBullet + m_iShotDelay < GetTickCount())
 	{
 		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CRaserBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + m_tInfo.vDir.x * m_fScale * 30.f, m_tInfo.vPos.y + m_tInfo.vDir.y * m_fScale * 30.f,this));
+		CSoundMgr::Get_Instance()->StopSound(SOUND_EFFECT);
+		CSoundMgr::Get_Instance()->PlaySound(L"Raser.ogg", SOUND_EFFECT, 1.f);
 		m_LBullet = GetTickCount();
 	}
 }

@@ -3,6 +3,7 @@
 #include "ObjMgr.h"
 #include "HSBullet.h"
 #include "CAbstractFactory.h"
+#include "SoundMgr.h"
 
 CGunTower::CGunTower()
 	:m_LBullet(GetTickCount()),m_iShotDelay(1000)
@@ -50,8 +51,11 @@ int CGunTower::Update(void)
 		m_bBattle = false;
 	else
 		m_bBattle = true;
-
+	
+	if(m_bBattle == true && CObjMgr::Get_Instance()->Get_ObjList(OBJ_MONSTER).empty() == false)
+	{ 
 	Update_MatWorld();
+
 	m_vTarget = Find_Target(m_tInfo.vPos.x, m_tInfo.vPos.y);
 	if (m_vTarget.y > m_tInfo.vPos.y && abs(m_vTarget.x - m_tInfo.vPos.x) > 100)
 	{
@@ -69,7 +73,7 @@ int CGunTower::Update(void)
 	}
 
 	D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
-
+	}
 	if (m_bBattle)
 	{
 		Create_Bullet();
@@ -105,6 +109,8 @@ void CGunTower::Create_Bullet(void)
 	if (m_LBullet + m_iShotDelay < GetTickCount())
 	{
 		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CHSBullet>::CreateBullet(m_tInfo.vDir, m_tInfo.vPos.x + m_tInfo.vDir.x * m_fScale * 30.f, m_tInfo.vPos.y + m_tInfo.vDir.y * m_fScale * 30.f,this));
+		CSoundMgr::Get_Instance()->StopSound(SOUND_BULLET);
+		CSoundMgr::Get_Instance()->PlaySound(L"Gun.wav", SOUND_BULLET, 1.f);
 		m_LBullet = GetTickCount();
 	}
 }

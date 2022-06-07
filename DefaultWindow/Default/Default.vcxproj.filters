@@ -241,6 +241,9 @@
     <Filter Include="02.StageGH\GHObj\GHHeros_Of_Stone">
       <UniqueIdentifier>{dfbe8ba2-afc8-4a43-a993-5f2553ca0482}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.StageYM\YMObj\YMUi\YMScoreMgr">
+      <UniqueIdentifier>{25e15c5f-e5b5-498a-ac07-0d7d60020a93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -492,6 +495,10 @@
     <ClInclude Include="HRBullet.h">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
     </ClInclude>
+
+    <ClInclude Include="HRPlayerHP.h">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClInclude>
     <ClInclude Include="UIMgr.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -509,6 +516,12 @@
     </ClInclude>
     <ClInclude Include="GHHeros_Of_Stone.h">
       <Filter>02.StageGH\GHObj\GHHeros_Of_Stone</Filter>
+    </ClInclude>
+    <ClInclude Include="YMScoreMgr.h">
+      <Filter>03.StageYM\YMObj\YMUi\YMScoreMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="YMCommon.h">
+      <Filter>03.StageYM\YMObj\YMMonster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -740,6 +753,9 @@
     <ClCompile Include="HRBullet.cpp">
       <Filter>05.StageHR\HRObj\HRBullet</Filter>
     </ClCompile>
+    <ClCompile Include="HRPlayerHP.cpp">
+      <Filter>05.StageHR\HRObj\HRPlayer</Filter>
+    </ClCompile>
     <ClCompile Include="UIMgr.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -754,6 +770,13 @@
     </ClCompile>
     <ClCompile Include="GHHeros_Of_Stone.cpp">
       <Filter>02.StageGH\GHObj\GHHeros_Of_Stone</Filter>
+    </ClCompile>
+
+    <ClCompile Include="CYMScoreMgr.cpp">
+      <Filter>03.StageYM\YMObj\YMUi\YMScoreMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CYMCommon.cpp">
+      <Filter>03.StageYM\YMObj\YMMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
