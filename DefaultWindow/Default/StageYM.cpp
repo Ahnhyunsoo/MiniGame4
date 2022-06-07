@@ -99,8 +99,28 @@ void CStageYM::Initialize(void)
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMBoss>::CreateObj(400.f, -6000.f));
 
+
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMCommon>::CreateObj(-5500.f, -6000.f, DIR_LEFT));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMCommon>::CreateObj(-5600.f, -6100.f, DIR_LEFT));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMCommon>::CreateObj(-5700.f, -6200.f, DIR_LEFT));
+
+
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMCommon>::CreateObj(5800.f, -6300.f, DIR_RIGHT));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMCommon>::CreateObj(5900.f, -6400.f, DIR_RIGHT));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMCommon>::CreateObj(6000.f, -6500.f, DIR_RIGHT));
+
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(150.f, -8000.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(400.f, -8100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(750.f, -8200.f));
+
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(700.f, -8600.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(350.f, -8700.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CYMTownMoster>::CreateObj(100.f, -8800.f));
+
+
+
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<YMShipMonster>::CreateObj(100.f, -600.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<YMShipMonster>::CreateObj(-450.f, -1100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<YMShipMonster>::CreateObj(-550.f, -1300.f));
 
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_ITEM, CAbstractFactory<CYMLevelUp>::CreateObj(200.f, -2000.f));

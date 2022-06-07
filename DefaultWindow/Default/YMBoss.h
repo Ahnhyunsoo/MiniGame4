@@ -17,6 +17,11 @@ public:
 
 private:
 	bool	m_bUi_Check;
+
+	int m_iSide;
+	int m_iSide2;
+	int m_iSideCount;
+	int m_iSideCount2;
 };
 
 
