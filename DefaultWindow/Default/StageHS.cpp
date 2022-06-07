@@ -171,7 +171,7 @@ void CStageHS::Render(HDC hDC)
 	SelectObject(hDC, oldFont);
 	DeleteObject(textFont);
 
-	Rectangle(hDC, pt.x - 5, pt.y - 5, pt.x + 5, pt.y + 5);
+	//Rectangle(hDC, pt.x - 5, pt.y - 5, pt.x + 5, pt.y + 5);
 
 }
 

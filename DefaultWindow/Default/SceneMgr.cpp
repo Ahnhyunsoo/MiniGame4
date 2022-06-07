@@ -32,7 +32,7 @@ void CSceneMgr::Scene_Change(SCENE eID)
 	if (m_ePreScene != m_eCurScene)
 	{
 		Safe_Delete(m_pScene);
-
+		CSoundMgr::Get_Instance()->StopAll();
 		switch (m_eCurScene)
 		{
 		case STAGE_SELECT:
